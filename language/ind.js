@@ -135,10 +135,14 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *Registrado* : ꪜ
 ╰─╼「 BOT BAIANO 」╼─╯
 
-╭╼≽ *MENU CRIADOR*
+╭╼≽ *𝔽𝕀𝔾𝕌ℝ𝕀ℕℍ𝔸𝕊*
+╰╼≽ 么 Desc : também serve para fig animadas
+╭────────────
 ┠≽ *${prefix}sticker*
 ┠≽ *${prefix}stiker*
 ┠≽ *${prefix}s*
+╰─
+╭╼≽ *𝕄𝔼ℕ𝕌 ℂℝ𝕀𝔸𝔻𝕆ℝ*
 ┠≽ *${prefix}toimg*
 ┠≽ *${prefix}tts* <idioma> <txt>
 ┠≽ *${prefix}qrcode* <texto>
@@ -149,7 +153,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}stickerhide* <txt>
 ┠≽ *${prefix}emoji*
 ╰╼
-╭╼≽  *FUN MENU*  ⊰━━━┫
+╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
 ┠≽ *${prefix}bisakah* <texto>
 ┠ 么 Desc : se você pode
 ┠──────────────╼
@@ -175,20 +179,21 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠ 么 Desc : mod apk
 ┠──────────────╼
 ╰╼
-╭╼≽ *MEDIA MENU*
+╭╼≽ *𝕄𝔼𝔻𝕀𝔸 𝕄𝔼ℕ𝕌*
 ┠≽ *${prefix}pinterest*
 ┠≽ *${prefix}bitly* <link>
 ┠≽ *${prefix}tiktokstalk* <usuário>
 ╰╼
-╭╼≽ *YT & SONG*
+╭╼≽ *𝕐𝕋 & 𝕊𝕆ℕ𝔾*
 ┠≽ *${prefix}ytmp3* <link>
 ┠≽ *${prefix}ytmp4* <link>
 ┠≽ *${prefix}joox* <cantor/a - título>
+┠≽ *${prefix}play* <título>
+┠≽ *${prefix}lirik* <título>
 ╰╼
-╭╼≽ *NSFW MENU*
+╭╼≽ *ℕ𝕊𝔽𝕎 𝕄𝔼ℕ𝕌*
 ┠≽ *${prefix}anjing*
 ┠≽ *${prefix}blowjob*
-┠≽ *${prefix}nekonime*
 ┠≽ *${prefix}pokemon*
 ┠≽ *${prefix}husbu*
 ┠≽ *${prefix}nangis*
@@ -196,13 +201,13 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}peluk*
 ┠≽ *${prefix}ranime*
 ╰╼
-╭╼≽ *LIMITE & DINHEIRO*
+╭╼≽ *𝕃𝕀𝕄𝕀𝕋𝔼 & 𝔻𝕀ℕℍ𝔼𝕀ℝ𝕆*
 ┠≽ *${prefix}limit* 
 ┠≽ *${prefix}buylimit* <quantidade>
 ┠≽ *${prefix}transfer* <@tag | total>
 ┠≽ *${prefix}dompet*
 ╰╼
-╭╼≽ *MENU GRUPO*
+╭╼≽ *𝕄𝔼ℕ𝕌 𝔾ℝ𝕌ℙ𝕆*
 ┠≽ *${prefix}hidetag* <texto>
 ┠≽ *${prefix}linkgc*
 ┠≽ *${prefix}tagall*
@@ -218,7 +223,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}delbadword* <texto>
 ┠≽ *${prefix}listbadword*
 ╰╼
-╭╼≽ *ATIVAR*
+╭╼≽ *𝔸𝕋𝕀𝕍𝔸ℝ*
 ╰╼≽ 么 Desc : ativar em grupos
 ╭──────────────
 ┠≽ *${prefix}group* [abrir/fechar]
@@ -226,10 +231,10 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}nsfw* [1/0]
 ┠≽ *${prefix}simih* [1/0]
 ┠≽ *${prefix}welcome* [1/0]
-┠≽ *${prefix}antilink*
-┠≽ *${prefix}nobadword*
+┠≽ *${prefix}antilink* [1/0]
+┠≽ *${prefix}nobadword* [1/0]
 ╰╼──────────────
-╭╼≽ *PROPRIETÁRIO* 
+╭╼≽ *ℙℝ𝕆ℙℝ𝕀𝔼𝕋𝔸́ℝ𝕀𝕆* 
 ┠≽ *${prefix}bc* <texto>
 ┠≽ *${prefix}bcgc* <texto>
 ┠≽ *${prefix}kickall*
@@ -245,7 +250,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}clone* <@tag>
 ┠≽ *${prefix}setppbot*
 ┠≽ *${prefix}listonline*
-╰╼≽ *©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* 
+╰╼≽ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* 
 `
 }
 
