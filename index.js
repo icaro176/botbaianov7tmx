@@ -29,6 +29,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const ffmpeg = require('fluent-ffmpeg')
+const imgbb = require('imgbb-uploader')
 const google = require('google-it')
 const ms = require('parse-ms')
 const toMs = require('ms')
