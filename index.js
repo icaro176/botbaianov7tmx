@@ -638,7 +638,7 @@ client.on('group-participants-update', async (anu) => {
                        reply(ind.wait())
                        anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
                       if (anu.error) return reply(anu.error)
-                        infomp3 = `*Música Encontrada*\nTítulo : ${anu.result.title}\nDuração : ${anu.result.duration}\nTamanho : ${anu.result.size}\n\n*A MÚSICA ESTÁ SENDO ENVIADA\n©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*`
+                        infomp3 = `╭─「 *PLAY MP3* 」\n│*• Título:* ${anu.result.title}\n│*• Duração:* ${anu.result.duration}\n│*• Tamanho:* ${anu.result.size}\n\n*A MÚSICA ESTÁ SENDO ENVIADA\n*By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
                        buffer = await getBuffer(anu.result.thumb)
                        lagu = await getBuffer(anu.result.mp3)
                        client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -679,7 +679,7 @@ client.on('group-participants-update', async (anu) => {
 					teks = body.slice(5).trim()
 					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarApi}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					reply(mess.wait)
+					reply(ind.wait())
 					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 						fs.unlinkSync(ranp)
 						if (err) return reply(mess.error.stick)
@@ -822,7 +822,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=BotWeA`, {method: 'get'})
                if (data.error) return reply(data.error)
-                 infomp3 = `*Lagu Ditemukan!!!*\nJudul : ${data.result.judul}\nAlbum : ${data.result.album}\nDipublikasi : ${data.result.dipublikasi}`
+                 infomp3 = `*╭─「 *JOOX DOWNLOAD* 」\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
                 buffer = await getBuffer(data.result.thumb)
                 lagu = await getBuffer(data.result.mp3)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -925,7 +925,6 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-				//jojo 
 				case 'stickerhide':
 				    ranp = getRandom('.gif')
 					rano = getRandom('.webp')
