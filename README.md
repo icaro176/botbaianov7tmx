@@ -11,21 +11,23 @@
 ## Clone this project
 
 ```bash
-> git clone https://github.com/affisjunianto/botwasapv5
+> git clone https://github.com/icaro176/botbaianov5tmx
 ```
 
-## Install the dependencies:
-Before running the below command, make sure you're in the project directory that
-you've just cloned!!
+## Instale as dependências:
+Antes de executar o comando abaixo, certifique-se de estar no diretório do projeto que
+você acabou de clonar!!
 
 ```bash
-> cd botwasapv5
+> 
+> git clone https://github.com/icaro176/botbaianov5tmx
+> cd botbaianov5tmx
 > bash install.sh
 ```
 
-### Usage
+### Uso
 ```bash
-> npm start
+> node index
 ```
 
 ## Features
@@ -65,9 +67,5 @@ you've just cloned!!
 * [`Mhankbarbar`](https://github.com/MhankBarBar)
 
 
-## whatsapp number
+## whatsapp número
 * [`WhatsApp`](wa.me/6282334297175)
-### Donate
-* [`Saweria`](https://saweria.co/ampibibot)
-* [`Dana : +62895710073737`]
-* [`Pulsa : +628233429775`]
