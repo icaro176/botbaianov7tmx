@@ -29,6 +29,7 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const ffmpeg = require('fluent-ffmpeg')
+const google = require('google-it')
 const ms = require('parse-ms')
 const toMs = require('ms')
 const fontPath = ('./lib/Zahraaa.ttf')
@@ -39,19 +40,19 @@ const { ind } = require('./language')
 /********** MENU SETTING **********/
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
-            + 'FN:Affis Admin\n' 
+            + 'FN:❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥\n' 
             + 'ORG: Pengembang XBot;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=6282334297175:+62 823-3429-7175\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=557996096237:+55 79 9609-6237\n' 
             + 'END:VCARD' 
 blocked = []   
 prefix = '#'
-limitawal = 30
+limitawal = 50
 memberlimit = 0
-cr = '*BOT INI SUDAH TERVERIFIKASI*'
+cr = '*SEM FLOODAR COMANDOS*'
 /*************************************/
 
 /******** OWNER NUMBER**********/
-const ownerNumber = ["62895710073737@s.whatsapp.net","6282334297175@s.whatsapp.net"] 
+const ownerNumber = ["557996096237@s.whatsapp.net","557388191315@s.whatsapp.net"] 
 /************************************/
 
        
@@ -272,7 +273,7 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
 
   
-  return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
+  return `${pad(hours)} Hora ${pad(minutes)} Minutos ${pad(seconds)} Segundos`
 }
 /********** FUNCTION ***************/
 
@@ -303,7 +304,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `Hallo @${num.split('@')[0]}\Selamat datang di group *${mdata.subject}* yang betah ya di sini`
+				teks = `[ *Olá, Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade :`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -313,7 +314,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `akhirnya beban group berkurang 𝟭,bye bye🥳 @${num.split('@')[0]} jasamu akan di kubur dalam²`
+				teks = `Mais um foi pra puta que pariu, Tchau @${num.split('@')[0]}`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
@@ -478,7 +479,7 @@ client.on('group-participants-update', async (anu) => {
                     for (let lmt of _limit) {
                         if (lmt.id === sender) {
                             let limitCounts = limitawal - lmt.limit
-                            if (limitCounts <= 0) return client.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan dengan naik level_`, text,{ quoted: mek})
+                            if (limitCounts <= 0) return client.sendMessage(from,`Desculpa ${pushname}, seu limite acabou\n\n_Nota : limite pode ser obtido por meio de ${prefix}buylimit ou subindo de nível`, text,{ quoted: mek})
                             client.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
                             found = true
                         }
@@ -521,29 +522,29 @@ client.on('group-participants-update', async (anu) => {
 					try {
 						const getmemex = groupMembers.length	
 					    if (getmemex <= memberlimit) {
-						reply(`maaf member group belum memenuhi syarat. minimal member group adalah ${memberlimit}`)
+						reply(`Desculpe o grupo não tem os requisitos de membros. mínimo de membros no grupo é ${memberlimit}`)
 						setTimeout( () => {
  	                           client.groupLeave(from) 
  					   	}, 5000)
 								setTimeout( () => {
 								client.updatePresence(from, Presence.composing)
-								reply("1detik")
+								reply("1segundos")
 							}, 4000)
 								setTimeout( () => {
 								client.updatePresence(from, Presence.composing)
-								reply("2detik")
+								reply("2segundos")
 							}, 3000)
 								setTimeout( () => {
 								client.updatePresence(from, Presence.composing)
-								reply("3detik")
+								reply("3segundos")
 							}, 2000)
 								setTimeout( () => {
 								client.updatePresence(from, Presence.composing)
-								reply("4detik")
+								reply("4segundos")
 							}, 1000)
 								setTimeout( () => {
 								client.updatePresence(from, Presence.composing)
-								reply("5detik")
+								reply("5segundos")
 							}, 0)
 					    }
 		       } catch (err) { console.error(err)  }
@@ -552,13 +553,13 @@ client.on('group-participants-update', async (anu) => {
  	   	if (isGroup && isBadWord) {
             if (bad.includes(messagesC)) {
                 if (!isGroupAdmins) {
-                    return reply("JAGA UCAPAN DONG!! 😠")
+                    return reply("Tenha Respeito 😡")
                         .then(() => client.groupRemove(from, sender))
                         .then(() => {
-                            client.sendMessage(from, `*「 ANTI BADWORD 」*\nKamu dikick karena berkata kasar!`, text ,{quoted: mek})
-                        }).catch(() => client.sendMessage(from, `Untung cya bukan admin, kalo admin udah cya kick!`, text , {quoted : mek}))
+                            client.sendMessage(from, `*「 ANTI MÁ PALAVRA 」*\nVocê foi banido por má palavra😡`, text ,{quoted: mek})
+                        }).catch(() => client.sendMessage(from, `infelizmente não é o administrador, se o administrador já o baniu!`, text , {quoted : mek}))
                 } else {
-                    return reply( "Tolong Jaga Ucapan Min 😇")
+                    return reply( "Por favor, mantenha respeito 😇")
                 }
             }
         }
@@ -567,33 +568,33 @@ client.on('group-participants-update', async (anu) => {
 				if (messagesC.includes("://chat.whatsapp.com/")){
 					if (!isGroup) return
 					if (!isAntiLink) return
-					if (isGroupAdmins) return reply('karena kamu adalah admin group, bot tidak akan kick kamu')
+					if (isGroupAdmins) return reply('${pushname} os outros administradores do grupo não ficará surpreso pelo link de outro grupo?')
 					client.updatePresence(from, Presence.composing)
-					if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
+					if (messagesC.includes("#izinadmin")) return reply("#izinadmin recebido")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-						reply(`Link Group Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+						reply(`Link de grupo detectado ${sender.split("@")[0]} Você será expulso do grupo em 5 segundos`)
 						setTimeout( () => {
 						client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 						setTimeout( () => {
 						client.updatePresence(from, Presence.composing)
-						reply("1detik")
+						reply("1segundos")
 					}, 4000)
 						setTimeout( () => {
 						client.updatePresence(from, Presence.composing)
-						reply("2detik")
+						reply("2segundos")
 					}, 3000)
 						setTimeout( () => {
 						client.updatePresence(from, Presence.composing)
-						reply("3detik")
+						reply("3segundos")
 					}, 2000)
 						setTimeout( () => {
 						client.updatePresence(from, Presence.composing)
-						reply("4detik")
+						reply("4segundos")
 					}, 1000)
 						setTimeout( () => {
 						client.updatePresence(from, Presence.composing)
-						reply("5detik")
+						reply("5segundos")
 					}, 0)
 				}
  	       
@@ -629,7 +630,20 @@ client.on('group-participants-update', async (anu) => {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			
-			switch(command) { 
+			switch(command) {
+                        case 'play':
+                        if (!isRegistered) return reply(ind.noregis())
+                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                       reply(ind.wait())
+                       anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=yourapikey`)
+                      if (anu.error) return reply(anu.error)
+                        infomp3 = `*Música Encontrada*\nTítulo : ${anu.result.title}\nDuração : ${anu.result.duration}\nTamanho : ${anu.result.size}\n\n*A MÚSICA ESTÁ SENDO ENVIADA\n©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*`
+                       buffer = await getBuffer(anu.result.thumb)
+                       lagu = await getBuffer(anu.result.mp3)
+                       client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                       client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                       await limitAdd(sender)
+                       break
 				//premiom
 				case 'checkprem':
 				const cekExp = ms(getPremiumExpired(sender) - Date.now())
@@ -641,23 +655,39 @@ client.on('group-participants-update', async (anu) => {
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					const tex = encodeURIComponent(body.slice(8))
-					if (!tex) return client.sendMessage(from, 'MASUKAN URL/TEKS UNTUK DI JADIKAN QR', text, {quoted: mek})
+					if (!tex) return client.sendMessage(from, 'INSIRA O URL ou TEXTO PARA FAZER QR', text, {quoted: mek})
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${tex}`)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					await limitAdd(sender)
 					break
-				//tobz 
 				case 'lirik':
-				anu = await fetchJson(`https://tobz-api.herokuapp.com/api/lirik?q=${body.slice(7)}&apikey=BotWeA`)
-				thum = await getBuffer(anu.result.thumb)
-				teks = `*「 LAGU DI TEMUKAN 」*\n\n*Judul* : ${anu.result.judul}\n*Album* : ${anu.result.album}\n*public in* : ${anu.result.dipublikasi}\n*Lyrics* : ${anu.result.lirik}`
-				client.sendMessage(from, thum, image, { quoted : mek, caption: teks })
-				break
+				if (!isRegistered) return reply(ind.noregis())                                
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				teks = body.slice(7)
+					anu = await fetchJson(`http://scrap.terhambar.com/lirik?word=${teks}`, {method: 'get'})
+					reply('A Letra da musica '+teks+' é :\n\n'+anu.result.lirik)
+					await limitAdd(sender) 
+					break 
 				case 'ttp':
-				anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ttp?text=${body.slice(5)}&apikey=BotWeA`)
-				res = await getBase64(anu.base64)
-				client.sendMessage(from, res, sticker, {quoted:mek})
-				break
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				ranp = getRandom('.png')
+					rano = getRandom('.webp')
+					teks = body.slice(5).trim()
+					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarApi}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					reply(mess.wait)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						bufferhgf = fs.readFileSync(rano)
+						frhan.sendMessage(from, bufferhgf, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break
                 case 'chord':
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=BotWeA`)
                 client.sendMessage(from, anu.result, text, {quoted:mek})
@@ -841,19 +871,18 @@ client.on('group-participants-update', async (anu) => {
                     console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
                 }
 				break
-				//terhambar 
 				case 'quotemaker':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
                 var gh = body.slice(12)
 					var quote = gh.split("|")[0];
 					var wm = gh.split("|")[1];
-					const pref = `Usage: \n${prefix}quotemaker teks|watermark\n\nEx :\n${prefix}quotemaker ini contoh|bicit`
+					const pref = `Uso: \n${prefix}quotemaker txt|marca d'água|tema\n\nEx :\n${prefix}quotemaker bom dia|bot|random`
 					if (args.length < 1) return reply(pref)
 					reply(ind.wait())
-					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=random`, {method: 'get'})
+					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=${bg}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {caption: 'Nih anjim', quoted: mek})
+					client.sendMessage(from, buffer, image, {caption: '>//<', quoted: mek})
 					await limitAdd(sender)
 					break
 				//fadli 
