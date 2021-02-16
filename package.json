@@ -17,12 +17,12 @@
   "author": "Icaro",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/affisjunianto/botwasapv2.git"
+    "url": "git+https://github.com/icaro176/botbaianov5tmx.git"
   },
   "bugs": {
-    "url": "https://github.com/affisjunianto/botwasapv2/issues"
+    "url": "https://github.com/icaro176/botbaianov5tmx/issues"
   },
-"homepage": "https://github.com/affisjunianto/botwasapv2/readme",
+"homepage": "https://github.com/icaro176/botbaianov5tmx/readme",
 "license": "ISC",
 "dependencies": {
     "@adiwajshing/baileys": "^3.4.1",
