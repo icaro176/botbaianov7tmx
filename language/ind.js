@@ -232,7 +232,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}simih* [1/0]
 ┠≽ *${prefix}welcome* [1/0]
 ┠≽ *${prefix}antilink* [1/0]
-┠≽ *${prefix}nobadword* [1/0]
+┠≽ *${prefix}nobadword* [enable/disable]
 ╰╼──────────────
 ╭╼≽ *ℙℝ𝕆ℙℝ𝕀𝔼𝕋𝔸́ℝ𝕀𝕆* 
 ┠≽ *${prefix}bc* <texto>
