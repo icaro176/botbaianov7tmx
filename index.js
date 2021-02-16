@@ -635,7 +635,7 @@ client.on('group-participants-update', async (anu) => {
                         if (!isRegistered) return reply(ind.noregis())
                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                        reply(ind.wait())
-                       anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=yourapikey`)
+                       anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
                       if (anu.error) return reply(anu.error)
                         infomp3 = `*Música Encontrada*\nTítulo : ${anu.result.title}\nDuração : ${anu.result.duration}\nTamanho : ${anu.result.size}\n\n*A MÚSICA ESTÁ SENDO ENVIADA\n©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*`
                        buffer = await getBuffer(anu.result.thumb)
