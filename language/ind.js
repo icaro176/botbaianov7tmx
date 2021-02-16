@@ -143,9 +143,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}tts* <idioma> <txt>
 ┠≽ *${prefix}qrcode* <texto>
 ┠≽ *${prefix}ocr*
-┠≽ *${prefix}nulis* <nome|txt>
+┠≽ *${prefix}nulis* <texto>
 ┠≽ *${prefix}quotemaker* <txt|autor|tema>
-┠≽ *${prefix}ttp*
+┠≽ *${prefix}ttp* <txt>
 ┠≽ *${prefix}stickerhide* <txt>
 ┠≽ *${prefix}emoji*
 ╰╼
@@ -180,7 +180,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}bitly* <link>
 ┠≽ *${prefix}tiktokstalk* <usuário>
 ╰╼
-╭╼≽ *SONG*
+╭╼≽ *YT & SONG*
 ┠≽ *${prefix}ytmp3* <link>
 ┠≽ *${prefix}ytmp4* <link>
 ┠≽ *${prefix}joox* <cantor/a - título>
@@ -214,6 +214,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}demote* <@tag>
 ┠≽ *${prefix}promote* <@tag>
 ┠≽ *${prefix}listadmin*
+┠≽ *${prefix}addbadword* <texto>
+┠≽ *${prefix}delbadword* <texto>
+┠≽ *${prefix}listbadword*
 ╰╼
 ╭╼≽ *ATIVAR*
 ╰╼≽ 么 Desc : ativar em grupos
@@ -223,6 +226,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}nsfw* [1/0]
 ┠≽ *${prefix}simih* [1/0]
 ┠≽ *${prefix}welcome* [1/0]
+┠≽ *${prefix}antilink*
+┠≽ *${prefix}nobadword*
 ╰╼──────────────
 ╭╼≽ *PROPRIETÁRIO* 
 ┠≽ *${prefix}bc* <texto>
@@ -231,6 +236,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}setreply* <texto>
 ┠≽ *${prefix}setprefix* <símbolo>
 ┠≽ *${prefix}giftlimit* <@tag total>
+┠≽ *${prefix}setmemlimit* <total>
 ┠≽ *${prefix}clearall*
 ┠≽ *${prefix}block* <@tag>
 ┠≽ *${prefix}unblock* <@tag>
@@ -238,6 +244,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠≽ *${prefix}event* [1/0]
 ┠≽ *${prefix}clone* <@tag>
 ┠≽ *${prefix}setppbot*
+┠≽ *${prefix}listonline*
 ╰╼≽ *©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* 
 `
 }
