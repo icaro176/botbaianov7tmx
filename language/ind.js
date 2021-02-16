@@ -116,57 +116,46 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 
 exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi) => { 
 	return `
-┏━━━⊱  *ABOUT USER*  ⊰━━┓
-┣⊱ *Nama* : ${pushname}
-┣⊱ *Premium* : ${premi}
-┣⊱ *Nomer* : wa.me/${sender.split("@")[0]}
-┣⊱ *Uang mu* : Rp${uangku}
-┣⊱ *XP* : ${getLevelingXp(sender)}/${reqXp} 
-┣⊱ *Level* : ${getLevelingLevel(sender)}
-┣⊱ *Role* : ${role}
-┣⊱ *User register* : ${_registered.length}
-┗━━━⊱  ⸨ *AFFIS* ⸩  ⊰━━━━┛
-
- *${prefix}info*
- *${prefix}donasi*
- *${prefix}owner*
+╭───「 USUÁRIO 」───╮
+│ *Nome* : ${pushname}
+│ *Número* : wa.me/${sender.split("@")[0]}
+╰──────────────╯
+╭───「 CONTA 」────╮
+│ *Dinheiro* : R$:${uangku}
+│ *XP* : ${getLevelingXp(sender)}/${reqXp} 
+│ *Level* : ${getLevelingLevel(sender)}
+│ *Patente* : ${role}
+╰──────────────╯
+╭───「 INFO 」────╮
+│ *Prefixo* : ${prefix}
+│ *Comandos* : ${prefix}menu / help
+│ *Ativo Desde* : ${kyun(uptime)}
+│ *Registrado* : ꪜ
+╰──「 BOT BAIANO 」──╯
 
 ┏━━⊱ *MAKER MENU* ⊰━━┓
 ┣⊱ *${prefix}sticker* 
-┣⊱ *${prefix}quotemaker* <text|author>
-┣⊱ *${prefix}qrcode* <text>
+┣⊱ *${prefix}quotemaker* <texto|autor>
+┣⊱ *${prefix}qrcode* <texto>
 ┣⊱ *${prefix}ttp*
-┣⊱ *${prefix}stickerhide* <text>
+┣⊱ *${prefix}stickerhide* <texto>
 ┣⊱ *${prefix}emoji*
 ┣━━⊱  *FUN MENU*  ⊰━━━┫
-┣⊱ *${prefix}lirik* <text>
-┣⊱ *${prefix}artinama>
-┣⊱ *${prefix}chord* <text>
-┣⊱ *${prefix}bisakah* <teks>
-┣⊱ *${prefix}kapankah* <teks>
-┣⊱ *${prefix}apakah* <teks>
-┣⊱ *${prefix}rate* <teks>
+┣⊱ *${prefix}bisakah* <texto>
+┣⊱ *${prefix}kapankah* <texto>
+┣⊱ *${prefix}apakah* <texto>
+┣⊱ *${prefix}rate* <texto>
 ┣⊱ *${prefix}slap*
 ┣⊱ *${prefix}tampar*
-┣⊱ *${prefix}moddroid* <teks> *[VIP]*
-┣⊱ *${prefix}happymod* <teks> *[VIP]*
-┣━━⊱ *MUTUAL* ⊰━━━━━┫
-┣⊱ *${prefix}mutual*
-┣⊱ *${prefix}next*
+┣⊱ *${prefix}moddroid* <texto>
 ┣━━⊱ *MEDIA MENU* ⊰━━┫
-┣⊱ *${prefix}brainly* *[VIP]*
 ┣⊱ *${prefix}pinterest*
-┣⊱ *${prefix}resepmasakan* <teks>
-┣⊱ *${prefix}igstalk* <username>
 ┣⊱ *${prefix}bitly* <link>
-┣⊱ *${prefix}tiktok* <username> *[VIP]*
-┣⊱ *${prefix}tiktokstalk* <username> *[VIP]*
-┣⊱ *${prefix}ssweb* <link>
-┣⊱ *${prefix}kbbi* <text>
+┣⊱ *${prefix}tiktokstalk* <usuário>
 ┣━━⊱ *YT & SONG* ⊰━━━┫
-┣⊱ *${prefix}ytmp3* <link> *[VIP]*
-┣⊱ *${prefix}ytmp4* <link> *[VIP]*
-┣⊱ *${prefix}joox* <judul> *[VIP]*
+┣⊱ *${prefix}ytmp3* <link>
+┣⊱ *${prefix}ytmp4* <link>
+┣⊱ *${prefix}joox* <cantor/a - título>
 ┣━━⊱  *NSFW MENU*  ⊰━┫
 ┣⊱ *${prefix}anjing*
 ┣⊱ *${prefix}blowjob*
@@ -179,55 +168,43 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┣⊱ *${prefix}ranime*
 ┣━━⊱ *LIMIT & UANG* ⊰━┫
 ┣⊱ *${prefix}limit* 
-┣⊱ *${prefix}buylimit* <jumblah>
-┣⊱ *${prefix}transfer* <tag |jumblah>
+┣⊱ *${prefix}buylimit* <quantidade>
+┣⊱ *${prefix}transfer* <@tag | quantidade>
 ┣⊱ *${prefix}dompet*
-┣⊱ *${prefix}giftlimit* <tag jumblah>
-┣⊱ *${prefix}leaderboard* <jumblah>
+┣⊱ *${prefix}giftlimit* <@tag quantidade>
 ┣━━⊱ *GROUP MENU* ⊰━┫
-┣⊱ *${prefix}hidetag*
-┣⊱ *${prefix}blocklist*
-┣⊱ *${prefix}grouplist*
+┣⊱ *${prefix}hidetag* <texto>
 ┣⊱ *${prefix}level*
 ┣⊱ *${prefix}linkgc*
 ┣⊱ *${prefix}tagall*
 ┣⊱ *${prefix}setpp*
-┣⊱ *${prefix}add* <tag>
-┣⊱ *${prefix}kick* <tag>
-┣⊱ *${prefix}setname* <teks>
-┣⊱ *${prefix}setdesc* <teks>
-┣⊱ *${prefix}demote* <tag>
-┣⊱ *${prefix}promote* <tag>
+┣⊱ *${prefix}add* <@tag>
+┣⊱ *${prefix}kick* <@tag>
+┣⊱ *${prefix}setname* <texto>
+┣⊱ *${prefix}setdesc* <texto>
+┣⊱ *${prefix}demote* <@tag>
+┣⊱ *${prefix}promote* <@tag>
 ┣⊱ *${prefix}listadmin*
-┣⊱ *${prefix}group* [buka/tutup]
+┣━━⊱ *ATIVAR* ⊰━┫
+┣⊱ *${prefix}group* [abrir/fechar]
 ┣⊱ *${prefix}leveling* [enable/disable]
 ┣⊱ *${prefix}nsfw* [1/0]
 ┣⊱ *${prefix}simih* [1/0]
 ┣⊱ *${prefix}welcome* [1/0]
 ┣━━⊱ *OWNER MENU* ⊰━┫
-┣⊱ *${prefix}bc* <teks>
-┣⊱ *${prefix}bcgc* <teks>
-┣⊱ *${prefix}kickall* <rawan ban>
-┣⊱ *${prefix}setreply* <teks>
-┣⊱ *${prefix}setprefix* <symbol>
+┣⊱ *${prefix}bc* <texto>
+┣⊱ *${prefix}bcgc* <texto>
+┣⊱ *${prefix}kickall*
+┣⊱ *${prefix}setreply* <texto>
+┣⊱ *${prefix}setprefix* <símbolo>
 ┣⊱ *${prefix}clearall*
-┣⊱ *${prefix}block* <tag>
-┣⊱ *${prefix}unblock* <tag>
+┣⊱ *${prefix}block* <@tag>
+┣⊱ *${prefix}unblock* <@tag>
 ┣⊱ *${prefix}leave*
 ┣⊱ *${prefix}event* [1/0]
-┣⊱ *${prefix}clone* <tag>
+┣⊱ *${prefix}clone* <@tag>
 ┣⊱ *${prefix}setppbot*
-┣━━⊱ *THANGKS TO* ⊰━━┫
-┃
-┣⊱ *AFFIS JUNIANTO* <dev>
-┣⊱ *FADHIL GRAPHY* <partner>
-┣⊱ *MHANKBARBARS* <sc ori>
-┣⊱ *MYBOT TEAM* <team>
-┃
-┣⊱ NOTE : TQTO DI HAPUS
-┃ GW GAK UP LAGI OKE
-┃
-┗━━⊱  ⸨ *X-BOT* ⸩  ⊰━━━━┛
+┗━━⊱ *©️❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* ⊰━━━━┛
 `
 }
 
