@@ -8,7 +8,7 @@
 <a href="#"><img title="MAINTENED" src="https://img.shields.io/badge/MAINTENED-YES-blue.svg"</a>
 </p>
 
-## Clone this project
+## Clone este projeto
 
 ```bash
 > git clone https://github.com/icaro176/botbaianov5tmx
@@ -19,7 +19,17 @@ Antes de executar o comando abaixo, certifique-se de estar no diretório do proj
 você acabou de clonar!!
 
 ```bash
-> 
+> pkg upgrade && pkg update
+> apt-get update
+> apt-get upgrade
+> apt-get install nodejs
+> apt-get install libwebp
+> apt-get install mc
+> apt-get install ffmpeg
+> apt-get install wget
+> apt-get install tesseract
+> pkg install git
+> pkg install bash
 > git clone https://github.com/icaro176/botbaianov5tmx
 > cd botbaianov5tmx
 > bash install.sh
