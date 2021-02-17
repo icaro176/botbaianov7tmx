@@ -164,6 +164,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}tiktok* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}igstalk <usuário>
+│≽ *${prefix}wait*
 ╰╼
 ╭╼≽ *𝕐𝕋 & 𝕊𝕆ℕ𝔾*
 │≽ *${prefix}ytmp3* <link>
