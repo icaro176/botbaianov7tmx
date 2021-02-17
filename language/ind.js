@@ -145,6 +145,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}tts* <idioma> <txt>
 │≽ *${prefix}qrcode* <texto>
 │≽ *${prefix}ocr*
+│≽ *${prefix}ttp* <texto>
 │≽ *${prefix}translate* en/Bom Dia
 ╰╼
 ╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
@@ -181,10 +182,11 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
 ╰╼
-╭╼≽ **
+╭╼≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
 │≽ *${prefix}play* <título>
 │≽ *${prefix}lirik* <título>
+│≽ *${prefix}fb* <link>
 ╰╼
 ╭╼≽ *ℕ𝕊𝔽𝕎 𝕄𝔼ℕ𝕌*
 │≽ *${prefix}anjing*
