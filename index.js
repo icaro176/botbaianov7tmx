@@ -1095,12 +1095,12 @@ client.on('group-participants-update', async (anu) => {
 					await limitAdd(sender)
 				break
 				//auto respond 
-		case 'speed':
-                case 'ping':
-                const timestamp = speed();
+                                case 'ping':
+                             if (!isRegistered) return reply(ind.noregis())
+                       const timestamp = speed();
                 const latensi = speed() - timestamp 
                 frhan.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
-                    break
+                        break
                case 'help': 
 				case 'menu':
 				if (!isRegistered) return reply(ind.noregis())
