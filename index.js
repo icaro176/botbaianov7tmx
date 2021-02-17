@@ -26,6 +26,7 @@ const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { exec, spawn } = require("child_process")
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const fetch = require('node-fetch')
 const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const ffmpeg = require('fluent-ffmpeg')
@@ -1831,6 +1832,22 @@ client.on('group-participants-update', async (anu) => {
 					reply(`reply berhasil di ubah menjadi : ${cr}`)
 					await limitAdd(sender)
 					break 
+                                case 'wait':
+				if (!isRegistered) return reply(ind.noregis())
+			        if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						reply(ind.wait())
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						media = await client.downloadMediaMessage(encmedia)
+						await wait(media).then(res => {
+							client.sendMessage(from, res.video, video, {quoted: mek, caption: res.teks.trim()})
+						}).catch(err => {
+							reply(err)
+						})
+					} else {
+						reply('É uma foto mano')
+					}
+					break 
 				case 'clone':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerg()) 
@@ -1976,6 +1993,23 @@ client.on('group-participants-update', async (anu) => {
 						reply('Sukses broadcast group')
 					}
 					break 
+                        case 'google':
+			if (!isRegistered) return reply(ind.noregis())
+			if (isLimit(sender)) return reply(ind.limitend(pusname))
+                const googleQuery = body.slice(8)
+                if(googleQuery == undefined || googleQuery == ' ') return reply(`*Resultado da pesquisa : ${googleQuery}* não encontrado`)
+                google({ 'query': googleQuery }).then(results => {
+                let vars = `_*Resultado da pesquisa : ${googleQuery}*_\n`
+                for (let i = 0; i < results.length; i++) {
+                    vars +=  `\n═════════════════\n\n*Título* : ${results[i].title}\n\n*Descrição* : ${results[i].snippet}\n\n*Link* : ${results[i].link}\n\n`
+                }
+                    reply(vars)
+                }).catch(e => {
+                    console.log(e)
+                    frhan.sendMessage(from, 'Google Error : ' + e);
+                })
+                await limitAdd(sender) 
+                break
 				case 'addprem':
 				if (!isOwner) return reply(ind.ownerb())
 				expired = "30d"
