@@ -131,6 +131,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *Prefixo* : ${prefix}
 │ *Comandos* : ${prefix}menu / help
 │ *Registrado* : ꪜ
+│ *${prefix}info*
 ╰─╼「 BOT BAIANO 」╼─╯
 
 ╭╼≽ *𝔽𝕀𝔾𝕌ℝ𝕀ℕℍ𝔸𝕊*
@@ -146,6 +147,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}qrcode* <texto>
 │≽ *${prefix}ocr*
 │≽ *${prefix}ttp* <texto>
+│≽ *${prefix}quotemaker* txt/txt2/tema
 │≽ *${prefix}nulis* <texto>
 │≽ *${prefix}translate* en/Bom Dia
 ╰╼
@@ -169,7 +171,6 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠ 么 Desc : desafio
 ┠──────────────╼
 │≽ *${prefix}slap* <@tag>
-│≽ *${prefix}tampar*
 ┠ 么 Desc : tapa
 ┠──────────────╼
 │≽ *${prefix}moddroid* <app>
@@ -182,6 +183,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}bitly* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
+│≽ *${prefix}ytsearch* <título>
 ╰╼
 ╭╼≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
