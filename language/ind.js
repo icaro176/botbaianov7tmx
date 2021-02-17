@@ -113,7 +113,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ╰─╼「 BOT BAIANO 」╼─╯
 
 ╭╼≽ *𝔽𝕀𝔾𝕌ℝ𝕀ℕℍ𝔸𝕊*
-╰╼≽ 么 Desc : também serve para fig animadas
+╰╼≽ 么 Desc : também serve para fig animada
 ╭────────────
 │≽ *${prefix}sticker*
 │≽ *${prefix}stiker*
@@ -127,7 +127,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}nulis* <texto>
 │≽ *${prefix}quotemaker* <txt|autor|tema>
 │≽ *${prefix}ttp* <txt>
-│≽ *${prefix}stickerhide* <txt>
+│≽ *${prefix}stickerhide*
 │≽ *${prefix}emoji*
 ╰╼
 ╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
@@ -150,6 +150,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠ 么 Desc : desafio
 ┠──────────────╼
 │≽ *${prefix}slap* <@tag>
+│≽ *${prefix}tampar*
 ┠ 么 Desc : tapa
 ┠──────────────╼
 │≽ *${prefix}moddroid* <app>
@@ -160,7 +161,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}pinterest*
 │≽ *${prefix}google* <pesquisa>
 │≽ *${prefix}bitly* <link>
+│≽ *${prefix}tiktok* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
+│≽ *${prefix}igstalk <usuário>
 ╰╼
 ╭╼≽ *𝕐𝕋 & 𝕊𝕆ℕ𝔾*
 │≽ *${prefix}ytmp3* <link>
