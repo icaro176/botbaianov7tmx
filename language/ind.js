@@ -79,7 +79,7 @@ exports.pc = () => {
 }
 
 exports.registered = (namaUser, umurUser, serialUser, time, sender) => {
-	return`*「 DADOS 」*\n\n𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐃𝐎 𝐂𝐎𝐌 𝐒𝐔𝐂𝐄𝐒𝐒𝐎 \n\n╭╼≽ *Nome*\n么 ${namaUser}\n╭╼≽ *Número*\n么 wa.me/${sender.split("@")[0]}\n╭╼≽ *Idade*\n么 ,${umurUser}\n╭╼≽ *Hora de Registro*\n╭╼≽ ${time}\n\n╭──么 *Código* 么──\n么 ${serialUser}\n╰─────────────`
+	return`*「 DADOS 」*\n\n𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐃𝐎 𝐂𝐎𝐌 𝐒𝐔𝐂𝐄𝐒𝐒𝐎 \n\n╭╼≽ *Nome*\n么 ${namaUser}\n╭╼≽ *Número*\n么 wa.me/${sender.split("@")[0]}\n╭╼≽ *Idade*\n么 ${umurUser}\n*Hora de Registro*\n╭╼≽ ${time}\n\n╭──么 *Código* 么──\n么 ${serialUser}\n╰─────────────`
 }
 
 exports.cmdnf = (prefix, command) => {
@@ -88,6 +88,30 @@ exports.cmdnf = (prefix, command) => {
 
 exports.owneresce = (pushname) => {
 	return`*Desculpa ${pushname} você não é o dono*`
+}
+
+exports.reglevelaha = (command, pushname, getLevelingLevel, sender, aha) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${aha}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
+}
+
+exports.reglevelahb = (command, pushname, getLevelingLevel, sender, ahb) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahb}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
+}
+
+exports.reglevelahc = (command, pushname, getLevelingLevel, sender, ahc) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahc}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
+}
+
+exports.reglevelahd = (command, pushname, getLevelingLevel, sender, ahd) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahd}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
+}
+
+exports.reglevelahe = (command, pushname, getLevelingLevel, sender, ahe) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahe}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
+}
+
+exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
+	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahf}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
 }
 
 exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi) => { 
@@ -108,7 +132,6 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ╭──╼「 INFO 」────╼╮
 │ *Prefixo* : ${prefix}
 │ *Comandos* : ${prefix}menu / help
-│ *Ativo Desde* : ${kyun(uptime)}
 │ *Registrado* : ꪜ
 ╰─╼「 BOT BAIANO 」╼─╯
 
