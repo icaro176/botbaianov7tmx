@@ -181,6 +181,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ╰╼
 ╭╼≽ *𝕄𝔼𝔻𝕀𝔸 𝕄𝔼ℕ𝕌*
 ┠≽ *${prefix}pinterest*
+┠≽ *${prefix}google* <pesquisa>
 ┠≽ *${prefix}bitly* <link>
 ┠≽ *${prefix}tiktokstalk* <usuário>
 ╰╼
