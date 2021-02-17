@@ -874,20 +874,20 @@ client.on('group-participants-update', async (anu) => {
                     console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
                 }
 				break
-				case 'quotemaker':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                var gh = body.slice(12)
-					var quote = gh.split("|")[0];
-					var wm = gh.split("|")[1];
-					const pref = `Uso: \n${prefix}quotemaker txt|marca d'água|tema\n\nEx :\n${prefix}quotemaker bom dia|bot|random`
+			    case 'quotemaker':
+			    if (!isRegistered) return reply(ind.noregis())
+			    if (isLimit(sender)) return reply(ind.limitend(pusname))
+					gh = `${body.slice(12)}`
+					quote = gh.split("/")[0];
+					wm = gh.split("/")[1];
+					bg = gh.split("/")[2];
+					const pref = `Uso: \n${prefix}quotemaker texto/marca d'água/tema\n\nEx :\n${prefix}quotemaker aqui está um exemplo/bot/random`
 					if (args.length < 1) return reply(pref)
-					reply(ind.wait())
 					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=${bg}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {caption: '>//<', quoted: mek})
-					await limitAdd(sender)
-					break
+					client.sendMessage(from, buffer, image, {quoted: mek})
+					await limitAdd(sender) 
+					break 
 				//fadli 
 				case 'pinterest':
 					if (!isRegistered) return reply(ind.noregis())
@@ -951,6 +951,18 @@ client.on('group-participants-update', async (anu) => {
 				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
 				await limitAdd(sender)
 				break
+				case 'ytsearch':
+				        if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply('Oque você que procurar?')
+					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${BarBarApi}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = '=================\n'
+					for (let i of anu.result) {
+						teks += `*Título* : ${i.title}\n*Id* : https://youtu.be/${i.id}\n*Publicado* : ${i.publishTime}\n*Duração* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
+					}
+					reply(teks.trim())
+					break
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1116,7 +1128,7 @@ client.on('group-participants-update', async (anu) => {
                 const latensi = speed() - timestamp 
                 frhan.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
                         break
-               case 'help': 
+                                case 'help': 
 				case 'menu':
 				if (!isRegistered) return reply(ind.noregis())
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
@@ -1741,11 +1753,11 @@ client.on('group-participants-update', async (anu) => {
                 if (isBadWord) return reply('*O recurso de palavrões estava ativo antes*')
                  	   badword.push(from)
                  	   fs.writeFileSync('./database/group/badword.json', JSON.stringify(badword))
-                  	   reply(`badword is enable`)
+                  	   reply(`badword está habilitado`)
               	  } else if (args[0] === 'disable') {
                   	  badword.splice(from, 1)
                  	   fs.writeFileSync('./database/group/badword.json', JSON.stringify(badword))
-                 	    reply(`badword is disable`)
+                 	    reply(`badword está desativado`)
              	   } else {
                  	   reply(ind.satukos())
                 	}
@@ -1783,7 +1795,7 @@ client.on('group-participants-update', async (anu) => {
                     const bw = body.slice(12)
                     bad.push(bw)
                     fs.writeFileSync('./database/group/bad.json', JSON.stringify(bad))
-                    reply('Success Menambahkan Bad Word!')
+                    reply('ADICIONOU NA LISTA BADWORD!')
                     break
                 case 'delbadword':
                     if (!isOwner) return reply(ind.ownerb())
