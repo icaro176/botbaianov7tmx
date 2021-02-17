@@ -232,6 +232,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}clone* <@tag>
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
+│≽ *${prefix}eval*
 │
 ╰╼≽ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* 
 `
