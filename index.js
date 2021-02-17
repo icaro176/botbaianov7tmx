@@ -404,47 +404,47 @@ client.on('group-participants-update', async (anu) => {
 			
 			//function rank 
 			const levelRole = getLevelingLevel(sender, _level)
-   	     var role = 'Trainee'
+   	     var role = 'Estagiário'
    	     if (levelRole <= 3) {
-   	         role = 'senior trainee'
+   	         role = 'Ouro I'
    	     } else if (levelRole <= 5) {
-   	         role = 'private'
+   	         role = 'Ouro II'
    	     } else if (levelRole <= 7) {
-   	         role = 'corporal'
+   	         role = 'Platina I'
    	     } else if (levelRole <= 8) {
-   	         role = 'Sergeant'
+   	         role = 'Platina II'
    	     } else if (levelRole <= 9) {
-   	         role = 'staff sgt I'
+   	         role = 'Diamante I'
    	     } else if (levelRole <= 10) {
-   	         role = 'staff sgt II'
+   	         role = 'Diamante II'
    	     } else if (levelRole <= 11) {
-   	         role = 'staff sgt II'
+   	         role = 'Diamante III'
    	     } else if (levelRole <= 12) {
-   	         role = 'Sgt 1st class I'
+   	         role = '1st classe I'
    	     } else if (levelRole <= 13) {
-   	         role = 'Sgt 1st class II'
+   	         role = '1st classe II'
    	     } else if (levelRole <= 14) {
-   	         role = 'Sgt 1st class III'
+   	         role = '1st classe III'
    	     } else if (levelRole <= 14) {
-   	         role = 'Ggt 1st class IV'
+   	         role = '1st classe IV'
    	     } else if (levelRole <= 15) {
-   	         role = 'Master sgt I'
+   	         role = 'Mestre I'
    	     } else if (levelRole <= 16) {
-   	         role = 'Master sgt II'
+   	         role = 'Mestre II'
    	     } else if (levelRole <= 17) {
-   	         role = 'Master sgt III'
+   	         role = 'Mestre III'
    	     } else if (levelRole <= 18) {
-   	         role = 'Master sgt IV'
+   	         role = 'Mestre IV'
    	     } else if (levelRole <= 19) {
-   	         role = 'Master sgt V'
+   	         role = 'Mestre V'
    	     } else if (levelRole <= 20) {
-   	         role = '2nd Lt I'
+   	         role = '2nd classe I'
    	     } else if (levelRole <= 21) {
-   	         role = '2nd Lt II'
+   	         role = '2nd classe II'
    	     } else if (levelRole <= 22) {
-   	         role = '2nd Lt III'
+   	         role = '2nd classe III'
    	     } else if (levelRole <= 23) {
-   	         role = '2nd Lt IV'
+   	         role = '2nd classe IV'
    	     }
    
 			var premi = '*X*'
@@ -656,6 +656,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'qrcode':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
 					const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return client.sendMessage(from, 'INSIRA O URL ou TEXTO PARA FAZER QR', text, {quoted: mek})
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${tex}`)
@@ -700,7 +701,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=BotWeA`)
 			hepi = data.result[0] 
-			teks = `*Nama*: ${data.result[0].title}\n*publisher*: ${hepi.publisher}\n*mod info:* ${hepi.mod_info}\n*size*: ${hepi.size}\n*latest version*: ${hepi.latest_version}\n*genre*: ${hepi.genre}\n*link:* ${hepi.link}\n*download*: ${hepi.download}`
+			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Tamanho*: ${hepi.size}\n*Última Versão*: ${hepi.latest_version}\n*Gênero*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
 			buffer = await getBuffer(hepi.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -721,7 +722,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                client.updatePresence(from, Presence.composing) 
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=BotWeA`)
-                hasil = `link : ${args[0]}\n\nOutput : ${data.result}`
+                hasil = `${data.result}`
                 reply(hasil)
                 await limitAdd(sender)
                 break
@@ -799,10 +800,10 @@ client.on('group-participants-update', async (anu) => {
 				    try {
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/husbu?apikey=BotWeA`)
 						buffer = await getBuffer(res.image)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Cintai husbumu'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '*SEI LÁ?*'})
 					} catch (e) {
 						console.log(`Error :`, color(e,'red'))
-						reply('❌ *ERROR* ❌')
+						reply('❌ *ERRO* ❌')
 					}
 					await limitAdd(sender)
 					break
@@ -819,7 +820,6 @@ client.on('group-participants-update', async (anu) => {
 					break
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
-				if (!isPrem) return reply(ind.premon(pushname))
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=BotWeA`, {method: 'get'})
                if (data.error) return reply(data.error)
@@ -830,16 +830,15 @@ client.on('group-participants-update', async (anu) => {
                 client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${data.result.title}.mp3`, quoted: mek})
                 await limitAdd(sender)
                 break
-				//freerestapi 
 				case 'igstalk':
                    if (!isRegistered) return reply(ind.noregis())
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     hmm = await fetchJson(`https://freerestapi.herokuapp.com/api/v1/igs?u=${body.slice(9)}`)
-                     buffer = await getBuffer(hmm.data.profilehd)
-                     hasil = `Fullname : ${hmm.data.fullname}\npengikut : ${hmm.data.follower}\nMengikuti : ${hmm.data.following}\nPrivate : ${hmm.data.private}\nVerified : ${hmm.data.verified}\nbio : ${hmm.data.bio}`
+                     data = await fetchJson(`https://ferdiz-api.herokuapp.com/api/stalkig/user/name=${body.slice(9)}`)
+                     buffer = await getBuffer(data.img)
+                     hasil = `Nome : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nPrivado : ${hmm.data.private}\nVerificado : ${hmm.data.verified}\nBio : ${hmm.data.bio}`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
                     await limitAdd(sender)
-					break 
+		    break 
 				//daftar 
 				case 'daftar':
                 if (isRegistered) return  reply(ind.rediregis())
@@ -847,10 +846,10 @@ client.on('group-participants-update', async (anu) => {
                 const namaUser = q.substring(0, q.indexOf('|') - 0)
                 const umurUser = q.substring(q.lastIndexOf('|') + 1)
                 const serialUser = createSerial(20)
-                if(isNaN(umurUser)) return await reply('Umur harus berupa angka!!')
-                if (namaUser.length >= 30) return reply(`why is your name so long it's a name or a train`)
-                if (umurUser > 40) return reply(`your age is too  old maximum 40 years`)
-                if (umurUser < 12) return reply(`your age is too young minimum 12 years`)
+                if(isNaN(umurUser)) return await reply('A idade deve ser um número!!')
+                if (namaUser.length >= 30) return reply(`por que seu nome é tão longo em fdp`)
+                if (umurUser > 40) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
+                if (umurUser < 12) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
                 try {
 					ppimg = await client.getProfilePicture(`${sender.split('@')[0]}@c.us`)
 				} catch {
@@ -927,6 +926,8 @@ client.on('group-participants-update', async (anu) => {
 					await limitAdd(sender)
 					break
 				case 'stickerhide':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 				    ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/screed?text=${args[0]}`,{method: 'get'})
@@ -936,22 +937,29 @@ client.on('group-participants-update', async (anu) => {
 						buffer = fs.readFileSync(rano)
 						client.sendMessage(from, buffer, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
+
 					})
+					await limitAdd(sender)
 					break
 				case 'emoji':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=${args[0]}&type=aple`, {method: 'get'})
 				jes = await getBuffer(anu)
 				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
+				await limitAdd(sender)
 				break
 				case 'tiktok':
-				if (!isPrem) return reply(ind.premon(pushname))
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 				anu = await fetchJson (`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`, {method : 'get' })
 				if (anu.error) return reply(anu.error)
-					teks = `*From* : ${anu.result.from}\n*Judul* : ${anu.result.title}\n*Upload* : ${anu.result.uploaded}`
+					teks = `*Nome* : ${anu.result.from}\n*Título* : ${anu.result.title}\n*Publicado* : ${anu.result.uploaded}`
 					thumb = await getBuffer(anu.result.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result.url)
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
+					await limitAdd(sender)
 					break
 				case 'quotes':
 					if (!isRegistered) return reply(ind.noregis())
@@ -985,13 +993,12 @@ client.on('group-participants-update', async (anu) => {
 					break 
 				case 'ytmp4':
 				if (!isRegistered) return reply(ind.noregis())
-				if (!isPrem) return reply(ind.premon(pushname))
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Urlnya mana um?')
+					if (args.length < 1) return reply('Cadê a url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp4?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Title* : ${anu.title}\n*Size* : ${anu.filesize}`
+					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -1000,13 +1007,12 @@ client.on('group-participants-update', async (anu) => {
 				break 
 				case 'ytmp3':
                     if (!isRegistered) return reply(ind.noregis())
-                    if (!isPrem) return reply(ind.premon(pushname))
                     if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Urlnya mana um?')
+					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf())
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Title* : ${anu.title}\n*Size* : ${anu.filesize}`
+					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -1016,7 +1022,7 @@ client.on('group-participants-update', async (anu) => {
                 case 'text3d':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-              	    if (args.length < 1) return reply('teksnya mana kak?')
+              	    if (args.length < 1) return reply('Cadê o texto?')
                     teks = `${body.slice(8)}`
                     if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
                     buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
@@ -1025,7 +1031,6 @@ client.on('group-participants-update', async (anu) => {
 				break
 			    case 'fototiktok':
 				if (!isRegistered) return reply(ind.noregis())
-				if (!isPrem) return reply(ind.premon(pushname))
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                     gatauda = body.slice(12)
                     anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktokpp?user=${gatauda}` , {method: 'get'})
@@ -1081,7 +1086,7 @@ client.on('group-participants-update', async (anu) => {
 				//auto respond 
 				case 'ping':
           		if (!isRegistered) return reply(ind.noregis())
-           		 await client.sendMessage(from, `Pong!!!!\nSpeed: ${processTime(time, moment())} _Second_`)
+           		 await client.sendMessage(from, `Ping!!!!\nSpeed: ${processTime(time, moment())} _Second_`)
 					break
                case 'help': 
 				case 'menu':
@@ -1105,36 +1110,31 @@ client.on('group-participants-update', async (anu) => {
 					teks += `𝗧𝗼𝘁𝗮𝗹 : ${blocked.length}`
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break 
-				case 'donasi':
-				case 'donate':
-				if (!isRegistered) return reply(ind.noregis())
-					client.sendMessage(from, donasi(), text)
-					break
 				case 'admin':
          	   case 'owner':
          	   case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
-                  client.sendMessage(from, 'Tuh nomer owner ku >_<, jangan spam atau ku block kamu',MessageType.text, { quoted: mek} )
+                  client.sendMessage(from, '*Contato*',MessageType.text, { quoted: mek} )
 					break    
 				case 'leaderboard':
 				case 'lb':
 				bo = args[0]
 				_level.sort((a, b) => (a.xp < b.xp) ? 1 : -1)
 				uang.sort((a, b) => (a.uang < b.uang) ? 1 : -1)
-                let leaderboardlvl = '-----[ *LEADERBOARD LEVEL* ]----\n\n'
-                let leaderboarduang = '-----[ *LEADERBOARD UANG* ]----\n\n'
+                let leaderboardlvl = '-----[ *TOP LEVEL* ]----\n\n'
+                let leaderboarduang = '-----[ *TOP DINHEIRO* ]----\n\n'
                 let nom = 0
                 try {
                     for (let i = 0; i < 10; i++) {
                         nom++
                         leaderboardlvl += `*[${nom}]* wa.me/${_level[i].id.replace('@s.whatsapp.net', '')}\n┗⊱ *XP*: ${_level[i].xp} *Level*: ${_level[i].level}\n`
-                        leaderboarduang += `*[${nom}]* wa.me/${uang[i].id.replace('@s.whatsapp.net', '')}\n┣⊱ *Uang*: _Rp${uang[i].uang}_\n┗⊱ *Limit*: ${limitawal - _limit[i].limit}\n`
+                        leaderboarduang += `*[${nom}]* wa.me/${uang[i].id.replace('@s.whatsapp.net', '')}\n┣⊱ *Dinheiro*: _Rp${uang[i].uang}_\n┗⊱ *Limite*: ${limitawal - _limit[i].limit}\n`
                     }
                     await reply(leaderboardlvl)
                     await reply(leaderboarduang)
                 } catch (err) {
                     console.error(err)
-                    await reply(`minimal ${len} user untuk bisa mengakses database`)
+                    await reply(`mínimo ${len} usuário para poder acessar o banco de dados`)
                 }
 				break
 				case 'limit':
@@ -1145,9 +1145,9 @@ client.on('group-participants-update', async (anu) => {
 				if (!isOwner,!isPrem) return reply(ind.premon(pushname))
 				const nomerr = args[0].replace('@','')
                 const jmla = args[1]
-                if (jmla <= 1) return reply(`minimal gift limit adalah 1`)
-                if (isNaN(jmla)) return reply(`limit harus berupa angka`)
-                if (!nomerr) return reply(`maaf format salah\nmasukan parameter yang benar\ncontoh : ${prefix}giftlimit @62895710074883 20`)
+                if (jmla <= 1) return reply(`o limite mínimo de presente é 1`)
+                if (isNaN(jmla)) return reply(`limite deve ser um número`)
+                if (!nomerr) return reply(`desculpe formato errado\ninsira os parâmetros corretos\nexemplo : ${prefix}giftlimit @tag 20`)
                 const cysz = nomerr + '@s.whatsapp.net'
                 var found = false
                         Object.keys(_limit).forEach((i) => {
@@ -1158,16 +1158,16 @@ client.on('group-participants-update', async (anu) => {
                         if (found !== false) {
                             _limit[found].limit -= jmla
                             const updated = _limit[found]
-                            const result = `Gift kuota limit sukses dengan SN: ${createSerial(8)} pada ${moment().format('DD/MM/YY HH:mm:ss')}
-*「 GIFT KUOTA LIMIT 」*
+                            const result = `O limite de cota de presentes foi bem-sucedido. CÓDIGO: ${createSerial(8)} data ${moment().format('DD/MM/YY HH:mm:ss')}
+*「 LIMITE DA CONTA 」*
 
-• User : @${updated.id.replace('@s.whatsapp.net','')}
-• Limit: ${limitawal-updated.limit}`
+• Usuário : @${updated.id.replace('@s.whatsapp.net','')}
+• Limite: ${limitawal-updated.limit}`
                             console.log(_limit[found])
                             fs.writeFileSync('./database/user/limit.json',JSON.stringify(_limit));
                             reply(result)
                         } else {
-                                reply(`Maaf, nomor ${nomerr} tidak terdaftar di database!`)
+                                reply(`Desculpe número ${nomerr} não registrado no banco de dados!`)
                         }
                 break
 				case 'listprem':
@@ -1180,37 +1180,21 @@ client.on('group-participants-update', async (anu) => {
 				teks += `𝗧𝗼𝘁𝗮𝗹 : ${krem.length}`
 				client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": prem}})
                 break
-				case 'mutual':
-                if (!isRegistered) return reply( ind.noregis())
-                if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Looking for a partner...')
-                await reply(`wa.me/${anug}`)
-                await reply( `Partner found: 🙉\n*${prefix}next* — find a new partner`)
-            break
-            case 'next':
-                if (!isRegistered) return reply( ind.noregis())
-                if (isGroup) return  reply( 'Command ini tidak bisa digunakan di dalam grup!')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Looking for a partner...')
-                await reply(`wa.me/${anug}`)
-                await reply( `Partner found: 🙉\n*${prefix}next* — find a new partner`)
-            break
 				case 'transfer':
 				if (!isRegistered) return reply(ind.noregis())
 				if (!q.includes('|')) return  reply(ind.wrongf())
                 const tujuan = q.substring(0, q.indexOf('|') - 1)
                 const jumblah = q.substring(q.lastIndexOf('|') + 1)
-                if(isNaN(jumblah)) return await reply('jumlah harus berupa angka!!')
-                if (jumblah < 100 ) return reply(`minimal transfer 100`)
-                if (checkATMuser(sender) < jumblah) return reply(`uang mu tidak mencukupi untuk melakukan transfer`)
+                if(isNaN(jumblah)) return await reply('o valor deve ser um número!!')
+                if (jumblah < 100 ) return reply(`transferência mínima 100`)
+                if (checkATMuser(sender) < jumblah) return reply(`seu dinheiro não é suficiente para fazer a transferência`)
                 const tujuantf = `${tujuan.replace("@", '')}@s.whatsapp.net`
                 fee = 0.005 *  jumblah
                 hasiltf = jumblah - fee
                 addKoinUser(tujuantf, hasiltf)
                 confirmATM(sender, jumblah)
-                addKoinUser('62895710073737@s.whatsapp.net', fee)
-                reply(`*「 SUKSES 」*\n\npengiriman uang telah sukses\ndari : +${sender.split("@")[0]}\nke : +${tujuan}\njumblah transfer : ${jumblah}\npajak : ${fee}`)
+                addKoinUser('994409688675@s.whatsapp.net', fee)
+                reply(`*「 SUCESSO 」*\n\ntransferência de dinheiro foi bem sucedida\nde : +${sender.split("@")[0]}\npara : +${tujuan}\nvalor da transferência : ${jumblah}\nimposto : ${fee}`)
                 break
 				case 'dompet':
 				if (!isRegistered) return reply(ind.noregis())
@@ -1220,14 +1204,14 @@ client.on('group-participants-update', async (anu) => {
 				case 'buylimit':
 				if (!isRegistered) return reply(ind.noregis())
 				payout = body.slice(10)
-				if(isNaN(payout)) return await reply('limit harus berupa angka!!')
+				if(isNaN(payout)) return await reply('limite deve ser um número!!')
 				const koinPerlimit = 300
 				const total = koinPerlimit * payout
-				if ( checkATMuser(sender) <= total) return reply(`maaf uang kamu belum mencukupi. silahkan kumpulkan dan beli nanti`)
+				if ( checkATMuser(sender) <= total) return reply(`desculpe, seu dinheiro não é suficiente. por favor colete e compre mais tarde`)
 				if ( checkATMuser(sender) >= total ) {
 					confirmATM(sender, total)
 					bayarLimit(sender, payout)
-					await reply(`*「 PEMBAYARAN BERHASIL 」*\n\n*pengirim* : Admin\n*penerima* : ${pushname}\n*nominal pembelian* : ${payout} \n*harga limit* : ${koinPerlimit}/limit\n*sisa uang mu* : ${checkATMuser(sender)}\n\nproses berhasil dengan nomer pembayaran\n${createSerial(15)}`)
+					await reply(`*「 PAGO COM SUCESSO 」*\n\n*Remetente* : Admin\n*Receptor* : ${pushname}\n*Quantidade* : ${payout} \n*Preço do Limite* : ${koinPerlimit}/limit\n*Dinheiro* : ${checkATMuser(sender)}\n\nProcesso Bem Sucedido com Número de Pagamento\n${createSerial(15)}`)
 				} 
 				break
 				//no rest api 
