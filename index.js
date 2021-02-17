@@ -19,6 +19,7 @@ const fs = require("fs")
 const util = require('util')
 const crypto = require('crypto')
 const imageToBase64 = require('image-to-base64')
+const speed = require('performance-now')
 const axios = require('axios')
 const { color, bgcolor } = require('./lib/color')
 const { donasi } = require('./lib/donasi')
@@ -1094,10 +1095,12 @@ client.on('group-participants-update', async (anu) => {
 					await limitAdd(sender)
 				break
 				//auto respond 
-				case 'ping':
-          		if (!isRegistered) return reply(ind.noregis())
-           		 await client.sendMessage(from, `Ping!!!!\nSpeed: ${processTime(time, moment())} _Second_`)
-					break
+		case 'speed':
+                case 'ping':
+                const timestamp = speed();
+                const latensi = speed() - timestamp 
+                frhan.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
+                    break
                case 'help': 
 				case 'menu':
 				if (!isRegistered) return reply(ind.noregis())
