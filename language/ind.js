@@ -146,6 +146,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}qrcode* <texto>
 │≽ *${prefix}ocr*
 │≽ *${prefix}ttp* <texto>
+│≽ *${prefix}nulis* <texto>
 │≽ *${prefix}translate* en/Bom Dia
 ╰╼
 ╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
