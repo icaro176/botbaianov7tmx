@@ -688,7 +688,7 @@ client.on('group-participants-update', async (anu) => {
 						fs.unlinkSync(ranp)
 						if (err) return reply(mess.error.stick)
 						bufferhgf = fs.readFileSync(rano)
-						frhan.sendMessage(from, bufferhgf, sticker, {quoted: mek})
+						client.sendMessage(from, bufferhgf, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
 					})
 					await limitAdd(sender)
@@ -1024,6 +1024,21 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					await limitAdd(sender)
 					break
+				case 'translate':
+				case 'translete':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
+				    if (args.length < 1) return client.sendMessage(from, 'Código da Língua???', text, {quoted: mek})
+				    if (args.length < 2) return client.sendMessage(from, 'Texto que você deseja traduzir??', text, {quoted: mek})
+				    ts = body.slice(11)
+				    kode = ts.split("/")[0]
+				    teks = ts.split("/")[1]
+				    anu = await fetchJson(`https://api.arugaz.my.id/api/edu/translate?lang=${kode}&text=${teks}`)
+				    reply(ind.wait())
+				    translate = `Texto original: *${body.slice(11)}*\n\nResultado: *${anu.text}*`
+				    client.sendMessage(from, translate, text, {quoted: mek})
+				   await limitAdd(sender)
+				   break
                 case 'text3d':
 		if (!isOwner) return reply(ind.ownerb())
                 if (!isRegistered) return reply(ind.noregis())
@@ -1474,12 +1489,24 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 				break
-				case 'simi':
-					if (args.length < 1) return reply('Cadê o texto??')
-					teks = body.slice(5)
-					anu = await simih(teks) 
-					reply(anu)
-				break 
+				case 'fb':
+				  client.updatePresence(from, Presence.composing) 
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+					if (args.length < 1) return reply('Cadê o url, mano?')
+					if (!isUrl(args[0]) && !args[0].includes('www.facebook.com')) return reply(mess.error.Iv)
+					reply(mess.wait)
+					anu = await fetchJson(`https://mhankbarbar.tech/api/epbe?url=${args[0]}&apiKey=${BarBarApi}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					client.sendMessage(from, '[ AGUARDE ] EM PROCESSO', text, {quoted: mek})
+					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nPublicado em: *${anu.published}*`
+					tefbe = await getBuffer(anu.thumb)
+					client.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
+					await limitAdd(sender) 
+					break 
 				case 'toimg':
 				if (!isRegistered) return reply(ind.noregis())
 				if (!isQuotedSticker) return reply('Marque uma figurinha')
@@ -1689,21 +1716,22 @@ client.on('group-participants-update', async (anu) => {
 						reply(ind.satukos())
 					}
 					break 
-					case 'simih':
+				case 'simih':
+			        if (!isRegistered) return reply(ind.noregis())
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Use ${prefix}simih 1')
-					if (Number(args[0]) === 1) {
-						if (isSimi) return reply('JÁ ESTÁ ATIVO!!!')
+					if (args.length < 1) return reply('Hmmmm')
+					if ((args[0]) === 'on') {
+						if (isSimi) return reply('O modo Simi está ativo')
 						samih.push(from)
-						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
-						reply('❬ SUCESSO ❭ ativou modo simi neste grupo')
-					} else if (Number(args[0]) === 0) {
+						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
+						reply(`\`\`\`Ativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*`)
+					} else if ((args[0]) === 'off') {
 						samih.splice(from, 1)
-						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
-						reply('❬ SUCESSO ❭ desativou modo simi neste grupo')
+						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
+						reply(`\`\`\`✓Desativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*`)
 					} else {
-						reply(ind.satukos())
+						reply('On ativar, Off desativar')
 					}
 					break
 				case 'nsfw':
