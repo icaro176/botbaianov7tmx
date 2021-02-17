@@ -120,7 +120,6 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *Nome* : ${pushname}
 │ *Número* : wa.me/${sender.split("@")[0]}
 ╰╼──────────────╼╯
-
 ╭──╼「 CONTA 」╼────╮
 │ *Dinheiro* : R$:${uangku}
 │ *XP* : ${getLevelingXp(sender)}/${reqXp}
@@ -128,7 +127,6 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *Level* : ${getLevelingLevel(sender)}
 │ *Patente* : ${role}
 ╰─────────────╼╯
-
 ╭──╼「 INFO 」────╼╮
 │ *Prefixo* : ${prefix}
 │ *Comandos* : ${prefix}menu / help
@@ -147,11 +145,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}tts* <idioma> <txt>
 │≽ *${prefix}qrcode* <texto>
 │≽ *${prefix}ocr*
-│≽ *${prefix}nulis* <texto>
-│≽ *${prefix}quotemaker* <txt|autor|tema>
-│≽ *${prefix}ttp* <txt>
-│≽ *${prefix}stickerhide*
-│≽ *${prefix}emoji*
+│≽ *${prefix}translate* en/Bom Dia
 ╰╼
 ╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
 │≽ *${prefix}bisakah* <texto>
@@ -184,14 +178,10 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}pinterest*
 │≽ *${prefix}google* <pesquisa>
 │≽ *${prefix}bitly* <link>
-│≽ *${prefix}tiktok* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
-│≽ *${prefix}igstalk <usuário>
 │≽ *${prefix}wait*
 ╰╼
-╭╼≽ *𝕐𝕋 & 𝕊𝕆ℕ𝔾*
-│≽ *${prefix}ytmp3* <link>
-│≽ *${prefix}ytmp4* <link>
+╭╼≽ **
 │≽ *${prefix}joox* <cantor/a - título>
 │≽ *${prefix}play* <título>
 │≽ *${prefix}lirik* <título>
@@ -257,8 +247,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}listonline*
 │≽ *${prefix}eval*
 │
-╰╼≽ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥* 
-`
+╰╼≽ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*`
 }
 
 exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel, role) => {
