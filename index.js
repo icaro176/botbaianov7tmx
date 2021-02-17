@@ -1418,55 +1418,20 @@ client.on('group-participants-update', async (anu) => {
 					}
 				break 
 				case 'nulis':
-				const textnulis = body.slice(7)
-				let inputPath ='./lib/magernulis1.jpg'
- 			   let outputPath = './tmp/hasil.jpg'
-			    let d = new Date
-			    let tgl = d.toLocaleDateString('id-Id')
-			    let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
- 			 //  reply('p\n' + util.format({fontPath, inputPath, outputPath, tgl, hari, textnulis}))
-				  spawn('convert', [
-				    inputPath,
-				    '-font',
-				    fontPath,
-				    '-size',
-				    '1024x784',
-				    '-pointsize',
-				    '20',
- 				   '-interline-spacing',
-				    '1',
-				    '-annotate',
- 				   '+806+78',
-				    hari,
-  				  '-font',
-  				  fontPath,
-  				  '-size',
-  				  '1024x784',
-  				  '-pointsize',
-  				  '18',
-  				  '-interline-spacing',
-  				  '1',
-  				  '-annotate',
-   				 '+806+102',
- 				   tgl,
- 				   '-font',
-  				  fontPath,
-   				 '-size',
-				    '1024x784',
- 				   '-pointsize',
- 				   '20',
-  				  '-interline-spacing',
-  				  '-7.5',
-  				  '-annotate',
- 				   '+344+142',
- 				   textnulis,
-    				outputPath
-				  ])
- 				 .on('error', e => reply(util.format(e))
- 				 .on('exit', () => {
-  			  client.sendMessage(from, outputPath, image, {quoted: mek, caption : ',-,'})
-  			}))
-  			  break
+				case 'tulis':
+				  client.updatePresence(from, Presence.composing)
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+			if (args.length < 1) return reply(`${pushname} O que você quer escrever?`)
+			reply(ind.wait())
+					tulis = body.slice(7)
+				  nama = tulis.split("/")[0];
+					kelas = tulis.split("/")[1];
+					isi = tulis.split("/")[2];
+					nulis = await getBuffer(`https://api.zeks.xyz/api/magernulis?nama=${nama}&kelas=${kelas}&text=${isi}&tinta=4`, {method: 'get'})
+					client.sendMessage(from, nulis, image, {quoted: mek})
+					await limitAdd(sender) 
+					break  
 				case 'tts':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
