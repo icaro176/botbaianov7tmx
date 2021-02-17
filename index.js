@@ -1559,7 +1559,7 @@ client.on('group-participants-update', async (anu) => {
                 const userXp = getLevelingXp(sender)
                 if (userLevel === undefined && userXp === undefined) return reply(ind.lvlnul())
                 const requiredXp = 5000 * (Math.pow(2, userLevel) - 1)
-                resul = `╭──╼≽ *LEVEL* ──╼\n╼≽ *Nome* : ${pushname}\n╼≽ Número : wa.me/${sender.split("@")[0]}\n╼≽ XP :  ${userXp}/${requiredXp}\n╼≽ Level : ${userLevel}\n╼≽ Patente : ${role}\n╰──────────╼`
+                resul = `╭──╼≽ *LEVEL* ───╼\n│≽ *Nome* : ${pushname}\n│≽ Número : wa.me/${sender.split("@")[0]}\n│≽ XP :  ${userXp}/${requiredXp}\n│≽ Level : ${userLevel}\n│≽ Patente : ${role}\n╰──────────╼`
                client.sendMessage(from, resul, text, { quoted: mek})
                 .catch(async (err) => {
                         console.error(err)
