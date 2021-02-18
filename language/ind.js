@@ -114,26 +114,27 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahf}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
 }
 
-exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts) => { 
-	return `
-╭╼─╼「 USUÁRIO 」──╼╮
+exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, limitCounts) => { 
+	return `*SEM SPAM*
+╭───「 USUÁRIO 」
 │ *Nome* : ${pushname}
 │ *Número* : wa.me/${sender.split("@")[0]}
-╰╼────────────╼╯
-╭──╼「 CONTA 」╼────╮
+╰──────────────
+╭───「 CONTA 」
 │ *Dinheiro* : R$:${uangku}
 │ *XP* : ${getLevelingXp(sender)}/${reqXp}
 │ *Limite* : ${limitCounts}
 │ *Level* : ${getLevelingLevel(sender)}
 │ *Patente* : ${role}
-╰─────────────╼╯
-╭──╼「 INFO 」────╼╮
+╰───────────────
+╭───「 INFO 」
 │ *Registrado* : ꪜ
 │ *${prefix}info*
 │ *${prefix}ping*
-╰─╼「 BOT BAIANO 」╼─╯
-_*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
-
+╰──「 BOT BAIANO 」
+╭───
+│ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
+╰───────────────
 ╭╼≽ *FIGURINHAS*
 │≽ *${prefix}sticker*
 │≽ *${prefix}stiker*
@@ -148,7 +149,6 @@ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 │≽ *${prefix}nulis* nome/nmr/txt
 │≽ *${prefix}translate* en/Bom Dia
 │≽ *${prefix}bitly* <link>
-│≽ *${prefix}tinyurl* <link>
 │≽ *${prefix}textstyle* <texto>
 ╰╼
 ╭╼≽ *FUN MENU*
@@ -236,8 +236,7 @@ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 │≽ *${prefix}clone* <@tag>
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
-╰╼≽ *${prefix}eval*
-`
+╰╼≽ *${prefix}eval*`
 }
 
 exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel, role) => {
