@@ -210,10 +210,8 @@ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 │≽ *${prefix}addbadword* <texto>
 │≽ *${prefix}delbadword* <texto>
 │≽ *${prefix}listbadword*
-╰╼
-╭╼≽ *ATIVAR*
-╰╼≽ 么 Desc : ativar em grupos
-╭──────────────
+│
+│ *ATIVAR*
 │≽ *${prefix}group* [abrir/fechar]
 │≽ *${prefix}leveling* [enable/disable]
 │≽ *${prefix}nsfw* [1/0]
@@ -221,7 +219,7 @@ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 │≽ *${prefix}welcome* [1/0]
 │≽ *${prefix}antilink* [1/0]
 │≽ *${prefix}nobadword* [enable/disable]
-╰╼──────────────
+╰╼
 ╭╼≽ *PROPRIETÁRIO* 
 │≽ *${prefix}bc* <texto>
 │≽ *${prefix}bcgc* <texto>
