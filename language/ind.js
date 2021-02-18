@@ -226,6 +226,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}promote* <@tag>
 │≽ *${prefix}listadmin*
 │≽ *${prefix}testime*
+│≽ *${prefix}timer*
 │≽ *${prefix}addbadword* <texto>
 │≽ *${prefix}delbadword* <texto>
 │≽ *${prefix}listbadword*
