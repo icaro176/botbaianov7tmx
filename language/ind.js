@@ -115,7 +115,7 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 }
 
 exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, limitCounts) => { 
-	return `
+	return`
 ╭───「 USUÁRIO 」
 │ *Nome* : ${pushname}
 │ *Número* : wa.me/${sender.split("@")[0]}
