@@ -307,7 +307,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `[ *Olá, Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade :`
+				teks = `[ *Olá, Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade : \n*Descrição do Grupo* \n${groupDesc}`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -634,19 +634,18 @@ client.on('group-participants-update', async (anu) => {
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			
 			switch(command) {
-                        case 'play':
-                        if (!isRegistered) return reply(ind.noregis())
-                        if (isLimit(sender)) return reply(ind.limitend(pusname))
-                       reply(ind.wait())
-                       anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
-                      if (anu.error) return reply(anu.error)
-                        infomp3 = `╭─「 *PLAY MP3* 」\n│*• Título:* ${anu.result.title}\n│*• Duração:* ${anu.result.duration}\n│*• Tamanho:* ${anu.result.size}\n\n*A MÚSICA ESTÁ SENDO ENVIADA\n*By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
-                       buffer = await getBuffer(anu.result.thumb)
-                       lagu = await getBuffer(anu.result.mp3)
-                       client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                       client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-                       await limitAdd(sender)
-                       break
+                     case 'play':
+                  if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+                reply(ind.wait())
+                anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=${VhtearKey}`)
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Duração* : ${anu.result.duration}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+                buffer = await getBuffer(anu.result.image)
+                lagu = await getBuffer(anu.result.mp3)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', quoted: mek})
+                break		
 				//premiom
 				case 'checkprem':
 				if (!isOwner) return reply(ind.ownerb())
@@ -998,7 +997,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=BotWeA`, {method: 'get'})
                if (data.error) return reply(data.error)
-                 infomp3 = `*╭─「 *JOOX DOWNLOAD* 」\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+                 infomp3 = `*╭─「 JOOX DOWNLOAD 」*\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
                 buffer = await getBuffer(data.result.thumb)
                 lagu = await getBuffer(data.result.mp3)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -1339,6 +1338,23 @@ client.on('group-participants-update', async (anu) => {
 					var bot = gh.split("/")[2];
 					client.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
 					break    
+				case 'infogc':
+				case 'groupinfo':
+				case 'infogrup':
+				case 'grupinfo':
+				if (!isRegistered) return reply(ind.noregis())
+				 if (isLimit(sender)) return reply(ind.limitend(pusname))
+                client.updatePresence(from, Presence.composing)
+                if (!isGroup) return reply(ind.groupo())
+                try {
+					ppUrl = await frhan.getProfilePicture(from)
+					} catch {
+					ppUrl = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+					}
+                reply(ind.wait()) // leave empty to get your own
+			    buffer = await getBuffer(ppUrl)
+		        client.sendMessage(from, buffer, image, {quoted: mek, caption: `*Nome* : ${groupName}\n*Membros* : ${groupMembers.length}\n*Admins* : ${groupAdmins.length}\n*Desc* : ${groupDesc}`})
+                break
 				case 'leaderboard':
 				case 'lb':
 				if (!isOwner) return reply(ind.ownerb())
@@ -1479,14 +1495,32 @@ client.on('group-participants-update', async (anu) => {
 					break 
 				case 'testime':
 					setTimeout( () => {
-					frhan.sendMessage(from, 'O tempo acabou:v', text, {quoted: mek}) // ur cods
+					client.sendMessage(from, 'O tempo acabou:v', text, {quoted: mek}) // ur cods
 					}, 10000) // 1000 = 1s,
 					setTimeout( () => {
-					frhan.sendMessage(from, 'Mais 5 segundos', text, {quoted: mek}) // ur cods
+					client.sendMessage(from, 'Mais 5 segundos', text, {quoted: mek}) // ur cods
 					}, 5000) // 1000 = 1s,
 					setTimeout( () => {
-					frhan.sendMessage(from, '10 segundos para ir', text, {quoted: mek}) // ur cods
+					client.sendMessage(from, '10 segundos para ir', text, {quoted: mek}) // ur cods
 					}, 0) // 1000 = 1s,
+					break
+				case 'watak':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					watak = body.slice(1)
+					wa =["compassivo","generoso","Mal humorado","Perdoando","Obediente","Boa Pessoa","Feio","Bom coração","paciente","Uwu","Bom Amigo","Gostaria de ajudar"]
+					const tak = wa[Math.floor(Math.random() * wa.length)]
+					client.sendMessage(from, 'Pergunta : *'+watak+'*\n\nResposta : '+ tak, text, { quoted: mek })
+					await limitAdd(sender)
+					break 
+				case 'hobby':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					hobby = body.slice(1)
+					hob =["Cozinhando","Ajuda as pessoas","Media social","Ajudando os Outros","Assistindo anime","Assistindo Drakor","Dirigindo uma moto","Cantando","Dançando","Brigando","Desenhando","As fotos não são claras","Jogando","Falando sozinho"]
+					const by = hob[Math.floor(Math.random() * hob.length)]
+					client.sendMessage(from, 'Pergunta : *'+hobby+'*\n\nResposta : '+ by, text, { quoted: mek })
+					await limitAdd(sender)
 					break 
 				case 'bisakah':
 				if (!isRegistered) return reply(ind.noregis())
@@ -1804,14 +1838,14 @@ client.on('group-participants-update', async (anu) => {
 			    if (!isGroupAdmins) return reply(ind.admin())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
-                client.sendMessage(from, 'NOME DO GRUPO ALTERADO', text, {quoted: mek})
+                client.sendMessage(from, `\`\`\`✓Alteração do nome do grupo para\`\`\` *${body.slice(9)}*`, text, {quoted: mek})
 					break
                 case 'setdesc':
                 if (!isGroup) return reply(ind.groupo())
 			    if (!isGroupAdmins) return reply(ind.admin())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
-                client.sendMessage(from, 'DESCRIÇÃO DO GRUPO ALTERADO', text, {quoted: mek})
+                client.sendMessage(from, `\`\`\`✓ Alteração da descrição do grupo com sucesso para\`\`\` *${groupMetadata.subject}* Torna-se: *${body.slice(9)}*`, text, {quoted: mek})
 					break
            case 'demote':
 					if (!isGroup) return reply(ind.groupo())
