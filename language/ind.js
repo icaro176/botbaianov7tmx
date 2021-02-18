@@ -79,7 +79,7 @@ exports.pc = () => {
 }
 
 exports.registered = (namaUser, umurUser, serialUser, time, sender) => {
-	return`*「 DADOS 」*\n\n𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐃𝐎 𝐂𝐎𝐌 𝐒𝐔𝐂𝐄𝐒𝐒𝐎 \n\n╭╼≽ *Nome*\n么 ${namaUser}\n╭╼≽ *Número*\n么 wa.me/${sender.split("@")[0]}\n╭╼≽ *Idade*\n么 ${umurUser}\n*Hora de Registro*\n╭╼≽ ${time}\n\n╭──么 *Código* 么──\n么 ${serialUser}\n╰─────────────`
+	return`*「 DADOS 」*\n\n𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐃𝐎 𝐂𝐎𝐌 𝐒𝐔𝐂𝐄𝐒𝐒𝐎 \n\n么 *Nome*\n╭╼≽ ${namaUser}\n么 *Número*\n╭╼≽ wa.me/${sender.split("@")[0]}\n么 *Idade*\n╭╼≽ ${umurUser}\n么 *Hora de Registro*\n╭╼≽ ${time}\n\n╭──么 *Código* 么──\n╭╼≽ ${serialUser}\n╰─────────────`
 }
 
 exports.cmdnf = (prefix, command) => {
