@@ -134,14 +134,14 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *${prefix}info*
 ╰─╼「 BOT BAIANO 」╼─╯
 
-╭╼≽ *𝔽𝕀𝔾𝕌ℝ𝕀ℕℍ𝔸𝕊*
+╭╼≽ *FIGURINHAS*
 ╰╼≽ 么 Desc : também serve para fig animada
 ╭────────────
 │≽ *${prefix}sticker*
 │≽ *${prefix}stiker*
 │≽ *${prefix}s*
 ╰─
-╭╼≽ *𝕄𝔼ℕ𝕌 ℂℝ𝕀𝔸𝔻𝕆ℝ*
+╭╼≽ *MENU CRIADOR*
 │≽ *${prefix}toimg*
 │≽ *${prefix}tts* <idioma> <txt>
 │≽ *${prefix}qrcode* <texto>
@@ -151,7 +151,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}nulis* <texto>
 │≽ *${prefix}translate* en/Bom Dia
 ╰╼
-╭╼≽ *𝔽𝕌ℕ 𝕄𝔼ℕ𝕌*
+╭╼≽ *FUN MENU*
 │≽ *${prefix}bisakah* <texto>
 ┠ 么 Desc : se você pode
 ┠──────────────╼
@@ -177,7 +177,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠ 么 Desc : mod apk
 ┠──────────────╼
 ╰╼
-╭╼≽ *𝕄𝔼𝔻𝕀𝔸 𝕄𝔼ℕ𝕌*
+╭╼≽ *MEDIA MENU*
 │≽ *${prefix}pinterest*
 │≽ *${prefix}google* <pesquisa>
 │≽ *${prefix}bitly* <link>
@@ -191,7 +191,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}lirik* <título>
 │≽ *${prefix}fb* <link>
 ╰╼
-╭╼≽ *ℕ𝕊𝔽𝕎 𝕄𝔼ℕ𝕌*
+╭╼≽ *NSFW MENU*
 │≽ *${prefix}anjing*
 │≽ *${prefix}blowjob*
 │≽ *${prefix}pokemon*
@@ -201,13 +201,13 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}peluk*
 │≽ *${prefix}ranime*
 ╰╼
-╭╼≽ *𝕃𝕀𝕄𝕀𝕋𝔼 & 𝔻𝕀ℕℍ𝔼𝕀ℝ𝕆*
+╭╼≽ *LIMITE & DINHEIRO*
 │≽ *${prefix}limit* 
 │≽ *${prefix}buylimit* <quantidade>
 │≽ *${prefix}transfer* <@tag | total>
 │≽ *${prefix}dompet*
 ╰╼
-╭╼≽ *𝕄𝔼ℕ𝕌 𝔾ℝ𝕌ℙ𝕆*
+╭╼≽ *MENU GRUPO*
 │≽ *${prefix}hidetag* <texto>
 │≽ *${prefix}linkgc*
 │≽ *${prefix}tagall*
@@ -223,7 +223,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}delbadword* <texto>
 │≽ *${prefix}listbadword*
 ╰╼
-╭╼≽ *𝔸𝕋𝕀𝕍𝔸ℝ*
+╭╼≽ *ATIVAR*
 ╰╼≽ 么 Desc : ativar em grupos
 ╭──────────────
 │≽ *${prefix}group* [abrir/fechar]
@@ -234,7 +234,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}antilink* [1/0]
 │≽ *${prefix}nobadword* [enable/disable]
 ╰╼──────────────
-╭╼≽ *ℙℝ𝕆ℙℝ𝕀𝔼𝕋𝔸́ℝ𝕀𝕆* 
+╭╼≽ *PROPRIETÁRIO* 
 │≽ *${prefix}bc* <texto>
 │≽ *${prefix}bcgc* <texto>
 │≽ *${prefix}kickall*
