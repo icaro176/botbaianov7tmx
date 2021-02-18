@@ -250,9 +250,10 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}clone* <@tag>
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
-│≽ *${prefix}eval*
-│
-╰╼≽ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*`
+╰╼≽ *${prefix}eval*
+╭──────────────────
+╰╼≽ _*By ©Harry*_
+`
 }
 
 exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel, role) => {
@@ -301,4 +302,3 @@ exports.dellprem = (hnom) => {
 exports.premon = (pushname) => {
 	return`MAAF ${pushname} ANDA BUKAN USER PREMIUM`
 }
-
