@@ -777,6 +777,48 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 					break
+			    case 'nsfwneko':
+				    try {
+				    if (!isRegistered) return reply(ind.noregis())
+				    if (isLimit(sender)) return reply(ind.limitend(pusname))
+				                if (!isNsfw) return reply(ind.nsfwoff())
+						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=${TobzApi}`, {method: 'get'})
+						buffer = await getBuffer(res.result)
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
+					} catch (e) {
+						console.log(`Error :`, color(e,'red'))
+						reply(' *ERRO* ')
+					}
+					await limitAdd(sender) 
+					break 
+				case 'nsfwtrap':
+				    try {
+				    if (!isRegistered) return reply(ind.noregis())
+				    if (isLimit(sender)) return reply(ind.limitend(pusname))
+						if (!isNsfw) return reply(ind.nsfwoff())
+						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwtrap?apikey=${TobzApi}`, {method: 'get'})
+						buffer = await getBuffer(res.result)
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
+					} catch (e) {
+						console.log(`Error :`, color(e,'red'))
+						reply(' *ERRO* ')
+					}
+					await limitAdd(sender) 
+					break 
+				case 'hentai':
+				    try {
+				    if (!isRegistered) return reply(ind.noregis())
+				    if (isLimit(sender)) return reply(ind.limitend(pusname))
+						if (!isNsfw) return reply(ind.nsfwoff())
+						res = await fetchJson(`https://tobz-api.herokuapp.com/api/hentai?apikey=${TobzApi}`, {method: 'get'})
+						buffer = await getBuffer(res.result)
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
+					} catch (e) {
+						console.log(`Error :`, color(e,'red'))
+						reply(' *ERRO* ')
+					}
+					await limitAdd(sender) 
+					break 
 					case 'cium':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
