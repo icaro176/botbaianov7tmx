@@ -114,7 +114,7 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 	return`*Desculpa ${pushname} seu nível não é o suficiente*\n\n*┏⊱seu level : ${getLevelingLevel(sender)}*\n*┣⊱tipo de comando : ${command}*\n*┗⊱requisitos de nível : ${ahf}*\n\n_NOTA : CHAT SEMPRE LIGADO PARA OBTER XP_`
 }
 
-exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi) => { 
+exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts) => { 
 	return `
 ╭╼──╼「 USUÁRIO 」───╼╮
 │ *Nome* : ${pushname}
@@ -128,10 +128,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *Patente* : ${role}
 ╰─────────────╼╯
 ╭──╼「 INFO 」────╼╮
-│ *Prefixo* : ${prefix}
-│ *Comandos* : ${prefix}menu / help
 │ *Registrado* : ꪜ
 │ *${prefix}info*
+│ *${prefix}ping*
 ╰─╼「 BOT BAIANO 」╼─╯
 
 ╭╼≽ *FIGURINHAS*
@@ -146,9 +145,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}tts* <idioma> <txt>
 │≽ *${prefix}qrcode* <texto>
 │≽ *${prefix}ocr*
-│≽ *${prefix}ttp* <texto>
 │≽ *${prefix}quotemaker* txt/txt2/tema
-│≽ *${prefix}nulis* <texto>
+│≽ *${prefix}nulis* nome/nmr/txt
 │≽ *${prefix}translate* en/Bom Dia
 ╰╼
 ╭╼≽ *FUN MENU*
@@ -183,13 +181,11 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}bitly* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
-│≽ *${prefix}ytsearch* <título>
 ╰╼
 ╭╼≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
 │≽ *${prefix}play* <título>
 │≽ *${prefix}lirik* <título>
-│≽ *${prefix}fb* <link>
 ╰╼
 ╭╼≽ *NSFW MENU*
 │≽ *${prefix}anjing*
@@ -251,8 +247,6 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
 ╰╼≽ *${prefix}eval*
-▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║
-                 _*By ©Harry*_
 `
 }
 
