@@ -257,7 +257,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
 │≽ *${prefix}eval*
-╰───────────────`
+╰───────────────
+`
 }
 
 exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel, role) => {
