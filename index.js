@@ -709,7 +709,6 @@ client.on('group-participants-update', async (anu) => {
 			await limitAdd(sender)
 			break
 			case 'happymod':
-				if (!isOwner) return reply(ind.ownerb())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=BotWeA`)
@@ -732,7 +731,7 @@ client.on('group-participants-update', async (anu) => {
 			    if (!isRegistered) return reply(ind.noregis())
 			    if (isLimit(sender)) return reply(ind.limitend(pusname))
 			    reply(ind.wait())
-                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
+                            anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
 			        tinyurl = `${anu.result}`
 			        reply(tinyurl)
 			        await limitAdd(sender) 
@@ -848,6 +847,42 @@ client.on('group-participants-update', async (anu) => {
 					to =  naru[Math.floor(Math.random() * naru.length)];
 					nye = await getBuffer(to)
 					client.sendMessage(from, nye, image, { caption: 'naruto!!', quoted: mek })
+					await limitAdd(sender)
+					break 
+				case 'minato':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Minato`, {method: 'get'})
+					min = JSON.parse(JSON.stringify(anu));
+					ato =  min[Math.floor(Math.random() * min.length)];
+					nye = await getBuffer(ato)
+					client.sendMessage(from, nye, image, { caption: 'minato!!', quoted: mek })
+					await limitAdd(sender)
+					break 
+				case 'boruto':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Boruto`, {method: 'get'})
+					bor = JSON.parse(JSON.stringify(anu));
+					uto =  bor[Math.floor(Math.random() * bor.length)];
+					nye = await getBuffer(uto)
+					client.sendMessage(from, nye, image, { caption: 'boruto!!', quoted: mek })
+					await limitAdd(sender)
+					break 
+				case 'hinata':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Hinata`, {method: 'get'})
+					hina = JSON.parse(JSON.stringify(anu));
+					ta =  hina[Math.floor(Math.random() * hina.length)];
+					nye = await getBuffer(ta)
+					client.sendMessage(from, nye, image, { caption: 'hinata!!', quoted: mek })
 					await limitAdd(sender)
 					break 
 				case 'sakura':
@@ -1208,6 +1243,17 @@ client.on('group-participants-update', async (anu) => {
          	   case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                   client.sendMessage(from, '*Contato*',MessageType.text, { quoted: mek} )
+					break
+                case 'fitnah':
+                 if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (!isRegistered) return reply(ind.noregis())
+				if (args.length < 1) return reply(`Uso :\n${prefix}fitnah [@tag/msg/msg do bot]]\n\nEx : \n${prefix}fitnah @tagmembro/olá/oiii`)
+				var gh = body.slice(8)
+				mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					var replace = gh.split("/")[0];
+					var target = gh.split("/")[1];
+					var bot = gh.split("/")[2];
+					client.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
 					break    
 				case 'leaderboard':
 				case 'lb':
@@ -2007,10 +2053,10 @@ client.on('group-participants-update', async (anu) => {
                         reply('SUCESSO, FOTO DE PERFIL DO GRUPO ALTERADA')
 					break				
 				case 'leave': 
-				if (!isGroup) return reply(ind.groupo())
-				if (!isOwner) return reply(ind.ownerb())
-				await reply(from, 'bye').then(() => client.groupLeave(from))
-					break 
+				    if (!isGroup) return reply(ind.groupo())
+					if (!isOwner) return reply(ind.ownerb())
+			    	anu = await client.groupLeave(from, `Tchau *${groupMetadata.subject}*`, groupId)
+	                break
 				case 'bc': 
 					if (!isOwner) return reply(ind.ownerb()) 
 					if (args.length < 1) return reply('.......')
