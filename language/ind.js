@@ -170,22 +170,18 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ┠──────────────╼
 │≽ *${prefix}slap* <@tag>
 ┠ 么 Desc : tapa
-┠──────────────╼
-│≽ *${prefix}moddroid* <app>
-┠ 么 Desc : mod apk
-┠──────────────╼
 ╰╼
 ╭╼≽ *MEDIA MENU*
 │≽ *${prefix}pinterest*
-│≽ *${prefix}google* <pesquisa>
 │≽ *${prefix}bitly* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
 ╰╼
 ╭╼≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
-│≽ *${prefix}play* <título>
 │≽ *${prefix}lirik* <título>
+│≽ *${prefix}moddroid* <app>
+│≽ *${prefix}happymod* <app>
 ╰╼
 ╭╼≽ *NSFW MENU*
 │≽ *${prefix}anjing*
