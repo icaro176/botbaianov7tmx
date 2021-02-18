@@ -49,7 +49,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'END:VCARD' 
 blocked = []   
 prefix = '#'
-limitawal = 50
+limitawal = 30
 memberlimit = 0
 cr = '*SEM FLOODAR COMANDOS*'
 /*************************************/
@@ -1121,19 +1121,17 @@ client.on('group-participants-update', async (anu) => {
 					reply('Menurut nama:\n\n'+anu.result)
 					await limitAdd(sender)
 				break
-				//auto respond 
                                 case 'ping':
-                             if (!isRegistered) return reply(ind.noregis())
-                       const timestamp = speed();
-                const latensi = speed() - timestamp 
-                frhan.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
-                        break
-                                case 'help': 
+                                const timestamp = speed();
+                                const latensi = speed() - timestamp 
+                                client.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
+                                break
+               case 'help': 
 				case 'menu':
 				if (!isRegistered) return reply(ind.noregis())
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 				    const uangku = checkATMuser(sender)
-					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi), text, tescuk, cr)
+					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku), text, tescuk, cr)
 					break
 				case 'info':
 					me = client.user
@@ -2060,7 +2058,7 @@ client.on('group-participants-update', async (anu) => {
 				
 				default:
 			if (body.startsWith(`${prefix}${command}`)) {
-                  reply(`Desculpa *${pushname}*, comando *${prefix}${command}* não encontrado dentro *${prefix}menu*`)
+                  reply(`desculpa *${pushname}*, comando *${prefix}${command}* não encontrado dentro *${prefix}menu*`)
                   }
 			if (isGroup && !isCmd && isSimi && budy != undefined) {
 						console.log(budy)
