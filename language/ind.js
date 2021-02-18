@@ -251,8 +251,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
 ╰╼≽ *${prefix}eval*
-╭──────────────────
-╰╼≽ _*By ©Harry*_
+▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║
+                 _*By ©Harry*_
 `
 }
 
