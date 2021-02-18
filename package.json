@@ -17,12 +17,12 @@
   "author": "affis junianto",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/icaro176/botbaianov4tmx.git"
+    "url": "git+https://github.com/icaro176/botbaianov6tmx.git"
   },
   "bugs": {
-    "url": "https://github.com/icaro176/botbaianov4tmx/issues"
+    "url": "https://github.com/icaro176/botbaianov6tmx/issues"
   },
-"homepage": "https://github.com/icaro176/botbaianov4tmx/readme",
+"homepage": "https://github.com/icaro176/botbaianov6tmx/readme",
 "license": "ISC",
 "dependencies": {
     "@adiwajshing/baileys": "^3.3.0",
