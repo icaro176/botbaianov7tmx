@@ -825,7 +825,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=BotWeA`, {method: 'get'})
                if (data.error) return reply(data.error)
-                 infomp3 = `*╭─「 *JOOX DOWNLOAD* 」\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+                 infomp3 = `*╭─「 *JOOX DOWNLOAD* 」\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
                 buffer = await getBuffer(data.result.thumb)
                 lagu = await getBuffer(data.result.mp3)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
