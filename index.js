@@ -1441,6 +1441,7 @@ client.on('group-participants-update', async (anu) => {
                             _limit[found].limit -= jmla
                             const updated = _limit[found]
                             const result = `O limite de cota de presentes foi bem-sucedido. CÓDIGO: ${createSerial(8)} data ${moment().format('DD/MM/YY HH:mm:ss')}
+
 *「 LIMITE DA CONTA 」*
 
 • Usuário : @${updated.id.replace('@s.whatsapp.net','')}
@@ -1475,7 +1476,7 @@ client.on('group-participants-update', async (anu) => {
                 hasiltf = jumblah - fee
                 addKoinUser(tujuantf, hasiltf)
                 confirmATM(sender, jumblah)
-                addKoinUser('994409688675@s.whatsapp.net', fee)
+                addKoinUser('15135477645@s.whatsapp.net', fee)
                 reply(`*「 SUCESSO 」*\n\ntransferência de dinheiro foi bem sucedida\nde : +${sender.split("@")[0]}\npara : +${tujuan}\nvalor da transferência : ${jumblah}\nimposto : ${fee}`)
                 break
 				case 'dompet':
