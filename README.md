@@ -11,7 +11,7 @@
 ## Clone este projeto
 
 ```bash
-> git clone https://github.com/icaro176/botbaianov5tmx
+> git clone https://github.com/icaro176/botbaianov6tmx
 ```
 
 ## Instale as dependências:
@@ -22,22 +22,16 @@ você acabou de clonar!!
 > pkg upgrade && pkg update
 > apt-get update
 > apt-get upgrade
-> apt-get install nodejs
-> apt-get install libwebp
-> apt-get install mc
-> apt-get install ffmpeg
-> apt-get install wget
-> apt-get install tesseract
 > pkg install git
 > pkg install bash
-> git clone https://github.com/icaro176/botbaianov5tmx
+> git clone https://github.com/icaro176/botbaianov6tmx
 > cd botbaianov5tmx
 > bash install.sh
 ```
 
 ### Uso
 ```bash
-> node index
+> npm start
 ```
 
 ## Features
