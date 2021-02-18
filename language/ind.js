@@ -135,12 +135,12 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ╭───
 │ _*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 ╰───────────────
-╭╼≽ *FIGURINHAS*
+╭─≽ *FIGURINHAS*
 │≽ *${prefix}sticker*
 │≽ *${prefix}stiker*
 │≽ *${prefix}s*
 ╰─
-╭╼≽ *MENU CRIADOR*
+╭─≽ *MENU CRIADOR*
 │≽ *${prefix}toimg*
 │≽ *${prefix}tts* <idioma> <txt>
 │≽ *${prefix}qrcode* <texto>
@@ -150,32 +150,34 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}translate* en/Bom Dia
 │≽ *${prefix}bitly* <link>
 │≽ *${prefix}textstyle* <texto>
-╰╼
-╭╼≽ *FUN MENU*
+╰─
+╭─≽ *FUN MENU*
 │≽ *${prefix}bisakah* <texto>
 │≽ *${prefix}kapankah* <texto>
 │≽ *${prefix}apakah* <texto>
 │≽ *${prefix}rate* <texto>
+│≽ *${prefix}watak* <@tag>
+│≽ *${prefix}hobby* <@tag>
 │≽ *${prefix}persengay* <@tag>
 │≽ *${prefix}truth*
 │≽ *${prefix}dare*
 │≽ *${prefix}slap* <@tag>
-╰╼
-╭╼≽ *MEDIA MENU*
+╰─
+╭─≽ *MEDIA MENU*
 │≽ *${prefix}pinterest*
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
 │≽ *${prefix}map* <cidade>
-╰╼
-╭╼≽ *DOWNLOAD*
+╰─
+╭─≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
+│≽ *${prefix}play* <título>
 │≽ *${prefix}lirik* <título>
 │≽ *${prefix}moddroid* <app>
 │≽ *${prefix}happymod* <app>
-╰╼
-╭╼≽ *NSFW MENU*
+╰─
+╭─≽ *NSFW MENU*
 │≽ *${prefix}anjing*
-│≽ *${prefix}blowjob*
 │≽ *${prefix}pokemon*
 │≽ *${prefix}husbu*
 │≽ *${prefix}nangis*
@@ -185,20 +187,37 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │
 │ *ANIME*
 │≽ *${prefix}naruto*
-│≽ *${prefix}sasuke*
+│≽ *${prefix}minato*
+│≽ *${prefix}boruto*
+│≽ *${prefix}hinata*
 │≽ *${prefix}sakura*
-╰╼
-╭╼≽ *LIMITE & DINHEIRO*
+│≽ *${prefix}sasuke*
+│≽ *${prefix}toukachan*
+│≽ *${prefix}rize*
+│≽ *${prefix}akira*
+│≽ *${prefix}itori*
+│≽ *${prefix}kurumi*
+│≽ *${prefix}miku*
+│
+│ *18+*
+│≽ *${prefix}blowjob*
+│≽ *${prefix}nsfwneko*
+│≽ *${prefix}nsfwtrap*
+│≽ *${prefix}hentai*
+╰─
+╭─≽ *LIMITE & DINHEIRO*
 │≽ *${prefix}limit* 
 │≽ *${prefix}buylimit* <quantidade>
 │≽ *${prefix}transfer* <@tag | total>
 │≽ *${prefix}dompet*
-╰╼
-╭╼≽ *MENU GRUPO*
+╰─
+╭─≽ *MENU GRUPO*
 │≽ *${prefix}hidetag* <texto>
 │≽ *${prefix}linkgc*
+│≽ *${prefix}infogc*
 │≽ *${prefix}tagall*
 │≽ *${prefix}setpp*
+│≽ *${prefix}fitnah* <@tag/msg/msg bot>
 │≽ *${prefix}add* <@tag>
 │≽ *${prefix}kick* <@tag>
 │≽ *${prefix}setname* <texto>
@@ -219,8 +238,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}welcome* [1/0]
 │≽ *${prefix}antilink* [1/0]
 │≽ *${prefix}nobadword* [enable/disable]
-╰╼
-╭╼≽ *PROPRIETÁRIO* 
+╰─
+╭─≽ *PROPRIETÁRIO* 
 │≽ *${prefix}bc* <texto>
 │≽ *${prefix}bcgc* <texto>
 │≽ *${prefix}kickall*
@@ -236,7 +255,8 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}clone* <@tag>
 │≽ *${prefix}setppbot*
 │≽ *${prefix}listonline*
-╰╼≽ *${prefix}eval*`
+│≽ *${prefix}eval*
+╰───────────────`
 }
 
 exports.levelup = (pushname, sender, getLevelingXp,  getLevel, getLevelingLevel, role) => {
