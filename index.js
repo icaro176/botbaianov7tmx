@@ -1411,7 +1411,18 @@ client.on('group-participants-update', async (anu) => {
 					tod = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIx9Byjgg30FwrsruCnaMpBrlY7AIePKzptQ&usqp=CAU`)
 					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Desafio*\n\n'+ der })
 					await limitAdd(sender)
-					break				
+					break
+			case 'persengay':
+			case 'gaypersen':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (args.length < 1) return reply('marque seus amigos, se não tiver tudo bem...')
+				rate = body.slice(11)
+				persengayy = ["*4%*\n\n*:v*","*9%*\n\n*OTW da Penitência, irmão:v*","*17%*\n\n*Kang Coli*","*28%*\n\n*🤦*","*34%*\n\n *Vítima de Tusbol kaka*","*48%*\n\n*Livro Kang Hunter:v*","*59%*\n\n *Perigo do povo mano*","*62%*\n\n*Coração² As mesmas pessoas estão certas*","*74%*\n\n*🏃🌬️*","83%\n\n 🤦","97%\n\n🤦","100%\n\nEscape ae man da bola🏃","29%\n\n a mann:v","94%\n\n 🏃","75%\n\nGay🤦","82%\n\n🏃","41%\n\nCostuma procurar por Bola em encruzilhadas","39%\n\n🏃"]
+				const kl = persengayy[Math.floor(Math.random() * persengayy.length)]
+				client.sendMessage(from, 'Porcentagem Gay: *'+rate+'*\n\nResposta : '+kl+'', text, { quoted: mek })
+				await limitAdd(sender) 
+				break  				
 				case 'ocr': 
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
