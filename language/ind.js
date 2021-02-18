@@ -116,10 +116,10 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 
 exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts) => { 
 	return `
-╭╼──╼「 USUÁRIO 」───╼╮
+╭╼─╼「 USUÁRIO 」──╼╮
 │ *Nome* : ${pushname}
 │ *Número* : wa.me/${sender.split("@")[0]}
-╰╼──────────────╼╯
+╰╼────────────╼╯
 ╭──╼「 CONTA 」╼────╮
 │ *Dinheiro* : R$:${uangku}
 │ *XP* : ${getLevelingXp(sender)}/${reqXp}
@@ -132,10 +132,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │ *${prefix}info*
 │ *${prefix}ping*
 ╰─╼「 BOT BAIANO 」╼─╯
+_*By ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*_
 
 ╭╼≽ *FIGURINHAS*
-╰╼≽ 么 Desc : também serve para fig animada
-╭────────────
 │≽ *${prefix}sticker*
 │≽ *${prefix}stiker*
 │≽ *${prefix}s*
@@ -148,34 +147,25 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}quotemaker* txt/txt2/tema
 │≽ *${prefix}nulis* nome/nmr/txt
 │≽ *${prefix}translate* en/Bom Dia
+│≽ *${prefix}bitly* <link>
+│≽ *${prefix}tinyurl* <link>
+│≽ *${prefix}textstyle* <texto>
 ╰╼
 ╭╼≽ *FUN MENU*
 │≽ *${prefix}bisakah* <texto>
-┠ 么 Desc : se você pode
-┠──────────────╼
 │≽ *${prefix}kapankah* <texto>
-┠ 么 Desc : quando?
-┠──────────────╼
 │≽ *${prefix}apakah* <texto>
-┠ 么 Desc : o que?
-┠──────────────╼
-┠≽ *${prefix}rate* <texto>
-┠ 么 Desc : %porcentagem
-┠──────────────╼
+│≽ *${prefix}rate* <texto>
+│≽ *${prefix}persengay* <@tag>
 │≽ *${prefix}truth*
-┠ 么 Desc : verdade
-┠──────────────╼
 │≽ *${prefix}dare*
-┠ 么 Desc : desafio
-┠──────────────╼
 │≽ *${prefix}slap* <@tag>
-┠ 么 Desc : tapa
 ╰╼
 ╭╼≽ *MEDIA MENU*
 │≽ *${prefix}pinterest*
-│≽ *${prefix}bitly* <link>
 │≽ *${prefix}tiktokstalk* <usuário>
 │≽ *${prefix}wait*
+│≽ *${prefix}map* <cidade>
 ╰╼
 ╭╼≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
@@ -192,6 +182,11 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}cium*
 │≽ *${prefix}peluk*
 │≽ *${prefix}ranime*
+│
+│ *ANIME*
+│≽ *${prefix}naruto*
+│≽ *${prefix}sasuke*
+│≽ *${prefix}sakura*
 ╰╼
 ╭╼≽ *LIMITE & DINHEIRO*
 │≽ *${prefix}limit* 
@@ -211,6 +206,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}demote* <@tag>
 │≽ *${prefix}promote* <@tag>
 │≽ *${prefix}listadmin*
+│≽ *${prefix}testime*
 │≽ *${prefix}addbadword* <texto>
 │≽ *${prefix}delbadword* <texto>
 │≽ *${prefix}listbadword*
