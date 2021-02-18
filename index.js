@@ -677,8 +677,8 @@ client.on('group-participants-update', async (anu) => {
 				case 'ttp':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				reply(ind.wait())
-				ranp = getRandom('.png')
+					if (args.length < 1) return reply('*Onde está o texto, tio?*')
+				        ranp = getRandom('.png')
 					rano = getRandom('.webp')
 					teks = body.slice(5).trim()
 					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarApi}`, {method: 'get'})
@@ -703,7 +703,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=BotWeA`)
 			hepi = data.result[0] 
-			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Tamanho*: ${hepi.size}\n*Última Versão*: ${hepi.latest_version}\n*Gênero*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
+			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Última Versão*: ${hepi.size}\n*Nada*: ${hepi.latest_version}\n*Tamanho*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
 			buffer = await getBuffer(hepi.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -714,7 +714,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=BotWeA`)
 			hupo = data.result[0] 
-			teks = `*Nama*: ${data.result[0].title}\n*version*: ${hupo.version}\n*size:* ${hupo.size}\n*root*: ${hupo.root}\n*purchase*: ${hupo.price}\n*link*: ${hupo.link}\n*download*: ${hupo.download}`
+			teks = `*Nome*: ${data.result[0].title}\n*Versão*: ${hupo.version}\n*Tamanho:* ${hupo.size}\n*Root*: ${hupo.root}\n*Compra*: ${hupo.price}\n*Link*: ${hupo.link}\n*Download*: ${hupo.download}`
 			buffer = await getBuffer(hupo.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -728,6 +728,24 @@ client.on('group-participants-update', async (anu) => {
                 reply(hasil)
                 await limitAdd(sender)
                 break
+			    case 'tinyurl':
+			    if (!isRegistered) return reply(ind.noregis())
+			    if (isLimit(sender)) return reply(ind.limitend(pusname))
+			    reply(ind.wait())
+                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
+			        tinyurl = `${anu.result}`
+			        reply(tinyurl)
+			        await limitAdd(sender) 
+			        break 
+			case 'textstyle':
+			if (!isRegistered) return reply(ind.noregis())
+			if (isLimit(sender)) return reply(ind.limitend(pusname))
+			reply(ind.wait())
+			style = `${body.slice(11)}`
+			anu = await fetchJson(`https://api.arugaz.my.id/api/random/text/fancytext?text=${style}`, {method: 'get'})
+			reply (anu.result)
+			await limitAdd(sender) 
+			break  
                 case 'nangis':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -820,6 +838,42 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender)
 					break
+				case 'naruto':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Naruto`, {method: 'get'})
+					naru = JSON.parse(JSON.stringify(anu));
+					to =  naru[Math.floor(Math.random() * naru.length)];
+					nye = await getBuffer(to)
+					client.sendMessage(from, nye, image, { caption: 'naruto!!', quoted: mek })
+					await limitAdd(sender)
+					break 
+				case 'sakura':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sakura`, {method: 'get'})
+					sak = JSON.parse(JSON.stringify(anu));
+					kura =  sak[Math.floor(Math.random() * sak.length)];
+					nye = await getBuffer(kura)
+					client.sendMessage(from, nye, image, { caption: 'sakura!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'sasuke':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sasuke`, {method: 'get'})
+					sasu = JSON.parse(JSON.stringify(anu));
+					ke =  sasu[Math.floor(Math.random() * sasu.length)];
+					nye = await getBuffer(ke)
+					client.sendMessage(from, nye, image, { caption: 'sasuke!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1292,6 +1346,17 @@ client.on('group-participants-update', async (anu) => {
                         console.log(res)
                     })
 					await limitAdd(sender)
+					break 
+				case 'testime':
+					setTimeout( () => {
+					frhan.sendMessage(from, 'O tempo acabou:v', text, {quoted: mek}) // ur cods
+					}, 10000) // 1000 = 1s,
+					setTimeout( () => {
+					frhan.sendMessage(from, 'Mais 5 segundos', text, {quoted: mek}) // ur cods
+					}, 5000) // 1000 = 1s,
+					setTimeout( () => {
+					frhan.sendMessage(from, '10 segundos para ir', text, {quoted: mek}) // ur cods
+					}, 0) // 1000 = 1s,
 					break 
 				case 'bisakah':
 				if (!isRegistered) return reply(ind.noregis())
