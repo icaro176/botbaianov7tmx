@@ -1576,13 +1576,24 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Desafio*\n\n'+ der })
 					await limitAdd(sender)
 					break
+                  case 'timer':
+		  if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))                  
+				if (args[1]=="segundo") {var timer = args[0]+"000"
+				} else if (args[1]=="minuto") {var timer = args[0]+"0000"
+				} else if (args[1]=="hora") {var timer = args[0]+"00000"
+				} else {return reply("*escolha:*\nsegundo\nminuto\nhora")}
+				setTimeout( () => {
+				reply("O tempo acabou")
+				}, timer)
+				break	
 			case 'persengay':
 			case 'gaypersen':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				if (args.length < 1) return reply('marque seus amigos, se não tiver tudo bem...')
 				rate = body.slice(11)
-				persengayy = ["*4%*\n\n*pouco :v*","*9%*\n\n*Aumenta mais um pouco ksks:v*","*17%*\n\n*Iiiih*","*28%*\n\n*Uii*","*34%*\n\n *Ii ala 34%*","*48%*\n\n*Boa*","*59%*\n\n *Perigo do povo mano*","*62%*\n\n*Iii*","*74%*\n\n*🏃🌬️*","83%\n\n Ui","97%\n\nkakka","100%\n\nEitaaarh","29%\n\n Ii mano","94%\n\n 🏃","75%\n\nMt gay kkk","82%\n\n🏃","41%\n\nVishkkk","39%\n\n🏃"]
+				persengayy = ["*4%*\n\n*pouco :v*","*9%*\n\n*:v*","*17%*\n\n*iiikk*","*28%*\n\n*Uii*","*34%*\n\n *Ii ala 34%*","*48%*\n\n*Boa*","*59%*\n\n *Perigo do povo mano*","*62%*\n\n*Iii*","*74%*\n\n*🏃🌬️*","83%\n\n Ui","97%\n\nkakka","100%\n\nEitaaa","29%\n\n Ii mano","94%\n\n 🏃","75%\n\nMt gay kkk","82%\n\n🏃","41%\n\nVishkkk","39%\n\n🏃"]
 				const kl = persengayy[Math.floor(Math.random() * persengayy.length)]
 				client.sendMessage(from, 'Porcentagem Gay: *'+rate+'*\n\nResposta : '+kl+'', text, { quoted: mek })
 				await limitAdd(sender) 
@@ -1704,24 +1715,6 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 				break
-				case 'fb':
-				  client.updatePresence(from, Presence.composing) 
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				reply(ind.wait())
-					if (args.length < 1) return reply('Cadê o url, mano?')
-					if (!isUrl(args[0]) && !args[0].includes('www.facebook.com')) return reply(mess.error.Iv)
-					reply(mess.wait)
-					anu = await fetchJson(`https://mhankbarbar.tech/api/epbe?url=${args[0]}&apiKey=${BarBarApi}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					client.sendMessage(from, '[ AGUARDE ] EM PROCESSO', text, {quoted: mek})
-					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nPublicado em: *${anu.published}*`
-					tefbe = await getBuffer(anu.thumb)
-					client.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
-					await limitAdd(sender) 
-					break 
 				case 'toimg':
 				if (!isRegistered) return reply(ind.noregis())
 				if (!isQuotedSticker) return reply('Marque uma figurinha')
