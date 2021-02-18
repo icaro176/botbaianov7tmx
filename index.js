@@ -909,6 +909,90 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, nye, image, { caption: 'sasuke!!', quoted: mek })
 					await limitAdd(sender) 
 					break 
+				case 'kaneki':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.vhtear.com/pinterest?query=kaneki&apikey=${VthearApi}`, {method: 'get'})
+					var ka = JSON.parse(JSON.stringify(anu.result));
+					var ne =  ka[Math.floor(Math.random() * ka.length)];
+					ki = await getBuffer(ne)
+					client.sendMessage(from, ki, image, { caption: 'kaneki!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'toukachan':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+touka`, {method: 'get'})
+					tou = JSON.parse(JSON.stringify(anu));
+					ka =  tou[Math.floor(Math.random() * tou.length)];
+					nye = await getBuffer(ka)
+					client.sendMessage(from, nye, image, { caption: 'toukachan!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'rize':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+rize`, {method: 'get'})
+					ri = JSON.parse(JSON.stringify(anu));
+					ze =  ri[Math.floor(Math.random() * ri.length)];
+					nye = await getBuffer(ze)
+					client.sendMessage(from, nye, image, { caption: 'rize chan!!', quoted: mek })
+					await limitAdd(sender) 	
+					break 
+				case 'akira':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+akira`, {method: 'get'})
+					ak = JSON.parse(JSON.stringify(anu));
+					ara =  ak[Math.floor(Math.random() * ak.length)];
+					nye = await getBuffer(ara)
+					client.sendMessage(from, nye, image, { caption: 'akira chan!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'itori':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+itori`, {method: 'get'})
+					it = JSON.parse(JSON.stringify(anu));
+					ori =  it[Math.floor(Math.random() * it.length)];
+					nye = await getBuffer(ori)
+					client.sendMessage(from, nye, image, { caption: 'itori chan!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'kurumi':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+karumi`, {method: 'get'})
+					kur = JSON.parse(JSON.stringify(anu));
+					imi =  kur[Math.floor(Math.random() * kur.length)];
+					nye = await getBuffer(imi)
+					client.sendMessage(from, nye, image, { caption: 'kurumi chan!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'miku':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+miku`, {method: 'get'})
+					mi = JSON.parse(JSON.stringify(anu));
+					ku =  mi[Math.floor(Math.random() * mi.length)];
+					nye = await getBuffer(ku)
+					client.sendMessage(from, nye, image, { caption: 'miku chan!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
