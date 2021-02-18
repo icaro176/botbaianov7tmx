@@ -1185,7 +1185,7 @@ client.on('group-participants-update', async (anu) => {
 				if (!isRegistered) return reply(ind.noregis())
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 				    const uangku = checkATMuser(sender)
-					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi), text, tescuk, cr)
+					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts), text, tescuk, cr)
 					break
 				case 'info':
 					me = client.user
@@ -1373,7 +1373,7 @@ client.on('group-participants-update', async (anu) => {
 					kapankah = body.slice(1)
 					const kapan =['Amanhã','Agora mesmo','em 4 dias','em 5 dias','em 6 dias','em 1 semana','em 2 semanas','em 3 semanas','em 1 mês','em 2 meses','em 3 meses','em 4 meses','em 5 meses','em 6 meses','em 1 ano','em 2 anos','em 3 anos','em 4 anos','em 5 anos','em 6 anos','em 1 século','em 3 dias']
 					const koh = kapan[Math.floor(Math.random() * kapan.length)]
-					client.sendMessage(from, 'Pertanyaan : *'+kapankah+'*\n\nJawaban : '+ koh, text, { quoted: mek })
+					client.sendMessage(from, 'Pergunta : *'+kapankah+'*\n\nResposta : '+ koh, text, { quoted: mek })
 					await limitAdd(sender)
 					break
            case 'apakah':
@@ -1418,7 +1418,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				if (args.length < 1) return reply('marque seus amigos, se não tiver tudo bem...')
 				rate = body.slice(11)
-				persengayy = ["*4%*\n\n*:v*","*9%*\n\n*OTW da Penitência, irmão:v*","*17%*\n\n*Kang Coli*","*28%*\n\n*🤦*","*34%*\n\n *Vítima de Tusbol kaka*","*48%*\n\n*Livro Kang Hunter:v*","*59%*\n\n *Perigo do povo mano*","*62%*\n\n*Coração² As mesmas pessoas estão certas*","*74%*\n\n*🏃🌬️*","83%\n\n 🤦","97%\n\n🤦","100%\n\nEscape ae man da bola🏃","29%\n\n a mann:v","94%\n\n 🏃","75%\n\nGay🤦","82%\n\n🏃","41%\n\nCostuma procurar por Bola em encruzilhadas","39%\n\n🏃"]
+				persengayy = ["*4%*\n\n*pouco :v*","*9%*\n\n*Aumenta mais um pouco ksks:v*","*17%*\n\n*Iiiih*","*28%*\n\n*Uii*","*34%*\n\n *Ii ala 34%*","*48%*\n\n*Boa*","*59%*\n\n *Perigo do povo mano*","*62%*\n\n*Iii*","*74%*\n\n*🏃🌬️*","83%\n\n Ui","97%\n\nkakka","100%\n\nEitaaarh","29%\n\n Ii mano","94%\n\n 🏃","75%\n\nMt gay kkk","82%\n\n🏃","41%\n\nVishkkk","39%\n\n🏃"]
 				const kl = persengayy[Math.floor(Math.random() * persengayy.length)]
 				client.sendMessage(from, 'Porcentagem Gay: *'+rate+'*\n\nResposta : '+kl+'', text, { quoted: mek })
 				await limitAdd(sender) 
