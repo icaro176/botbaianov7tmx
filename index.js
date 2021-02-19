@@ -1111,7 +1111,7 @@ client.on('group-participants-update', async (anu) => {
                 if (umurUser > 40) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
                 if (umurUser < 12) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
                 try {
-		ppimg = await frhan.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+		ppimg = await client.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
 		} catch {
 		ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 		}
