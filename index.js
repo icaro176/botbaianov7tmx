@@ -744,6 +744,24 @@ client.on('group-participants-update', async (anu) => {
 			reply (anu.result)
 			await limitAdd(sender) 
 			break  
+		 case 'tomp3':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                	client.updatePresence(from, Presence.composing)
+					if (!isQuotedVideo) return reply('_*marque um vídeo!*_')
+					reply(ind.wait())
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp4')
+					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+						fs.unlinkSync(media)
+						if (err) return reply('Falha ao converter vídeo para mp3')
+						bufferlkj = fs.readFileSync(ran)
+						client.sendMessage(from, bufferlkj, audio, {mimetype: 'audio/mp4', quoted: mek})
+						fs.unlinkSync(ran)
+					})
+					await limitAdd(sender)
+					break 
                 case 'nangis':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -836,6 +854,22 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 					break
+				case 'animecry':
+					cry = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/cry?apikey=${TobzApi}`, {method: 'get'})
+                   if (!isRegistered) return reply(ind.noregis())
+                   if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   if (!isNsfw) return reply(ind.nsfwoff())
+					reply(ind.wait())
+					exec(`wget ${anu.result} -O ${cry} && ffmpeg -i ${cry} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(cry)
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break 
 					case 'peluk':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1034,6 +1068,16 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, nye, image, { caption: 'miku chan!!', quoted: mek })
 					await limitAdd(sender) 
 					break 
+              case 'anime':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                if (!isNsfw) return reply(ind.nsfwoff())
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime?apikey=${TobzApi}`, {method: 'get'})
+					reply(ind.wait())
+					pok = await getBuffer(anu.result)
+					client.sendMessage(from, pok, image, { quoted: mek , caption: 'HEHE'})
+					await limitAdd(sender) 
+					break  
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1067,10 +1111,10 @@ client.on('group-participants-update', async (anu) => {
                 if (umurUser > 40) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
                 if (umurUser < 12) return reply(`Idade mínima de 12 anos e no máximo 40 anos`)
                 try {
-					ppimg = await client.getProfilePicture(`${sender.split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
+		ppimg = await frhan.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+		} catch {
+		ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+		}
                 veri = sender
                 if (isGroup) {
                     addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
@@ -1141,42 +1185,51 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-				case 'stickerhide':
+				case 'tahta':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                tahta = `${body.slice(7)}`
+                     if (args.length < 1) return reply('Onde está o texto, mano?')
+                     if (args.length > 10) return reply('pelo menos 10 caracteres')
+                     buff = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${tahta}&apikey=${ZeksApi}`, {method: 'get'})
+                     client.sendMessage(from, buff, image, {quoted: mek, caption: `${tahta}`})
+                  await limitAdd(sender)
+                  break  
+				case 'wink':
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson(`https://api.i-tech.id/tools/wink?key=${TechApi}`, {method: 'get'})
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-				    ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/screed?text=${args[0]}`,{method: 'get'})
-				exec(`wget ${anu} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+					if (anu.error) return reply(anu.error)
+					reply(ind.wait())
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
+						if (err) return reply(mess.error.stick)
 						buffer = fs.readFileSync(rano)
 						client.sendMessage(from, buffer, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
-
 					})
-					await limitAdd(sender)
-					break
-				case 'emoji':
+					await limitAdd(sender) 
+					break 
+				case 'imoji':
+					if (args.length < 1) return reply('cadê o emoji mano?')
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=${args[0]}&type=aple`, {method: 'get'})
-				jes = await getBuffer(anu)
-				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
-				await limitAdd(sender)
-				break
-				case 'ytsearch':
-				        if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Oque você que procurar?')
-					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${BarBarApi}`, {method: 'get'})
+					ranp = getRandom('.png')
+					rano = getRandom('.webp')
+					teks = emojiUnicode(Far).trim()
+					anu = await fetchJson(`https://mhankbarbar.tech/api/emoji2png?emoji=${teks}&apikey=${BarBarApi}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = '=================\n'
-					for (let i of anu.result) {
-						teks += `*Título* : ${i.title}\n*Id* : https://youtu.be/${i.id}\n*Publicado* : ${i.publishTime}\n*Duração* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
-					}
-					reply(teks.trim())
-					break
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker)
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender) 
+					break 
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1340,19 +1393,19 @@ client.on('group-participants-update', async (anu) => {
                                 const latensi = speed() - timestamp 
                                 client.sendMessage(from, `Minha velocidade de resposta é: ${latensi.toFixed(4)}`, text, { quoted: mek})
                                 break
-               case 'help': 
-				case 'menu':
-				if (!isRegistered) return reply(ind.noregis())
-				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
-				    const uangku = checkATMuser(sender)
-					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts), text, tescuk, cr)
-					break
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
 					teks = `*Nome do Bot* : ${me.name}\n*Proprietário* : *❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n*By* : ❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥\n*Número do Bot* : @${me.jid.split('@')[0]}\n*Prefixo* : ${prefix}\n*Contatos Bloqueados* : ${blocked.length}\n*Ativo Desde* : ${kyun(uptime)}`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
+					break
+               case 'help': 
+				case 'menu':
+				if (!isRegistered) return reply(ind.noregis())
+				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
+				    const uangku = checkATMuser(sender)
+					await costum(ind.menu(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, limitCounts), text, tescuk, cr)
 					break
 				case 'blocklist':
 				if (!isOwner) return reply(ind.ownerb())
@@ -2333,15 +2386,16 @@ client.on('group-participants-update', async (anu) => {
 				
 				
 				default:
-			if (body.startsWith(`${prefix}${command}`)) {
-                  reply(`desculpa *${pushname}*, comando *${prefix}${command}* não encontrado dentro *${prefix}menu*`)
+			                if (body.startsWith(`${prefix}${command}`)) {
+                  reply(`Desculpe mano, comando *${prefix}${command}* Não registrado no banco de dados *${prefix}menu*`)
                   }
 			if (isGroup && !isCmd && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
-						reply(ind.cmdnf(prefix, command))
+						console.log(muehe)
+						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'Comando não registrado', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Comando não registrado de', color(sender.split('@')[0]))
 					}
 					}
 		} catch (e) {
