@@ -33,12 +33,13 @@ const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const ffmpeg = require('fluent-ffmpeg')
 const imgbb = require('imgbb-uploader')
+const { removeBackgroundFromImageFile } = require('remove.bg')
 const google = require('google-it')
-const ms = require('parse-ms')
-const toMs = require('ms')
 const fontPath = ('./lib/Zahraaa.ttf')
 const path = require('path')
 const cd = 4.32e+7
+const lolis = require('lolis.life')
+const loli = new lolis()
 const { ind } = require('./language')
 
 /********** MENU SETTING **********/
@@ -61,6 +62,7 @@ const ownerNumber = ["557996096237@s.whatsapp.net","557388191315@s.whatsapp.net"
 
        
 /*********** LOAD FILE ***********/
+const { BarBarApi, ZeksApi, TechApi, TobzApi, VthearApi } = JSON.parse(fs.readFileSync('./database/bot/apikey.json'))
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
 const _level = JSON.parse(fs.readFileSync('./database/user/level.json'))
 const _registered = JSON.parse(fs.readFileSync('./database/bot/registered.json'))
@@ -1201,7 +1203,7 @@ client.on('group-participants-update', async (anu) => {
                      if (args.length < 1) return reply('Onde está o texto, mano?')
                      if (args.length > 10) return reply('pelo menos 10 caracteres')
                      buff = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${tahta}&apikey=${ZeksApi}`, {method: 'get'})
-                     client.sendMessage(from, buff, image, {quoted: mek, caption: `${tahta}`})
+                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Harta Tahta ${tahta}`})
                   await limitAdd(sender)
                   break  
 				case 'wink':
@@ -1242,7 +1244,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-				anu = await fetchJson (`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`, {method : 'get' })
+				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`, {method : 'get' })
 				if (anu.error) return reply(anu.error)
 					teks = `*Nome* : ${anu.result.from}\n*Título* : ${anu.result.title}\n*Publicado* : ${anu.result.uploaded}`
 					thumb = await getBuffer(anu.result.thumb)
