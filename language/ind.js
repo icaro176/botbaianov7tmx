@@ -149,6 +149,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}nulis* nome/nmr/txt
 │≽ *${prefix}translate* en/Bom Dia
 │≽ *${prefix}bitly* <link>
+│≽ *${prefix}tahta* <texto>
+│≽ *${prefix}imoji*
+│≽ *${prefix}wink*
 │≽ *${prefix}textstyle* <texto>
 ╰─
 ╭─≽ *FUN MENU*
@@ -172,6 +175,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 ╭─≽ *DOWNLOAD*
 │≽ *${prefix}joox* <cantor/a - título>
 │≽ *${prefix}play* <título>
+│≽ *${prefix}tomp3*
 │≽ *${prefix}lirik* <título>
 │≽ *${prefix}moddroid* <app>
 │≽ *${prefix}happymod* <app>
@@ -183,7 +187,11 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}nangis*
 │≽ *${prefix}cium*
 │≽ *${prefix}peluk*
-│≽ *${prefix}ranime*
+│≽ *${prefix}randomkpop*
+│≽ *${prefix}blowjob*
+│≽ *${prefix}nsfwneko*
+│≽ *${prefix}nsfwtrap*
+│≽ *${prefix}hentai*
 │
 │ *ANIME*
 │≽ *${prefix}naruto*
@@ -198,12 +206,9 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}itori*
 │≽ *${prefix}kurumi*
 │≽ *${prefix}miku*
-│
-│ *18+*
-│≽ *${prefix}blowjob*
-│≽ *${prefix}nsfwneko*
-│≽ *${prefix}nsfwtrap*
-│≽ *${prefix}hentai*
+│≽ *${prefix}anime*
+│≽ *${prefix}animecry*
+│≽ *${prefix}ranime*
 ╰─
 ╭─≽ *LIMITE & DINHEIRO*
 │≽ *${prefix}limit* 
