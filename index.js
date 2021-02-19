@@ -568,14 +568,14 @@ client.on('group-participants-update', async (anu) => {
         }
  
 				//function antilink 
-				if (messagesC.includes("://chat.whatsapp.com/")){
+				if (messagesC.includes("http","https","http://","https://")){
 					if (!isGroup) return
 					if (!isAntiLink) return
-					if (isGroupAdmins) return reply('${pushname} os outros administradores do grupo não ficará surpreso pelo link de outro grupo?')
+					if (isGroupAdmins) return reply('*${pushname}* \nLink Detectado! \nVocê é um administrador do grupo, por isso não será banido')
 					client.updatePresence(from, Presence.composing)
-					if (messagesC.includes("#izinadmin")) return reply("#izinadmin recebido")
+					if (messagesC.includes("#Permissão do chefe")) return reply("Sim, sem spam")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-						reply(`Link de grupo detectado ${sender.split("@")[0]} Você será expulso do grupo em 5 segundos`)
+						reply(`⚠️Link Detectado⚠️\n${sender.split("@")[0]} você será banido em 5 segundos`)
 						setTimeout( () => {
 						client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
@@ -702,7 +702,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=BotWeA`)
 			hepi = data.result[0] 
-			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Última Versão*: ${hepi.size}\n*Nada*: ${hepi.latest_version}\n*Tamanho*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
+			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Tamanho*: ${hepi.size}\n*Última Versão*: ${hepi.latest_version}\n*Gênero*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
 			buffer = await getBuffer(hepi.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -730,7 +730,7 @@ client.on('group-participants-update', async (anu) => {
 			    if (!isRegistered) return reply(ind.noregis())
 			    if (isLimit(sender)) return reply(ind.limitend(pusname))
 			    reply(ind.wait())
-                            anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
+                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
 			        tinyurl = `${anu.result}`
 			        reply(tinyurl)
 			        await limitAdd(sender) 
