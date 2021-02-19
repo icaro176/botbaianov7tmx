@@ -735,7 +735,7 @@ client.on('group-participants-update', async (anu) => {
 			    if (isLimit(sender)) return reply(ind.limitend(pusname))
 			    reply(ind.wait())
                     anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
-			        tinyurl = `${anu.result}`
+			        tinyurl = `${data.result}`
 			        reply(tinyurl)
 			        await limitAdd(sender) 
 			        break 
@@ -799,12 +799,12 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 					break
-			    case 'nsfwneko':
+			    case 'hentai':
 				    try {
 				    if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
 				                if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=${TobzApi}`, {method: 'get'})
+						res = await fetchJson(`https://nekos.life/api/v2/img/hentai`, {method: 'get'})
 						buffer = await getBuffer(res.result)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
 					} catch (e) {
@@ -813,12 +813,12 @@ client.on('group-participants-update', async (anu) => {
 					}
 					await limitAdd(sender) 
 					break 
-				case 'nsfwtrap':
+				case 'trap':
 				    try {
 				    if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
 						if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwtrap?apikey=${TobzApi}`, {method: 'get'})
+						res = await fetchJson(`https://nekos.life/api/v2/img/trap`, {method: 'get'})
 						buffer = await getBuffer(res.result)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
 					} catch (e) {
@@ -827,12 +827,12 @@ client.on('group-participants-update', async (anu) => {
 					}
 					await limitAdd(sender) 
 					break 
-				case 'hentai':
+				case 'wallpaper':
 				    try {
 				    if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
 						if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://tobz-api.herokuapp.com/api/hentai?apikey=${TobzApi}`, {method: 'get'})
+						res = await fetchJson(`https://nekos.life/api/v2/img/wallpaper`, {method: 'get'})
 						buffer = await getBuffer(res.result)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
 					} catch (e) {
