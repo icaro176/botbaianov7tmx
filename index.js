@@ -311,7 +311,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `[ *Olá, Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade : \n*Descrição do Grupo* \n${groupDesc}`
+				teks = `[ *Olá, Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade :`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -638,25 +638,24 @@ client.on('group-participants-update', async (anu) => {
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			
 			switch(command) {
-                     case 'play':
-                  if (!isRegistered) return reply(ind.noregis())
-		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
-                reply(ind.wait())
-                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
-               if (anu.error) return reply(anu.error)
-                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
-                buffer = await getBuffer(anu.result.thumbnail)
-                lagu = await getBuffer(anu.result.url_audio)
-                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-                break		
 				//premiom
 				case 'checkprem':
 				if (!isOwner) return reply(ind.ownerb())
 				const cekExp = ms(getPremiumExpired(sender) - Date.now())
 				reply(`*「 PREMIUM EXPIRED 」*\n\n➸ *ID*: ${sender.split('@')[0]}\n➸ *Premium left*: ${cekExp.days} day(s) ${cekExp.hours} hour(s) ${cekExp.minutes} minute(s)`)
 				break
-				
+                     case 'play':
+                  if (!isRegistered) return reply(ind.noregis())
+		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+                reply(ind.wait())
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n╰───────────`
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                break				
 				//qr 
 				case 'qrcode':
 				if (!isRegistered) return reply(ind.noregis())
@@ -730,15 +729,6 @@ client.on('group-participants-update', async (anu) => {
                 reply(hasil)
                 await limitAdd(sender)
                 break
-			    case 'tinyurl':
-			    if (!isRegistered) return reply(ind.noregis())
-			    if (isLimit(sender)) return reply(ind.limitend(pusname))
-			    reply(ind.wait())
-                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/tinyurl?url=${body.slice(9)}&apikey=${TobzApi}`)
-			        tinyurl = `${data.result}`
-			        reply(tinyurl)
-			        await limitAdd(sender) 
-			        break 
 			case 'textstyle':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -799,48 +789,6 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 					break
-			    case 'hentai':
-				    try {
-				    if (!isRegistered) return reply(ind.noregis())
-				    if (isLimit(sender)) return reply(ind.limitend(pusname))
-				                if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://nekos.life/api/v2/img/hentai`, {method: 'get'})
-						buffer = await getBuffer(res.result)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
-					} catch (e) {
-						console.log(`Error :`, color(e,'red'))
-						reply(' *ERRO* ')
-					}
-					await limitAdd(sender) 
-					break 
-				case 'trap':
-				    try {
-				    if (!isRegistered) return reply(ind.noregis())
-				    if (isLimit(sender)) return reply(ind.limitend(pusname))
-						if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://nekos.life/api/v2/img/trap`, {method: 'get'})
-						buffer = await getBuffer(res.result)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
-					} catch (e) {
-						console.log(`Error :`, color(e,'red'))
-						reply(' *ERRO* ')
-					}
-					await limitAdd(sender) 
-					break 
-				case 'wallpaper':
-				    try {
-				    if (!isRegistered) return reply(ind.noregis())
-				    if (isLimit(sender)) return reply(ind.limitend(pusname))
-						if (!isNsfw) return reply(ind.nsfwoff())
-						res = await fetchJson(`https://nekos.life/api/v2/img/wallpaper`, {method: 'get'})
-						buffer = await getBuffer(res.result)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '😳'})
-					} catch (e) {
-						console.log(`Error :`, color(e,'red'))
-						reply(' *ERRO* ')
-					}
-					await limitAdd(sender) 
-					break 
 					case 'cium':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1176,14 +1124,6 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-              case 'randomkpop':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
-                   buff = await getBuffer(anu.result)
-                   client.sendMessage(from, buff, image, {quoted: mek})
-                   break 
                 case 'anjing':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1197,51 +1137,6 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
-				case 'tahta':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                tahta = `${body.slice(7)}`
-                     if (args.length < 1) return reply('Onde está o texto, mano?')
-                     if (args.length > 10) return reply('pelo menos 10 caracteres')
-                     buff = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${tahta}&apikey=${ZeksApi}`, {method: 'get'})
-                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Harta Tahta ${tahta}`})
-                  await limitAdd(sender)
-                  break  
-				case 'wink':
-					ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-					anu = await fetchJson(`https://api.i-tech.id/tools/wink?key=${TechApi}`, {method: 'get'})
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (anu.error) return reply(anu.error)
-					reply(ind.wait())
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender) 
-					break 
-				case 'imoji':
-					if (args.length < 1) return reply('cadê o emoji mano?')
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					ranp = getRandom('.png')
-					rano = getRandom('.webp')
-					teks = emojiUnicode(Far).trim()
-					anu = await fetchJson(`https://mhankbarbar.tech/api/emoji2png?emoji=${teks}&apikey=${BarBarApi}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker)
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender) 
-					break 
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1412,12 +1307,14 @@ client.on('group-participants-update', async (anu) => {
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
-               case 'help': 
+				//auto respond 
+                                case 'help': 
 				case 'menu':
+				case 'cmd':
 				if (!isRegistered) return reply(ind.noregis())
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 				    const uangku = checkATMuser(sender)
-					await costum(help(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, limitCounts), text, tescuk, cr)
+					await costum(help(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi), text, tescuk, cr)
 					break
 				case 'blocklist':
 				if (!isOwner) return reply(ind.ownerb())
@@ -2041,11 +1938,11 @@ client.on('group-participants-update', async (anu) => {
 						if (isSimi) return reply('O modo Simi está ativo')
 						samih.push(from)
 						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
-						reply(`\`\`\`Ativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*`)
+						reply('`\`\`\`Ativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
 					} else if ((args[0]) === 'off') {
 						samih.splice(from, 1)
 						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
-						reply(`\`\`\`✓Desativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*`)
+						reply('`\`\`\`✓Desativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
 					} else {
 						reply('On ativar, Off desativar')
 					}
