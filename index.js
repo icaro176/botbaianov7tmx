@@ -640,15 +640,15 @@ client.on('group-participants-update', async (anu) => {
 			switch(command) {
                      case 'play':
                   if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
                 reply(ind.wait())
-                anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=${VhtearKey}`)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
                if (anu.error) return reply(anu.error)
-                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Duração* : ${anu.result.duration}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
-                buffer = await getBuffer(anu.result.image)
-                lagu = await getBuffer(anu.result.mp3)
+                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', quoted: mek})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
                 break		
 				//premiom
 				case 'checkprem':
