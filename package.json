@@ -1,7 +1,7 @@
 {
-  "name": "XBOT",
-  "version": "1.0.0",
-  "description": "Xbot for whatsapp online with termux",
+  "name": "botbaianov8tmx",
+  "version": "0.0.2",
+  "description": "No comment",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -14,7 +14,7 @@
   "keywords": [
     "k"
   ],
-  "author": "affis junianto",
+  "author": "icaro176",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/icaro176/botbaianov8tmx.git"
@@ -25,7 +25,7 @@
 "homepage": "https://github.com/icaro176/botbaianov8tmx/readme",
 "license": "ISC",
 "dependencies": {
-    "@adiwajshing/baileys": "^3.3.0",
+    "@adiwajshing/baileys": "^3.4.1",
     "async": "^3.2.0",
     "axios": "^0.21.1",
     "cfonts": "^2.9.0",
