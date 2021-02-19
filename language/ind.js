@@ -149,6 +149,7 @@ exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp
 │≽ *${prefix}nulis* nome/nmr/txt
 │≽ *${prefix}translate* en/Bom Dia
 │≽ *${prefix}bitly* <link>
+│≽ *${prefix}tinyurl* <link>
 │≽ *${prefix}tahta* <texto>
 │≽ *${prefix}imoji*
 │≽ *${prefix}wink*
