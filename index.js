@@ -1140,9 +1140,12 @@ client.on('group-participants-update', async (anu) => {
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   if (!isGroup) return reply(ind.groupo())
+                   if (!isNsfw) return reply(ind.nsfwoff())
                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
                    buff = await getBuffer(anu.result)
                    client.sendMessage(from, buff, image, {quoted: mek})
+		   await limitAdd(sender)
                    break 
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
