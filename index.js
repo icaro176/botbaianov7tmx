@@ -1144,7 +1144,7 @@ client.on('group-participants-update', async (anu) => {
                    if (!isGroup) return reply(ind.groupo())
                    if (!isNsfw) return reply(ind.nsfwoff())
                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
-                   buff = await getBuffer(anu.result)
+                   pok = await getBuffer(anu.result)
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
