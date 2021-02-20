@@ -646,6 +646,7 @@ client.on('group-participants-update', async (anu) => {
 				break
                   case 'play':
                   case 'playmp3':
+                  play = body.slice(5)
                   if (!isRegistered) return reply(ind.noregis())
 		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
                 reply(ind.wait())
