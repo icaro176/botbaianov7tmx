@@ -644,7 +644,8 @@ client.on('group-participants-update', async (anu) => {
 				const cekExp = ms(getPremiumExpired(sender) - Date.now())
 				reply(`*「 PREMIUM EXPIRED 」*\n\n➸ *ID*: ${sender.split('@')[0]}\n➸ *Premium left*: ${cekExp.days} day(s) ${cekExp.hours} hour(s) ${cekExp.minutes} minute(s)`)
 				break
-                     case 'play':
+                  case 'play':
+                  case 'playmp3':
                   if (!isRegistered) return reply(ind.noregis())
 		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
                 reply(ind.wait())
@@ -1144,7 +1145,7 @@ client.on('group-participants-update', async (anu) => {
                    if (!isNsfw) return reply(ind.nsfwoff())
                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
                    buff = await getBuffer(anu.result)
-                   client.sendMessage(from, buff, image, {quoted: mek})
+                   client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
 				case 'tiktok':
@@ -1324,7 +1325,7 @@ client.on('group-participants-update', async (anu) => {
 				if (!isRegistered) return reply(ind.noregis())
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 				    const uangku = checkATMuser(sender)
-					await costum(help(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi), text, tescuk, cr)
+					await costum(help(pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role, premi, limitCounts), text, tescuk, cr)
 					break
 				case 'blocklist':
 				if (!isOwner) return reply(ind.ownerb())
@@ -1944,14 +1945,14 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (args.length < 1) return reply('Hmmmm')
-					if ((args[0]) === 'on') {
+					if ((args[0]) === '1') {
 						if (isSimi) return reply('O modo Simi está ativo')
 						samih.push(from)
-						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
+						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
 						reply('`\`\`\`Ativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
-					} else if ((args[0]) === 'off') {
+					} else if ((args[0]) === '0') {
 						samih.splice(from, 1)
-						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
+						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
 						reply('`\`\`\`✓Desativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
 					} else {
 						reply('On ativar, Off desativar')
