@@ -652,7 +652,7 @@ client.on('group-participants-update', async (anu) => {
                 reply(ind.wait())
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
                if (anu.error) return reply(anu.error)
-                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n╰───────────`
+                 infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
                 buffer = await getBuffer(anu.result.thumbnail)
                 lagu = await getBuffer(anu.result.url_audio)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
