@@ -1137,6 +1137,13 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
+              case 'randomkpop':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
+                   buff = await getBuffer(anu.result)
+                   client.sendMessage(from, buff, image, {quoted: mek})
+                   break 
 				case 'tiktok':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
