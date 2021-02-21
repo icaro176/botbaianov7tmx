@@ -1262,6 +1262,17 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
+                case 'kucing':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=kucing`, {method: 'get'})
+					reply(ind.wait())
+					n = JSON.parse(JSON.stringify(anu));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek , caption: '🐈'})
+					await limitAdd(sender) 
+					break 
               case 'hentai':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1288,6 +1299,16 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
+				case 'cshadow':
+					if (args.length < 1) return reply(mess.blank)
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					shad = body.slice(9)
+					reply(ind.wait())
+					ssha = await getBuffer(`https://api-anoncybfakeplayer.herokuapp.com/photooxy/shadowtext?text=${shad}`)
+					client.sendMessage(from, ssha, image, {caption: '>//<', quoted: mek})
+					await limitAdd(sender) 
+					break 
 				case 'tiktod':
 					if (args.length < 1) return reply('Onde está a url?')
                                 if (!isRegistered) return reply(ind.noregis())
