@@ -1431,11 +1431,11 @@ client.on('group-participants-update', async (anu) => {
 				case 'ssweb':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Cadê o url, mano?')
+					if (args.length < 1) return reply('Cadê a url?')
 					teks = `${body.slice(7)}`
 					reply(ind.wait())
-					anu = await fetchJson(`https://mhankbarbar.tech/api/url2image?tipe=tablet&url=${teks}&apiKey=${BarBarApi}`)
-					ssweb = await getBuffer(anu.result)
+					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
+					ssweb = await getBuffer(anu.gambar)
 					client.sendMessage(from, ssweb, image, {quoted: mek})
 					await limitAdd(sender)
 					break 
