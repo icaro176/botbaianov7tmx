@@ -658,6 +658,21 @@ client.on('group-participants-update', async (anu) => {
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
                 client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
                 break				
+            case 'smule':
+                  if (!isRegistered) return reply(ind.noregis())
+		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+					if (args.length < 1) return reply('Cadê o url, mano?')
+					if (!isUrl(args[0]) && !args[0].includes('c-ash.smule')) return reply(mess.error.Iv)
+					reply(ind.wait())
+					anu = await fetchJson(`https://mnazria.herokuapp.com/api/smule?link=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `*Título* : ${anu.title}\n\nEspere 1 minuto, talvez um pouco mais`
+					thumb = await getBuffer(anu.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek, caption: 'Download Completo'})
+					await limitAdd(sender) 	
+					break  
 				//qr 
 				case 'qrcode':
 				if (!isRegistered) return reply(ind.noregis())
@@ -1083,6 +1098,19 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek , caption: 'HEHE'})
 					await limitAdd(sender) 
 					break  
+			     case 'xvideos':
+                             if (!isRegistered) return reply(ind.noregis())
+                             if (isLimit(sender)) return reply(ind.limitend(pusname))
+			   reply(ind.wait())
+              	    if (args.length < 1) return reply('cadê o texto, mano?')
+                    anu = await fetchJson(`https://mnazria.herokuapp.com/api/porn?search=${body.slice(9)}`, {method: 'get'})
+                    teks = `===============\n`
+                    for (let b of anu.result) {
+                    teks += `• Título: ${b.title}\n• Info: ${b.info}\n• Link: ${b.link}\n===============\n`
+                    }
+                    reply(teks.trim())
+			     	await limitAdd(sender) 
+			     	break 
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1718,14 +1746,14 @@ break
              client.sendMessage(from, `[  🎰 | 777 ]\n-----------------\n\n${somtoy}\n${somtoy2}\n${somtoy3}\n\n[  🎰 | 777 ]`, text, {quoted: mek})
 	    break
 
-const sotoy = [
+                const sotoy = [
 		'🍊 : 🍒 : 🍐',
 		'🍒 : 🔔 : 🍊',
 		'🍇 : 🍒 : 🍐',
 		'🍊 : 🍋 : 🔔',
 		'🔔 : 🍒 : 🍐',
 		'🔔 : 🍒 : 🍊',
-        '🍊 : 🍋 : 🔔',		
+                '🍊 : 🍋 : 🔔',		
 		'🍐 : 🍒 : 🍋',
 		'🍐 : 🍐 : 🍐',
 		'🍊 : 🍒 : 🍒',
@@ -1747,7 +1775,7 @@ const sotoy = [
 		'🍊 : 🍋 : 🔔',
 		'🔔 : 🍒 : 🍐',
 		'🔔 : 🍒 : 🍊',
-        '🍊 : 🍋 : 🔔',		
+                '🍊 : 🍋 : 🔔',		
 		'🍐 : 🍒 : 🍋',
 		'🍐 : 🍐 : 🍐',
 		'🍊 : 🍒 : 🍒',
@@ -1769,7 +1797,7 @@ const sotoy = [
 		'🍊 : 🍋 : 🔔',
 		'🔔 : 🍒 : 🍐',
 		'🔔 : 🍒 : 🍊',
-        '🍊 : 🍋 : 🔔',		
+                '🍊 : 🍋 : 🔔',		
 		'🍐 : 🍒 : 🍋',
 		'🍐 : 🍐 : 🍐',
 		'🍊 : 🍒 : 🍒',
@@ -2116,7 +2144,7 @@ const sotoy = [
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}blackpink ${pushname}`)
 					pink = body.slice(11)
-					reply('BLACKPINK :v')
+					reply('AGUARDE :v')
 					lol = await getBuffer(`https://vinz.zeks.xyz/api/blackpink?text=${pink}`)
 					client.sendMessage(from, lol, image, {quoted: mek})
 					await limitAdd(sender)
