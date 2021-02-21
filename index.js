@@ -717,25 +717,27 @@ client.on('group-participants-update', async (anu) => {
 					reply('A Letra da musica '+teks+' é :\n\n'+anu.result.lirik)
 					await limitAdd(sender) 
 					break 
-							case 'ttp': //By NOIR X RAMLAN ID
-							pngttp = './temp/ttp.png'
-							webpng = './temp/ttp.webp'
-							const ttptext = body.slice(5)
-							fetch(`https://api.areltiyan.site/sticker_maker?text=${ttptext}`, { method: 'GET'})
-							.then(async res => {
-							const ttptxt = await res.json()
-							console.log("RAMLANID")
-							base64Img.img(ttptxt.base64, 'temp', 'ttp', function(err, filepath) {
-							if (err) return console.log(err);
-							exec(`ffmpeg -i ${pngttp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${webpng}`, (err) => {
-							buffer = fs.readFileSync(webpng)
-							client.sendMessage(from, buffer, sticker)
-							fs.unlinkSync(webpng)
-							fs.unlinkSync(pngttp)
-							})
-							})
-							});
-							break
+				case 'ttp':
+				if (isBanned) return reply(mess.only.benned)    
+				if (!isUser) return reply(mess.only.userB)
+				if (!isPublic) return reply(mess.only.publikG)
+				if (isLimit(sender)) return reply(limitend(pushname2))
+					if (args.length < 1) return reply('*Onde está o texto, tio?*')
+					ranp = getRandom('.png')
+					rano = getRandom('.webp')
+					teks = body.slice(5).trim()
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ttp?kata=halo`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					reply(mess.wait)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						bufferhgf = fs.readFileSync(rano)
+						frhan.sendMessage(from, bufferhgf, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break  
                 case 'chord':
 		if (!isOwner) return reply(ind.ownerb())
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=BotWeA`)
@@ -1150,7 +1152,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'igstalk':
                    if (!isRegistered) return reply(ind.noregis())
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     data = await fetchJson(`https://ferdiz-api.herokuapp.com/api/stalkig/user/name=${body.slice(9)}`)
+                     data = await fetchJson(`https://st4rz.herokuapp.com/api/stalk?username=${body.slice(9)}`)
                      buffer = await getBuffer(data.img)
                      hasil = `Nome : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nPrivado : ${hmm.data.private}\nVerificado : ${hmm.data.verified}\nBio : ${hmm.data.bio}`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
@@ -1291,6 +1293,33 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
+              case 'waifu':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://st4rz.herokuapp.com/api/waifu`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case 'nekonime2':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://st4rz.herokuapp.com/api/nekonime`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case '1cak':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://st4rz.herokuapp.com/api/1cak`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1354,32 +1383,26 @@ client.on('group-participants-update', async (anu) => {
 					await limitAdd(sender)
 					break 
 				case 'ytmp4':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Cadê a url?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
-					anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/ytv?url=${args[0]}`, {method: 'get'})
+					if (args.length < 1) return reply('Onde está o url, hum?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
+					teks = `*Título* : ${anu.title}\n\n*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
-					await limitAdd(sender)
-				break 
+					break
 				case 'ytmp3':
-                    if (!isRegistered) return reply(ind.noregis())
-                    if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('Onde está o url, hum?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf())
-					anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/yta?url=${args[0]}`, {method: 'get'})
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/yta?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
+					teks = `*Título* : ${anu.title}\n❏ *Tamanho* : ${anu.filesize}\n\nO ÁUDIO ESTÁ SENDO ENVIADO, AGUARDE...`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-					await limitAdd(sender)
 					break
 				case 'translate':
 				case 'translete':
