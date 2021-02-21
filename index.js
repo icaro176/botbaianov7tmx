@@ -1380,6 +1380,7 @@ case 'asupan':
                                 case 'bj':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (!isNsfw) return reply(ind.nsfwoff())
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://nekos.life/api/v2/img/bj', {method: 'get'})
@@ -1393,7 +1394,7 @@ case 'asupan':
 					})
 					await limitAdd(sender)
 					break
-              case 'fox_girl':
+              case 'foxgirl':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
 		if (!isNsfw) return reply(ind.nsfwoff())
