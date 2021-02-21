@@ -1080,15 +1080,6 @@ case 'asupan':
                 client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${data.result.title}.mp3`, quoted: mek})
                 await limitAdd(sender)
                 break
-				case 'igstalk':
-                   if (!isRegistered) return reply(ind.noregis())
-                   if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     data = await fetchJson(`https://st4rz.herokuapp.com/api/stalk?username=${body.slice(9)}`)
-                     buffer = await getBuffer(data.img)
-                     hasil = `Nome : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nPrivado : ${hmm.data.private}\nVerificado : ${hmm.data.verified}\nBio : ${hmm.data.bio}`
-                    client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
-                    await limitAdd(sender)
-		    break 
 				//daftar 
 				case 'daftar':
                 if (isRegistered) return  reply(ind.rediregis())
@@ -1224,15 +1215,6 @@ case 'asupan':
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
-              case 'waifu':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://st4rz.herokuapp.com/api/waifu`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
               case 'nekonime2':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1247,134 +1229,6 @@ case 'asupan':
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
 		if (!isNsfw) return reply(ind.nsfwoff())
                    anu = await fetchJson(`https://st4rz.herokuapp.com/api/1cak`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-              case 'koten':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/dewasa`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-              case 'wallpaper':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/wallpaper`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-                                case 'pussy':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
-					ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-					anu = await fetchJson('https://nekos.life/api/v2/img/pussy', {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break
-              case 'pussyjpg':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/pussy_jpg`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-              case 'avatar':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/avatar`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-              case 'nsfwavatar':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/nsfw_avatar`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-              case 'yuri':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/yuri`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
-                                case 'anal':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
-					ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-					anu = await fetchJson('https://nekos.life/api/v2/img/anal', {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break
-                                case 'baka':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-					anu = await fetchJson('https://nekos.life/api/v2/img/baka', {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break
-                                case 'bj':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
-					ranp = getRandom('.gif')
-					rano = getRandom('.webp')
-					anu = await fetchJson('https://nekos.life/api/v2/img/bj', {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(ind.stikga())
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break
-              case 'foxgirl':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://nekos.life/api/v2/img/fox_girl`, {method: 'get'})
                    pok = await getBuffer(anu.result)
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
@@ -1434,24 +1288,13 @@ case 'asupan':
 				case 'ytmp4':
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv?url=${args[0]}`, {method: 'get'})
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*Título* : ${anu.title}\n\n*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...*`
+					teks = `*❏ Título* : ${anu.title}\n\n*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
-					break
-				case 'ytmp3':
-					if (args.length < 1) return reply('Onde está o url, hum?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/yta?url=${args[0]}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					teks = `*Título* : ${anu.title}\n❏ *Tamanho* : ${anu.filesize}\n\nO ÁUDIO ESTÁ SENDO ENVIADO, AGUARDE...`
-					thumb = await getBuffer(anu.thumb)
-					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				case 'translate':
 				case 'translete':
