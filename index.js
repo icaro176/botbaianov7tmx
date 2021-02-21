@@ -678,25 +678,25 @@ client.on('group-participants-update', async (anu) => {
 					reply('A Letra da musica '+teks+' é :\n\n'+anu.result.lirik)
 					await limitAdd(sender) 
 					break 
-				case 'ttp':
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('*Onde está o texto, tio?*')
-				        ranp = getRandom('.png')
-					rano = getRandom('.webp')
-					teks = body.slice(5).trim()
-					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarApi}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					reply(ind.wait())
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						bufferhgf = fs.readFileSync(rano)
-						client.sendMessage(from, bufferhgf, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break
+							case 'ttp': //By NOIR X RAMLAN ID
+							pngttp = './temp/ttp.png'
+							webpng = './temp/ttp.webp'
+							const ttptext = body.slice(5)
+							fetch(`https://api.areltiyan.site/sticker_maker?text=${ttptext}`, { method: 'GET'})
+							.then(async res => {
+							const ttptxt = await res.json()
+							console.log("RAMLANID")
+							base64Img.img(ttptxt.base64, 'temp', 'ttp', function(err, filepath) {
+							if (err) return console.log(err);
+							exec(`ffmpeg -i ${pngttp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${webpng}`, (err) => {
+							buffer = fs.readFileSync(webpng)
+							client.sendMessage(from, buffer, sticker)
+							fs.unlinkSync(webpng)
+							fs.unlinkSync(pngttp)
+							})
+							})
+							});
+							break
                 case 'chord':
 		if (!isOwner) return reply(ind.ownerb())
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=BotWeA`)
@@ -1156,6 +1156,30 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender) 
 					break 
+				case 'pornhub':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				var gh = body.slice(9)
+				var porn = gh.split("&")[0];
+				var hub = gh.split("&")[1];
+				if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}pornhub bot & baiano`)
+				reply(ind.wait())
+				alan = await getBuffer(`https://vinz.zeks.xyz/api/pornhub?text1=${porn}&text2=${hub}`)
+				client.sendMessage(from, alan, image, {quoted: mek})
+				await limitAdd(sender)
+				break
+                case 'glitchtext':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					var gh = body.slice(12)
+					var gli = gh.split("&")[0];
+					var tch = gh.split("&")[1];
+					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}glitchtext bot & baiano`)
+					reply(ind.wait())
+					buffer = await getBuffer(`https://api.zeks.xyz/api/gtext?text1=${gli}&text2=${tch}&apikey=apivinz`)
+					client.sendMessage(from, buffer, image, {quoted: mek})
+					await limitAdd(sender)
+					break
 				//fadli 
 				case 'pinterest':
 					if (!isRegistered) return reply(ind.noregis())
@@ -1670,6 +1694,80 @@ client.on('group-participants-update', async (anu) => {
 				client.sendMessage(from, 'Porcentagem Gay: *'+rate+'*\n\nResposta : '+kl+'', text, { quoted: mek })
 				await limitAdd(sender) 
 				break  				
+                case 'slot':
+          const somtoy = sotoy[Math.floor(Math.random() * (sotoy.length))]	
+          const somtoy2 = sotoy2[Math.floor(Math.random() * (sotoy2.length))]	
+          const somtoy3 = sotoy3[Math.floor(Math.random() * (sotoy3.length))]	
+             client.sendMessage(from, `[  🎰 | 777 ]\n-----------------\n\n${somtoy}\n${somtoy2}\n${somtoy3}\n\n[  🎰 | 777 ]`, text, {quoted: mek})
+	    break
+
+const sotoy = [
+		'🍊 : 🍒 : 🍐',
+		'🍒 : 🔔 : 🍊',
+		'🍇 : 🍒 : 🍐',
+		'🍊 : 🍋 : 🔔',
+		'🔔 : 🍒 : 🍐',
+		'🔔 : 🍒 : 🍊',
+        '🍊 : 🍋 : 🔔',		
+		'🍐 : 🍒 : 🍋',
+		'🍐 : 🍐 : 🍐',
+		'🍊 : 🍒 : 🍒',
+		'🔔 : 🔔 : 🍇',
+		'🍌 : 🍒 : 🔔',
+		'🍐 : 🔔 : 🔔',
+		'🍊 : 🍋 : 🍒',
+		'🍋 : 🍋 : 🍌',
+		'🔔 : 🔔 : 🍇',
+		'🔔 : 🍐 : 🍇',
+		'🔔 : 🔔 : 🔔',
+		'🍒 : 🍒 : 🍒',
+		'🍌 : 🍌 : 🍌'
+		]
+		const sotoy2 = [
+		'🍊 : 🍒 : 🍐',
+		'🍒 : 🔔 : 🍊',
+		'🍇 : 🍒 : 🍐',
+		'🍊 : 🍋 : 🔔',
+		'🔔 : 🍒 : 🍐',
+		'🔔 : 🍒 : 🍊',
+        '🍊 : 🍋 : 🔔',		
+		'🍐 : 🍒 : 🍋',
+		'🍐 : 🍐 : 🍐',
+		'🍊 : 🍒 : 🍒',
+		'🔔 : 🔔 : 🍇',
+		'🍌 : 🍒 : 🔔',
+		'🍐 : 🔔 : 🔔',
+		'🍊 : 🍋 : 🍒',
+		'🍋 : 🍋 : 🍌',
+		'🔔 : 🔔 : 🍇',
+		'🔔 : 🍐 : 🍇',
+		'🔔 : 🔔 : 🔔',
+		'🍒 : 🍒 : 🍒',
+		'🍌 : 🍌 : 🍌'
+		]
+		const sotoy3 = [
+		'🍊 : 🍒 : 🍐',
+		'🍒 : 🔔 : 🍊',
+		'🍇 : 🍒 : 🍐',
+		'🍊 : 🍋 : 🔔',
+		'🔔 : 🍒 : 🍐',
+		'🔔 : 🍒 : 🍊',
+        '🍊 : 🍋 : 🔔',		
+		'🍐 : 🍒 : 🍋',
+		'🍐 : 🍐 : 🍐',
+		'🍊 : 🍒 : 🍒',
+		'🔔 : 🔔 : 🍇',
+		'🍌 : 🍒 : 🔔',
+		'🍐 : 🔔 : 🔔',
+		'🍊 : 🍋 : 🍒',
+		'🍋 : 🍋 : 🍌',
+		'🔔 : 🔔 : 🍇',
+		'🔔 : 🍐 : 🍇',
+		'🔔 : 🔔 : 🔔',
+		'🍒 : 🍒 : 🍒',
+		'🍌 : 🍌 : 🍌'
+		]
+
 				case 'ocr': 
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
