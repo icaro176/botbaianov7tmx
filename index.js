@@ -644,6 +644,30 @@ client.on('group-participants-update', async (anu) => {
 				const cekExp = ms(getPremiumExpired(sender) - Date.now())
 				reply(`*「 PREMIUM EXPIRED 」*\n\n➸ *ID*: ${sender.split('@')[0]}\n➸ *Premium left*: ${cekExp.days} day(s) ${cekExp.hours} hour(s) ${cekExp.minutes} minute(s)`)
 				break
+		case 'join':
+					if (args.length == 0) return reply(from, `desculpe, este bot só pode ser atribuído a grupos`, text)
+					let linkgrup = `${body.slice(6)}`
+					let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
+					let chekgrup = await client.inviteInfo(linkgrup)
+					if (!islink) return reply(from, 'Desculpe, o link do grupo está errado!', id)
+					if (!isOwner) {
+					  await client.joinGroupViaLink(linkgrup)
+					    .then(async () => {
+					      client.sendMessage(from, 'Entrou no grupo com sucesso via link!', text)
+					    })
+					} else {
+					  let cgrup = await client.getAllGroups()
+					  if (cgrup.length > groupLimit) return client.reply(from, `Desculpe, o grupo não é válido`, id)
+					  if (cgrup.size < memberLimit) return client.reply(from, `Desculpe, o Bot não entrará se os membros do grupo não excederem ${memberLimit} pessoas`, id)
+					  await client.joinGroupViaLink(linkgrup)
+					    .then(async () => {
+					      reply('Entrou no grupo com sucesso via link!')
+					    })
+					    .catch(() => {
+					      reply('Fracassado!')
+					    })
+					}
+					break 
                   case 'play':
                   case 'playmp3':
                   play = body.slice(5)
