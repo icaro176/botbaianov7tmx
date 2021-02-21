@@ -731,6 +731,15 @@ client.on('group-participants-update', async (anu) => {
                 reply(hasil)
                 await limitAdd(sender)
                 break
+            case 'tinyurl':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+               client.updatePresence(from, Presence.composing) 
+                data = await fetchJson(`https://ferdiz-api.herokuapp.com/api/shorturl?link=${args[0]}`)
+                hasil = `${data.result}`
+                reply(hasil)
+                await limitAdd(sender)
+                break
 			case 'textstyle':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -925,7 +934,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'naruto':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Naruto`, {method: 'get'})
 					naru = JSON.parse(JSON.stringify(anu));
@@ -937,7 +945,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'minato':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Minato`, {method: 'get'})
 					min = JSON.parse(JSON.stringify(anu));
@@ -949,7 +956,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'boruto':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Boruto`, {method: 'get'})
 					bor = JSON.parse(JSON.stringify(anu));
@@ -961,7 +967,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'hinata':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Hinata`, {method: 'get'})
 					hina = JSON.parse(JSON.stringify(anu));
@@ -973,7 +978,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'sakura':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sakura`, {method: 'get'})
 					sak = JSON.parse(JSON.stringify(anu));
@@ -985,7 +989,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'sasuke':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sasuke`, {method: 'get'})
 					sasu = JSON.parse(JSON.stringify(anu));
@@ -997,7 +1000,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'kaneki':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.vhtear.com/pinterest?query=kaneki&apikey=${VthearApi}`, {method: 'get'})
 					var ka = JSON.parse(JSON.stringify(anu.result));
@@ -1009,7 +1011,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'toukachan':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+touka`, {method: 'get'})
 					tou = JSON.parse(JSON.stringify(anu));
@@ -1021,7 +1022,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'rize':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+rize`, {method: 'get'})
 					ri = JSON.parse(JSON.stringify(anu));
@@ -1033,7 +1033,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'akira':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+akira`, {method: 'get'})
 					ak = JSON.parse(JSON.stringify(anu));
@@ -1045,7 +1044,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'itori':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+itori`, {method: 'get'})
 					it = JSON.parse(JSON.stringify(anu));
@@ -1057,7 +1055,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'kurumi':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+karumi`, {method: 'get'})
 					kur = JSON.parse(JSON.stringify(anu));
@@ -1069,7 +1066,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'miku':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+miku`, {method: 'get'})
 					mi = JSON.parse(JSON.stringify(anu));
@@ -1081,7 +1077,6 @@ client.on('group-participants-update', async (anu) => {
               case 'anime':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-                if (!isNsfw) return reply(ind.nsfwoff())
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime?apikey=${TobzApi}`, {method: 'get'})
 					reply(ind.wait())
 					pok = await getBuffer(anu.result)
@@ -1196,8 +1191,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'pokemon':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   if (!isGroup) return reply(ind.groupo())
-                   if (!isNsfw) return reply(ind.nsfwoff())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=pokemon`, {method: 'get'})
 					reply(ind.wait())
 					var n = JSON.parse(JSON.stringify(anu));
@@ -1209,8 +1202,6 @@ client.on('group-participants-update', async (anu) => {
                 case 'anjing':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   if (!isGroup) return reply(ind.groupo())
-                   if (!isNsfw) return reply(ind.nsfwoff())
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
 					reply(ind.wait())
 					var n = JSON.parse(JSON.stringify(anu));
@@ -1219,11 +1210,27 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					await limitAdd(sender)
 					break
+              case 'hentai':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/anime/hentai`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case 'nekonime':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/nekonime`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   if (!isGroup) return reply(ind.groupo())
-                   if (!isNsfw) return reply(ind.nsfwoff())
                    anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomkpop?apikey=${TobzApi}`, {method: 'get'})
                    pok = await getBuffer(anu.result)
                    client.sendMessage(from, pok, image, {quoted: mek})
@@ -1278,7 +1285,7 @@ client.on('group-participants-update', async (anu) => {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('Cadê a url?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp4?url=${args[0]}`, {method: 'get'})
+					anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/ytv?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
@@ -1292,7 +1299,7 @@ client.on('group-participants-update', async (anu) => {
                     if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf())
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${args[0]}`, {method: 'get'})
+					anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/yta?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Título* : ${anu.title}\n*Tamanho* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
