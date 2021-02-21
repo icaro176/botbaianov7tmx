@@ -697,6 +697,19 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek, caption: 'Download Completo'})
 					await limitAdd(sender) 	
 					break  
+case 'asupan':
+				client.updatePresence(from, Presence.composing) 
+                                if (!isRegistered) return reply(ind.noregis())
+		                if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+				reply(ind.wait())
+				 data = fs.readFileSync('./lib/asupan.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 asupan = await getBuffer(randKey.result)
+                 client.sendMessage(from, asupan, video, {quoted: mek, caption: '\`\`\`TIK TOK\`\`\`'})
+				await limitAdd(sender) 
+				break  
 				//qr 
 				case 'qrcode':
 				if (!isRegistered) return reply(ind.noregis())
@@ -2152,7 +2165,7 @@ break
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}blackpink ${pushname}`)
 					pink = body.slice(11)
-					reply('AGUARDE :v')
+					reply('*AGUARDE :v*')
 					lol = await getBuffer(`https://vinz.zeks.xyz/api/blackpink?text=${pink}`)
 					client.sendMessage(from, lol, image, {quoted: mek})
 					await limitAdd(sender)
