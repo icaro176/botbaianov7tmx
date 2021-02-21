@@ -1422,6 +1422,16 @@ client.on('group-participants-update', async (anu) => {
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                   client.sendMessage(from, '*Contato*',MessageType.text, { quoted: mek} )
 					break
+case 'hartatahta':
+if (!isRegistered) return reply(ind.noregis())
+if (isLimit(sender)) return reply(ind.limitend(pusname))
+if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}hartatahta Bot`)
+har = body.slice(12)
+reply('「❗」Harta Tahta :v')
+buffer = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${har}&apikey=apivinz`)
+client.sendMessage(from, buffer, image, {quoted: mek})
+await limitAdd(sender)
+break
                 case 'fitnah':
                  if (isLimit(sender)) return reply(ind.limitend(pusname))
 				if (!isRegistered) return reply(ind.noregis())
