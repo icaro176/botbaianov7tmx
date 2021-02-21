@@ -1284,6 +1284,124 @@ case 'asupan':
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
+              case 'wallpaper':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/wallpaper`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+                                case 'pussy':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (!isNsfw) return reply(ind.nsfwoff())
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson('https://nekos.life/api/v2/img/pussy', {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(ind.stikga())
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break
+              case 'pussyjpg':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/pussy_jpg`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case 'avatar':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/avatar`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case 'nsfwavatar':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/nsfw_avatar`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+              case 'yuri':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/yuri`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
+                                case 'anal':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (!isNsfw) return reply(ind.nsfwoff())
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson('https://nekos.life/api/v2/img/anal', {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(ind.stikga())
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break
+                                case 'baka':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson('https://nekos.life/api/v2/img/baka', {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(ind.stikga())
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break
+                                case 'bj':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					ranp = getRandom('.gif')
+					rano = getRandom('.webp')
+					anu = await fetchJson('https://nekos.life/api/v2/img/bj', {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(ind.stikga())
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					await limitAdd(sender)
+					break
+              case 'fox_girl':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://nekos.life/api/v2/img/fox_girl`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
