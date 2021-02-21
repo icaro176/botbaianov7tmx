@@ -718,10 +718,8 @@ client.on('group-participants-update', async (anu) => {
 					await limitAdd(sender) 
 					break 
 				case 'ttp':
-				if (isBanned) return reply(mess.only.benned)    
-				if (!isUser) return reply(mess.only.userB)
-				if (!isPublic) return reply(mess.only.publikG)
-				if (isLimit(sender)) return reply(limitend(pushname2))
+				if (!isRegistered) return reply(ind.noregis())                                
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('*Onde está o texto, tio?*')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -808,62 +806,6 @@ client.on('group-participants-update', async (anu) => {
 					})
 					await limitAdd(sender)
 					break 
-				case 'slowmo':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-				encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-				media = await client.downloadAndSaveMediaMessage(encmedia)
-				ran = getRandom('.mp3')
-				exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=44100" ${ran}`, (err, stderr, stdout) => {
-				fs.unlinkSync(media)
-				if (err) return reply('Error!')
-				uhh = fs.readFileSync(ran)
-				client.sendMessage(from, uhh, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-				fs.unlinkSync(ran)
-				})
-				break
-				case 'tupai':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp3')
-					exec(`ffmpeg -i ${media} -filter:a "atempo=0.5,asetrate=65100" ${ran}`, (err, stderr, stdout) => {
-						fs.unlinkSync(media)
-						if (err) return reply('Error!')
-						hah = fs.readFileSync(ran)
-						client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-						fs.unlinkSync(ran)
-					})
-				break
-				case 'gemok':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp3')
-					exec(`ffmpeg -i ${media} -filter:a "atempo=1.6,asetrate=22100" ${ran}`, (err, stderr, stdout) => {
-						fs.unlinkSync(media)
-						if (err) return reply('Error!')
-						hah = fs.readFileSync(ran)
-						client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-						fs.unlinkSync(ran)
-					})
-				break
-				case 'ngebass':                 
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp3')
-					exec(`ffmpeg -i ${media} -af equalizer=f=94:width_type=o:width=2:g=30 ${ran}`, (err, stderr, stdout) => {
-						fs.unlinkSync(media)
-						if (err) return reply('Error!')
-						hah = fs.readFileSync(ran)
-						client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-						fs.unlinkSync(ran)
-					})
-					break
                 case 'nangis':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1320,6 +1262,15 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
+              case 'koten':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+		if (!isNsfw) return reply(ind.nsfwoff())
+                   anu = await fetchJson(`https://ferdiz-api.herokuapp.com/api/dewasa`, {method: 'get'})
+                   pok = await getBuffer(anu.result)
+                   client.sendMessage(from, pok, image, {quoted: mek})
+		   await limitAdd(sender)
+                   break 
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1328,16 +1279,6 @@ client.on('group-participants-update', async (anu) => {
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
-				case 'cshadow':
-					if (args.length < 1) return reply(mess.blank)
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					shad = body.slice(9)
-					reply(ind.wait())
-					ssha = await getBuffer(`https://api-anoncybfakeplayer.herokuapp.com/photooxy/shadowtext?text=${shad}`)
-					client.sendMessage(from, ssha, image, {caption: '>//<', quoted: mek})
-					await limitAdd(sender) 
-					break 
 				case 'tiktod':
 					if (args.length < 1) return reply('Onde está a url?')
                                 if (!isRegistered) return reply(ind.noregis())
