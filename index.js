@@ -572,7 +572,7 @@ client.on('group-participants-update', async (anu) => {
         }
  
 				//function antilink 
-				if (messagesC.includes("http","https","http://","https://")){
+				if (messagesC.includes("http","https","http://","https://","url","www","html","youtube","youtube.com","html.com",".com","google","google.com","open","xvideos","xvideos.com","pornhub","pornhub.com","xnxx","xnxx.com","suaurl","seulink","seulink.net","bit.ly","m.kwai","m.kwai.apps","kwai.com","encurta.net","facebook.com","shorte.be","mediafire","mediafire.com","chat.whatsapp.com/")){
 					if (!isGroup) return
 					if (!isAntiLink) return
 					if (isGroupAdmins) return reply('Link Detectado! \nVocê é um administrador do grupo, por isso não será banido')
