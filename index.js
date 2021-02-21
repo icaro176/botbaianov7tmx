@@ -1429,17 +1429,16 @@ client.on('group-participants-update', async (anu) => {
                    await limitAdd(sender)
 					break 
 				case 'ssweb':
-				if (!isOwner) return reply(ind.ownerb())
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Urlnya mana om')
-					teks = body.slice(7)
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply('Cadê o url, mano?')
+					teks = `${body.slice(7)}`
 					reply(ind.wait())
-					anu = await fetchJson(`https://mnazria.herokuapp.com/api/screenshotweb?url=${teks}`)
-					buff = await getBuffer(anu.gambar)
-					client.sendMessage(from, buff, image, {quoted: mek})
+					anu = await fetchJson(`https://mhankbarbar.tech/api/url2image?tipe=tablet&url=${teks}&apiKey=${BarBarApi}`)
+					ssweb = await getBuffer(anu.result)
+					client.sendMessage(from, ssweb, image, {quoted: mek})
 					await limitAdd(sender)
-					break
+					break 
 				case 'map':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
