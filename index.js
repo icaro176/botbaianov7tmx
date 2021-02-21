@@ -575,11 +575,11 @@ client.on('group-participants-update', async (anu) => {
 				if (messagesC.includes("http","https","http://","https://")){
 					if (!isGroup) return
 					if (!isAntiLink) return
-					if (isGroupAdmins) return reply('*${pushname}* \nLink Detectado! \nVocê é um administrador do grupo, por isso não será banido')
+					if (isGroupAdmins) return reply('Link Detectado! \nVocê é um administrador do grupo, por isso não será banido')
 					client.updatePresence(from, Presence.composing)
 					if (messagesC.includes("#Permissão do chefe")) return reply("Sim, sem spam")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-						reply(`⚠️Link Detectado⚠️\n${sender.split("@")[0]} você será banido em 5 segundos`)
+						reply(`⚠️Link Detectado⚠️\n${sender.split("@")[0]}\nVocê será banido em 5 segundos`)
 						setTimeout( () => {
 						client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
@@ -2097,7 +2097,7 @@ const sotoy = [
 				case 'welcome':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Use ${prefix}welcome 1')
+					if (args.length < 1) return reply('Hmmmm')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('*Welcome já está ativo* !!!')
 						welkom.push(from)
@@ -2116,7 +2116,7 @@ const sotoy = [
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}blackpink ${pushname}`)
 					pink = body.slice(11)
-					reply('「❗」BLACKPINK :v')
+					reply('BLACKPINK :v')
 					lol = await getBuffer(`https://vinz.zeks.xyz/api/blackpink?text=${pink}`)
 					client.sendMessage(from, lol, image, {quoted: mek})
 					await limitAdd(sender)
@@ -2130,11 +2130,11 @@ const sotoy = [
 						if (isSimi) return reply('O modo Simi está ativo')
 						samih.push(from)
 						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
-						reply('`\`\`\`Ativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
+						reply('*❬ SUCESSO ❭ ativou modo simi neste grupo*')
 					} else if ((args[0]) === '0') {
 						samih.splice(from, 1)
 						fs.writeFileSync('./database/bot/simi.json', JSON.stringify(samih))
-						reply('`\`\`\`✓Desativado o modo simi com sucesso no grupo\`\`\` *${groupMetadata.subject}*')
+						reply('*❬ SUCESSO ❭ desativou modo simi neste grupo*')
 					} else {
 						reply('On ativar, Off desativar')
 					}
@@ -2142,7 +2142,7 @@ const sotoy = [
 				case 'nsfw':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Use ${prefix}nsfw 1')
+					if (args.length < 1) return reply('Hmmmm')
 					if (Number(args[0]) === 1) {
 						if (isNsfw) return reply(' *NSFW JÁ ESTÁ ATIVO*  !!')
 						nsfw.push(from)
@@ -2159,7 +2159,7 @@ const sotoy = [
                 case 'leveling':
                 if (!isGroup) return reply(ind.groupo())
                 if (!isGroupAdmins) return reply(ind.admin())
-                if (args.length < 1) return reply('Use ${prefix}leveling enable')
+                if (args.length < 1) return reply('Hmmmm')
                 if (args[0] === 'enable') {
                 if (isLevelingOn) return reply('*o recurso de nível já estava ativo antes*')
                  	   _leveling.push(from)
@@ -2176,7 +2176,7 @@ const sotoy = [
 				case 'nobadword':
                     if (!isGroup) return reply(ind.groupo())
                 if (!isGroupAdmins) return reply(ind.admin())
-                if (args.length < 1) return reply('Use ${prefix}nobadword enable')
+                if (args.length < 1) return reply('Hmmmm')
                 if (args[0] === 'enable') {
                 if (isBadWord) return reply('*O recurso de palavrões estava ativo antes*')
                  	   badword.push(from)
@@ -2314,7 +2314,7 @@ const sotoy = [
 					break 
 				case 'antilink':
 					if (!isGroup) return reply(ind.groupo())
-					if (!isOwner) return reply(ind.ownerb())
+					if (!isGroupAdmins) return reply(ind.admin())
 					if (args.length < 1) return reply('Use ${prefix}antilink 1')
 					if (Number(args[0]) === 1) {
 						if (isEventon) return reply('*ANTILINK JÁ ESTÁ ATIVO*')
