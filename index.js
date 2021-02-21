@@ -1247,7 +1247,7 @@ case 'asupan':
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL INVÁLIDA')
 					anu = await fetchJson(`https://api.zeks.xyz/api/tiktok?url=${args[0]}&apikey=apivinz`,)
-					reply('[AGUARDE] EM PROCESSO')
+					reply('*[AGUARDE] EM PROCESSO*')
 					rmln = await getBuffer(anu.result.result.server_1)
 					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', quoted: mek})
 					await limitAdd(sender)
