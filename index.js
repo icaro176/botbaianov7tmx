@@ -1068,6 +1068,24 @@ case 'asupan':
                     reply(teks.trim())
 			     	await limitAdd(sender) 
 			     	break 
+				case 'fb':
+				  frhan.updatePresence(from, Presence.composing)
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+					if (args.length < 1) return reply('Cadê o url, mano?')
+					if (!isUrl(args[0]) && !args[0].includes('https://www.facebook.com')) return reply(mess.error.Iv)
+					reply(mess.wait)
+					anu = await fetchJson(`http://arugaz.my.id/api/media/facebook?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					frhan.sendMessage(from, '[ AGUARDE ] Sendo processado\n\no link é apenas do Google, mano, então pode ser baixado', text, {quoted: mek})
+					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nDipublikasikan Pada: *${anu.published}*`
+					tefbe = await getBuffer(anu.thumb)
+					frhan.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
+					buffer = await getBuffer(anu.result)
+					frhan.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
+					await limitAdd(sender) 
+					break 
 				case 'ytsearch':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1236,15 +1254,6 @@ case 'asupan':
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
-              case '1cak':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		if (!isNsfw) return reply(ind.nsfwoff())
-                   anu = await fetchJson(`https://st4rz.herokuapp.com/api/1cak`, {method: 'get'})
-                   pok = await getBuffer(anu.result)
-                   client.sendMessage(from, pok, image, {quoted: mek})
-		   await limitAdd(sender)
-                   break 
               case 'randomkpop':
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1257,10 +1266,21 @@ case 'asupan':
 					if (args.length < 1) return reply('Onde está a url?')
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL INVÁLIDA')
+					if(!isUrl(args[0]) && !args[0].includes('https')) return reply('URL INVÁLIDA')
 					anu = await fetchJson(`https://api.zeks.xyz/api/tiktok?url=${args[0]}&apikey=apivinz`,)
 					reply('*[AGUARDE] EM PROCESSO*')
 					rmln = await getBuffer(anu.result.result.server_1)
+					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', quoted: mek})
+					await limitAdd(sender)
+					break
+				case 'twvid':
+					if (args.length < 1) return reply('Onde está a url?')
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if(!isUrl(args[0]) && !args[0].includes('https')) return reply('URL INVÁLIDA')
+					anu = await fetchJson(`http://arugaz.my.id/api/media/twvid?url=${args[0]}`,)
+					reply('*[AGUARDE] EM PROCESSO*')
+					rmln = await getBuffer(anu.result)
 					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', quoted: mek})
 					await limitAdd(sender)
 					break
@@ -1298,6 +1318,8 @@ case 'asupan':
 					await limitAdd(sender)
 					break 
 				case 'ytmp3':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`http://arugaz.my.id/api/media/ytaudio?url=${args[0]}`, {method: 'get'})
@@ -1309,6 +1331,8 @@ case 'asupan':
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				case 'ytmp4':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
@@ -1950,12 +1974,12 @@ break
 					}
 					await limitAdd(sender)
 				break
-                   case 'stalktwitt':
+                   case 'igstalk':
                    if (!isRegistered) return reply(ind.noregis())
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     hmm = await fetchJson(`http://arugaz.my.id/api/media/stalktwitt?user=${body.slice(9)}`)
-                     buffer = await getBuffer(hmm.data.profilehd)
-                     hasil = `Nome completo : ${hmm.data.fullname}\nseguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nPrivado : ${hmm.data.private}\nVerificado : ${hmm.data.verified}\nbio : ${hmm.data.bio}`
+                     hmm = await fetchJson(`http://arugaz.my.id/api/media/stalkig?user=${body.slice(9)}`)
+                     buffer = await getBuffer(hmm.data.profile_picture)
+                     hasil = `Nome completo : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nbio : ${hmm.data.biography}`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
                     await limitAdd(sender)
 					break
