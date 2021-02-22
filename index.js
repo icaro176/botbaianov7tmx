@@ -1311,17 +1311,13 @@ case 'asupan':
 				    client.sendMessage(from, translate, text, {quoted: mek})
 				   await limitAdd(sender)
 				   break
-                case 'text3d':
-		if (!isOwner) return reply(ind.ownerb())
+				case '3dtext':
+                data = await await getBuffer(`https://arugaz.my.id/api/flamingtext/text3d?text=${body.slice(8)}`)
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-              	    if (args.length < 1) return reply('Cadê o texto?')
-                    teks = `${body.slice(8)}`
-                    if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
-                    buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
-                    client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
-			     	await limitAdd(sender)
-				break
+                client.sendMessage(from, data, image, {quoted: mek, caption: body.slice(8)})
+                await limitAdd(sender)
+                break
 			    case 'fototiktok':
 				if (!isOwner) return reply(ind.ownerb())
 				if (!isRegistered) return reply(ind.noregis())
@@ -1362,6 +1358,16 @@ case 'asupan':
               	  client.sendMessage(from, buffer, image, {quoted: mek, caption: `${body.slice(5)}`})
 				await limitAdd(sender)
 				break
+                   case 'covidcountry':
+                   client.updatePresence(from, Presence.composing) 
+                   if (!isRegistered) return reply(ind.noregis())
+                   if (isLimit(sender)) return reply(ind.limitend(pusname))
+                   data = await fetchJson(`https://arugaz.my.id/api/edu/corona?country=${body.slice(7)}`)
+                   if (data.result) reply(data.result)
+                   hasil = `País : ${data.result.country}\n\nAtivos : ${data.result.active}\nCasos : ${data.result.casesPerOneMillion}\nCrítico : ${data.result.critical}\nMortes : ${data.result.deathsPerOneMillion}\nRecuperados : ${data.result.recovered}\nTestes por um milhão : ${data.result.testPerOneMillion}\nCasos de hoje : ${data.result.todayCases}\nMortes de Hoje: ${data.result.todayDeath}\nTotal de Casos : ${data.result.totalCases}\nTotal de Testes : ${data.result.totalTest}`
+                   reply(hasil)
+                   await limitAdd(sender)
+                   break
                 case 'kbbi':
 		if (!isOwner) return reply(ind.ownerb())
                 if (!isRegistered) return reply(ind.noregis())
@@ -1921,6 +1927,15 @@ break
 					}
 					await limitAdd(sender)
 				break
+                   case 'stalktwitt':
+                   if (!isRegistered) return reply(ind.noregis())
+                   if (isLimit(sender)) return reply(ind.limitend(pusname))
+                     hmm = await fetchJson(`http://arugaz.my.id/api/media/stalktwitt?user=${body.slice(9)}`)
+                     buffer = await getBuffer(hmm.data.profilehd)
+                     hasil = `Nome completo : ${hmm.data.fullname}\nseguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nPrivado : ${hmm.data.private}\nVerificado : ${hmm.data.verified}\nbio : ${hmm.data.bio}`
+                    client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
+                    await limitAdd(sender)
+					break
 				//group feature 
 				case 'hidetag':
                 if (!isRegistered) return reply(ind.noregis())
