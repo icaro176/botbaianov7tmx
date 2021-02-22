@@ -1104,17 +1104,6 @@ case 'asupan':
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender) 
 					break 
-		case 'halloweentext':
-			    if (!isRegistered) return reply(ind.noregis())
-			    if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (args.length < 1) return reply(ind.wrongf())
-				ween = body.slice(15)
-				if (ween.length > 10) return reply('Teksnya kepanjangan, maksimal 9 karakter')
-				reply(ind.wait())
-				buffer = await getBuffer(`https://api.xteam.xyz/textpro/helloweenfire?text=${ween}&APIKEY=${XteamKey}`)
-		    client.sendMessage(from, buffer, image, {quoted: mek})
-		    await limitAdd(sender)	
-		    break
 				case 'pornhub':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1189,41 +1178,41 @@ case 'asupan':
       await limitAdd(sender)
       if (!isRegistered) return reply(ind.noregis())
       if (isLimit(sender)) return reply(ind.limitend(pusname))
-      if (args.length < 1) return reply(mess.txt)
+      if (args.length < 1) return reply('Cadê o texto?')
 	 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ttp?text=${body.slice(5)}&apikey=BotWeA`, {method: 'get'})
 	reply(ind.wait()) 
 	buf = await getBase64(anu.base64)
 	ranp = getRandom('.png')
 	rano = getRandom('.webp')
 	exec(`wget ${buf} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
+	fs.unlinkSync(ranp)
+	if (err) return reply(mess.error.stick)
+	buffer = fs.readFileSync(rano)
+	client.sendMessage(from, buffer, sticker, {quoted: mek})
+	fs.unlinkSync(rano)
 		})
 	  break  
 		case 'slow':  
                 if (!isRegistered) return reply(ind.noregis())
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await client.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp3')
-					exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=44100" ${ran}`, (err, stderr, stdout) => {
-						fs.unlinkSync(media)
-						if (err) return reply('*Erro!*')
-						hah = fs.readFileSync(ran)
-						client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-						fs.unlinkSync(ran)
-					}) 
-					await limitAdd(sender)
-				break 
+		encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+		media = await client.downloadAndSaveMediaMessage(encmedia)
+		ran = getRandom('.mp3')
+		exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=44100" ${ran}`, (err, stderr, stdout) => {
+		fs.unlinkSync(media)
+	        if (err) return reply('*Erro!*')
+		hah = fs.readFileSync(ran)
+		client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
+		fs.unlinkSync(ran)
+		        }) 
+		await limitAdd(sender)
+		break 
        case 'cvvfake':  
        if (!isRegistered) return reply(ind.noregis())
        if (isLimit(sender)) return reply(ind.limitend(pusname))
        reply(`_[❗] AGUARDE GERANDO CVV FAKE_`)
        anu = await fetchJson(`https://videfikri.com/api/ccgenerator/`, {method:'get'})
-       teks = `*CVV FAKE GERADO*\n*♻️NÚMERO*: ${anu.result.card.number}\n*♻️TIPO*: ${anu.result.card.network}\n*♻️CVV*: ${anu.result.card.cvv}\n*♻️PIN*: ${anu.result.card.pin}\n*♻️DINHEIRO*: ${anu.result.card.balance}\n*♻️EXPIRA-MÊS*: *${anu.result.expiration_month}*\n*♻️EXPIRA-ANO*: *${anu.result.expiration_year}*\n*♻️PAÍS*: ${anu.result.customer.country}\n*♻️NOME*: ${anu.result.customer.name}\n*♻️ENDEREÇO*: ${anu.result.customer.address}`
+       teks = `*CVV FAKE GERADO*\n*♻️NÚMERO*: ${anu.result.card.number}\n*♻️TIPO*: ${anu.result.card.network}\n*♻️CVV*: ${anu.result.card.cvv}\n*♻️PIN*: ${anu.result.card.pin}\n*♻️DINHEIRO*: ${anu.result.card.balance}\n*♻️EXPIRA-MÊS*: *Personalizado*\n*♻️EXPIRA-ANO*: *Personalizado*\n*♻️PAÍS*: ${anu.result.customer.country}\n*♻️NOME*: ${anu.result.customer.name}\n*♻️ENDEREÇO*: ${anu.result.customer.address}`
        reply(teks) 
        await limitAdd(sender)
        break  
@@ -1233,18 +1222,20 @@ case 'asupan':
        reply(ind.wait())
        anu = await fetchJson(`http://lolhuman.herokuapp.com/api/random/wallnime?apikey=5e78b9ed4b03ee8ca1c655a6`, {method:'get'})
        buf = await getBuffer(anu.result)
-       client.sendMessage(from, buf, image, {quoted:mek,caption:'nime'}) 
+       client.sendMessage(from, buf, image, {quoted:mek,caption:'WALLPAPER ANIME'}) 
        await limitAdd(sender)
        break
-       case 'bts': 
-       if (!isRegistered) return reply(ind.noregis())
-       if (isLimit(sender)) return reply(ind.limitend(pusname))
-       reply(ind.wait())
-       anu = await fetchJson(`http://lolhuman.herokuapp.com/api/random/bts?apikey=5e78b9ed4b03ee8ca1c655a6`, {method:'get'})
-       buf = await getBuffe(anu.result)
-       client.sendMessage(from, buf, image, {quoted:mek,caption:'*BTS*'}) 
-       await limitAdd(sender)
-       break
+                case 'bts':
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					anu = await fetchJson(`http://lolhuman.herokuapp.com/api/random/bts?apikey=5e78b9ed4b03ee8ca1c655a6`, {method: 'get'})
+					reply(ind.wait())
+					n = JSON.parse(JSON.stringify(anu));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek , caption: 'BTS'})
+					await limitAdd(sender) 
+					break
        case 'huruf': 
        if (!isRegistered) return reply(ind.noregis())
        if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -2183,6 +2174,16 @@ break
 					client.sendMessage(from, lol, image, {quoted: mek})
 					await limitAdd(sender)
 					break			
+				case 'cnaruto':
+				if (isBanned) return reply(mess.only.benned)    
+				if (!isUser) return reply(mess.only.userB)
+					naruto = body.slice(9)
+					if (args.length < 1) return reply('Onde está o texto?')
+					reply(ind.wait())
+					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${Pikri}&apikey=${gans}`, {method: 'get'})
+					gools4 = await getBuffer(anu.result)
+					client.sendMessage(from, gools4, image, {quoted: mek})
+					break 
 				case 'simih':
 			        if (!isRegistered) return reply(ind.noregis())
 					if (!isGroup) return reply(ind.groupo())
