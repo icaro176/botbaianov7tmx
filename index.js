@@ -1157,6 +1157,17 @@ case 'asupan':
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender) 
 					break 
+		case 'halloweentext':
+			    if (!isRegistered) return reply(ind.noregis())
+			    if (isLimit(sender)) return reply(ind.limitend(pusname))
+				if (args.length < 1) return reply(ind.wrongf())
+				ween = body.slice(15)
+				if (ween.length > 10) return reply('Teksnya kepanjangan, maksimal 9 karakter')
+				reply(ind.wait())
+				buffer = await getBuffer(`https://api.xteam.xyz/textpro/helloweenfire?text=${ween}&APIKEY=${XteamKey}`)
+		    client.sendMessage(from, buffer, image, {quoted: mek})
+		    await limitAdd(sender)	
+		    break
 				case 'pornhub':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
