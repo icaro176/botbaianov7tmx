@@ -1069,21 +1069,21 @@ case 'asupan':
 			     	await limitAdd(sender) 
 			     	break 
 				case 'fb':
-				  frhan.updatePresence(from, Presence.composing)
+				  client.updatePresence(from, Presence.composing)
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				reply(ind.wait())
 					if (args.length < 1) return reply('Cadê o url, mano?')
 					if (!isUrl(args[0]) && !args[0].includes('https://www.facebook.com')) return reply(mess.error.Iv)
-					reply(mess.wait)
+					reply(ind.wait())
 					anu = await fetchJson(`http://arugaz.my.id/api/media/facebook?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					frhan.sendMessage(from, '[ AGUARDE ] Sendo processado\n\no link é apenas do Google, mano, então pode ser baixado', text, {quoted: mek})
-					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nDipublikasikan Pada: *${anu.published}*`
+					client.sendMessage(from, '[ AGUARDE ] Sendo processado\n\no link é apenas do Google, mano, então pode ser baixado', text, {quoted: mek})
+					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nPublicado Em: *${anu.published}*`
 					tefbe = await getBuffer(anu.thumb)
-					frhan.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
+					client.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
 					buffer = await getBuffer(anu.result)
-					frhan.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
 					await limitAdd(sender) 
 					break 
 				case 'ytsearch':
