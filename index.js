@@ -2180,7 +2180,7 @@ break
 					naruto = body.slice(9)
 					if (args.length < 1) return reply('Onde está o texto?')
 					reply(ind.wait())
-					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${Pikri}&apikey=${gans}`, {method: 'get'})
+					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${body.slice(9)}&apikey=${videfikri}`, {method: 'get'})
 					gools4 = await getBuffer(anu.result)
 					client.sendMessage(from, gools4, image, {quoted: mek})
 					await limitAdd(sender)
