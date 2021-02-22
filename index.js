@@ -1068,36 +1068,6 @@ case 'asupan':
                     reply(teks.trim())
 			     	await limitAdd(sender) 
 			     	break 
-				case 'fb':
-				  client.updatePresence(from, Presence.composing)
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				reply(ind.wait())
-					if (args.length < 1) return reply('Cadê o url, mano?')
-					if (!isUrl(args[0]) && !args[0].includes('https://www.facebook.com')) return reply(mess.error.Iv)
-					reply(ind.wait())
-					anu = await fetchJson(`http://arugaz.my.id/api/media/facebook?url=${args[0]}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					client.sendMessage(from, '[ AGUARDE ] Sendo processado\n\no link é apenas do Google, mano, então pode ser baixado', text, {quoted: mek})
-					efbe = `Título: *${anu.title}*\nTamanho: *${anu.filesize}\nPublicado Em: *${anu.published}*`
-					tefbe = await getBuffer(anu.thumb)
-					client.sendMessage(from, tefbe, image, {quoted: mek, caption: efbe})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', quoted: mek, caption: ',-,'})
-					await limitAdd(sender) 
-					break 
-				case 'ytsearch':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Oque você que procurar?')
-					anu = await fetchJson(`http://arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					teks = '=================\n'
-					for (let i of anu.result) {
-						teks += `*Título* : ${i.title}\n*Id* : https://youtu.be/${i.id}\n*Duração* : ${i.duration}\n=================\n`
-					}
-					reply(teks.trim())
-					break
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1273,28 +1243,6 @@ case 'asupan':
                    client.sendMessage(from, pok, image, {quoted: mek})
 		   await limitAdd(sender)
                    break 
-				case 'tiktod':
-					if (args.length < 1) return reply('Onde está a url?')
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if(!isUrl(args[0]) && !args[0].includes('https')) return reply('URL INVÁLIDA')
-					anu = await fetchJson(`https://api.zeks.xyz/api/tiktok?url=${args[0]}&apikey=apivinz`,)
-					reply('*[AGUARDE] EM PROCESSO*')
-					rmln = await getBuffer(anu.result.result.server_1)
-					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', quoted: mek})
-					await limitAdd(sender)
-					break
-				case 'twvid':
-					if (args.length < 1) return reply('Onde está a url?')
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if(!isUrl(args[0]) && !args[0].includes('https')) return reply('URL INVÁLIDA')
-					anu = await fetchJson(`http://arugaz.my.id/api/media/twvid?url=${args[0]}`,)
-					reply('*[AGUARDE] EM PROCESSO*')
-					rmln = await getBuffer(anu.result)
-					client.sendMessage(from, rmln, video, {mimetype: 'video/mp4', quoted: mek})
-					await limitAdd(sender)
-					break
 				case 'quotes':
 				if (!isOwner) return reply(ind.ownerb())
 					if (!isRegistered) return reply(ind.noregis())
@@ -1328,19 +1276,6 @@ case 'asupan':
 					reply(teks.trim())
 					await limitAdd(sender)
 					break 
-				case 'ytmp3':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Onde está o url, hum?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`http://arugaz.my.id/api/media/ytaudio?url=${args[0]}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					teks = `❏ *Título* : ${anu.title}\n❏ *Tamanho* : ${anu.filesize}\n\n*O ÁUDIO ESTÁ SENDO ENVIADO, AGUARDE...*`
-					thumb = await getBuffer(anu.thumb)
-					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-					break
 				case 'ytmp4':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
