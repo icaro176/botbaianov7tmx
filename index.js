@@ -2175,14 +2175,15 @@ break
 					await limitAdd(sender)
 					break			
 				case 'cnaruto':
-				if (isBanned) return reply(mess.only.benned)    
-				if (!isUser) return reply(mess.only.userB)
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
 					naruto = body.slice(9)
 					if (args.length < 1) return reply('Onde está o texto?')
 					reply(ind.wait())
 					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${Pikri}&apikey=${gans}`, {method: 'get'})
 					gools4 = await getBuffer(anu.result)
 					client.sendMessage(from, gools4, image, {quoted: mek})
+					await limitAdd(sender)
 					break 
 				case 'simih':
 			        if (!isRegistered) return reply(ind.noregis())
