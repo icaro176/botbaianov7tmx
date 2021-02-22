@@ -572,7 +572,7 @@ client.on('group-participants-update', async (anu) => {
         }
  
 				//function antilink 
-				if (messagesC.includes("http","https","http://","https://","url","www","html","youtube.com","html.com",".com","google.com","xvideos.com","pornhub.com","xnxx.com","seulink.net","bit.ly","m.kwai","m.kwai.apps","kwai.com","encurta.net","facebook.com","shorte.be","mediafire.com","chat.whatsapp.com/")){
+				if (messagesC.includes("http","https","http://","https://","url","www")){
 					if (!isGroup) return
 					if (!isAntiLink) return
 					if (isGroupAdmins) return reply('Link Detectado! \nVocê é um administrador do grupo, por isso não será banido')
@@ -1059,15 +1059,27 @@ case 'asupan':
                              if (!isRegistered) return reply(ind.noregis())
                              if (isLimit(sender)) return reply(ind.limitend(pusname))
 			   reply(ind.wait())
-              	    if (args.length < 1) return reply('cadê o texto, mano?')
+              	    if (args.length < 1) return reply('cadê o título, mano?')
                     anu = await fetchJson(`https://mnazria.herokuapp.com/api/porn?search=${body.slice(9)}`, {method: 'get'})
                     teks = `===============\n`
                     for (let b of anu.result) {
-                    teks += `• Título: ${b.title}\n• Info: ${b.info}\n• Link: ${b.link}\n===============\n`
+                    teks += `• Título: ${b.title}\n• Duração: ${b.duration}\n• Link: ${b.url}\n===============\n`
                     }
                     reply(teks.trim())
 			     	await limitAdd(sender) 
 			     	break 
+				case 'ytsearch':
+                                if (!isRegistered) return reply(ind.noregis())
+                                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply('Oque você que procurar?')
+					anu = await fetchJson(`http://arugaz.my.id/api/media/ytsearch?query=${body.slice(10)}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = '=================\n'
+					for (let i of anu.result) {
+						teks += `*Título* : ${i.title}\n*Id* : https://youtu.be/${i.id}\n*Duração* : ${i.duration}\n=================\n`
+					}
+					reply(teks.trim())
+					break
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1285,6 +1297,17 @@ case 'asupan':
 					reply(teks.trim())
 					await limitAdd(sender)
 					break 
+				case 'ytmp3':
+					if (args.length < 1) return reply('Onde está o url, hum?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`http://arugaz.my.id/api/media/ytaudio?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `❏ *Título* : ${anu.title}\n❏ *Tamanho* : ${anu.filesize}\n\n*O ÁUDIO ESTÁ SENDO ENVIADO, AGUARDE...*`
+					thumb = await getBuffer(anu.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+					break
 				case 'ytmp4':
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
