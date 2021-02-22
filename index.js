@@ -1755,12 +1755,6 @@ break
 				client.sendMessage(from, 'Porcentagem Gay: *'+rate+'*\n\nResposta : '+kl+'', text, { quoted: mek })
 				await limitAdd(sender) 
 				break  				
-                case 'slot':
-          const somtoy = sotoy[Math.floor(Math.random() * (sotoy.length))]	
-          const somtoy2 = sotoy2[Math.floor(Math.random() * (sotoy2.length))]	
-          const somtoy3 = sotoy3[Math.floor(Math.random() * (sotoy3.length))]	
-             client.sendMessage(from, `[  🎰 | 777 ]\n-----------------\n\n${somtoy}\n${somtoy2}\n${somtoy3}\n\n[  🎰 | 777 ]`, text, {quoted: mek})
-	    break
 
                 const sotoy = [
 		'🍊 : 🍒 : 🍐',
@@ -1829,6 +1823,12 @@ break
 		'🍌 : 🍌 : 🍌'
 		]
 
+                case 'slot':
+          const somtoy = sotoy[Math.floor(Math.random() * (sotoy.length))]	
+          const somtoy2 = sotoy2[Math.floor(Math.random() * (sotoy2.length))]	
+          const somtoy3 = sotoy3[Math.floor(Math.random() * (sotoy3.length))]	
+             client.sendMessage(from, `[  🎰 | 777 ]\n-----------------\n\n${somtoy}\n${somtoy2}\n${somtoy3}\n\n[  🎰 | 777 ]`, text, {quoted: mek})
+	    break
 				case 'ocr': 
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
