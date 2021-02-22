@@ -706,25 +706,6 @@ case 'asupan':
 					reply('A Letra da musica '+teks+' é :\n\n'+anu.result.lirik)
 					await limitAdd(sender) 
 					break 
-				case 'ttp':
-				if (!isRegistered) return reply(ind.noregis())                                
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('*Onde está o texto, tio?*')
-					ranp = getRandom('.png')
-					rano = getRandom('.webp')
-					teks = body.slice(5).trim()
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ttp?kata=halo`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					reply(mess.wait)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						bufferhgf = fs.readFileSync(rano)
-						frhan.sendMessage(from, bufferhgf, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-					await limitAdd(sender)
-					break  
                 case 'chord':
 		if (!isOwner) return reply(ind.ownerb())
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/chord?q=${body.slice(7)}&apikey=BotWeA`)
@@ -831,7 +812,6 @@ case 'asupan':
 					case 'cium':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/kiss?apikey=BotWeA', {method: 'get'})
@@ -851,7 +831,6 @@ case 'asupan':
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/cry?apikey=${TobzApi}`, {method: 'get'})
                    if (!isRegistered) return reply(ind.noregis())
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   if (!isNsfw) return reply(ind.nsfwoff())
 					reply(ind.wait())
 					exec(`wget ${anu.result} -O ${cry} && ffmpeg -i ${cry} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 						fs.unlinkSync(cry)
@@ -864,7 +843,6 @@ case 'asupan':
 					case 'peluk':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/hug?apikey=BotWeA', {method: 'get'})
@@ -881,7 +859,6 @@ case 'asupan':
 				case 'husbu':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
 				    try {
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/husbu?apikey=BotWeA`)
 						buffer = await getBuffer(res.image)
@@ -895,7 +872,6 @@ case 'asupan':
                 case 'ranime':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isNsfw) return reply(ind.nsfwoff())
 					gatauda = body.slice(8)
 					reply(ind.wait())
 					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime?apikey=BotWeA`, {method: 'get'})
@@ -1058,6 +1034,7 @@ case 'asupan':
 			     case 'xvideos':
                              if (!isRegistered) return reply(ind.noregis())
                              if (isLimit(sender)) return reply(ind.limitend(pusname))
+			     if (!isNsfw) return reply(ind.nsfwoff())
 			   reply(ind.wait())
               	    if (args.length < 1) return reply('cadê o título, mano?')
                     anu = await fetchJson(`https://mnazria.herokuapp.com/api/porn?search=${body.slice(9)}`, {method: 'get'})
@@ -1144,7 +1121,7 @@ case 'asupan':
 				var gh = body.slice(9)
 				var porn = gh.split("&")[0];
 				var hub = gh.split("&")[1];
-				if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}pornhub bot & baiano`)
+				if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}pornhub bot&baiano`)
 				reply(ind.wait())
 				alan = await getBuffer(`https://vinz.zeks.xyz/api/pornhub?text1=${porn}&text2=${hub}`)
 				client.sendMessage(from, alan, image, {quoted: mek})
@@ -1156,7 +1133,7 @@ case 'asupan':
 					var gh = body.slice(12)
 					var gli = gh.split("&")[0];
 					var tch = gh.split("&")[1];
-					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}glitchtext bot & baiano`)
+					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}glitchtext bot&baiano`)
 					reply(ind.wait())
 					buffer = await getBuffer(`https://api.zeks.xyz/api/gtext?text1=${gli}&text2=${tch}&apikey=apivinz`)
 					client.sendMessage(from, buffer, image, {quoted: mek})
@@ -1398,6 +1375,19 @@ case 'asupan':
                     reply(buff)
 			        await limitAdd(sender)
 				break
+		    case 'darkjokes':
+				client.updatePresence(from, Presence.composing) 
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				 data = fs.readFileSync('./lib/drak.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 darkjokes = await getBuffer(randKey.result)
+                 client.sendMessage(from, darkjokes, image, {quoted: mek, caption: '\`\`\`MEMES RUINS\`\`\`'})
+				await limitAdd(sender) 
+				break  
 				//mhazria 
 				case 'resepmasakan':
 				if (!isOwner) return reply(ind.ownerb())
@@ -1490,14 +1480,14 @@ case 'asupan':
          	   case 'owner':
          	   case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
-                  client.sendMessage(from, '*Contato*',MessageType.text, { quoted: mek} )
+                  client.sendMessage(from, '*Está aí :3*',MessageType.text, { quoted: mek} )
 					break
 case 'hartatahta':
 if (!isRegistered) return reply(ind.noregis())
 if (isLimit(sender)) return reply(ind.limitend(pusname))
 if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}hartatahta Bot`)
 har = body.slice(12)
-reply('「❗」Harta Tahta :v')
+reply('*AGUARDE...*')
 buffer = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${har}&apikey=apivinz`)
 client.sendMessage(from, buffer, image, {quoted: mek})
 await limitAdd(sender)
