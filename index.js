@@ -19,32 +19,25 @@ const fs = require("fs")
 const util = require('util')
 const crypto = require('crypto')
 const imageToBase64 = require('image-to-base64')
-const request = require('request')
 const speed = require('performance-now')
 const axios = require('axios')
-const webp = require('webp-converter')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./lib/help')
 const { donasi } = require('./lib/donasi')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
+const { msgFilter } = require('./utils')
 const { exec, spawn } = require("child_process")
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const fetch = require('node-fetch')
 const tiktod = require('tiktok-scraper')
 const brainly = require('brainly-scraper')
 const ffmpeg = require('fluent-ffmpeg')
-const get = require('got')
-const { Utils_1 } = require('./node_modules/@adiwajshing/baileys/lib/WAConnection/Utils')
-const emojiUnicode = require('emoji-unicode')
 const imgbb = require('imgbb-uploader')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const google = require('google-it')
 const fontPath = ('./lib/Zahraaa.ttf')
-const base64Img = require('base64-img')
 const path = require('path')
-const ms = require('parse-ms')
-const toMs = require('ms')
 const cd = 4.32e+7
 const lolis = require('lolis.life')
 const loli = new lolis()
@@ -1200,21 +1193,6 @@ case 'asupan':
 	fs.unlinkSync(rano)
 		})
 	  break  
-		case 'slow':  
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-		encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-		media = await client.downloadAndSaveMediaMessage(encmedia)
-		ran = getRandom('.mp3')
-		exec(`ffmpeg -i ${media} -filter:a "atempo=0.7,asetrate=44100" ${ran}`, (err, stderr, stdout) => {
-		fs.unlinkSync(media)
-	        if (err) return reply('*Erro!*')
-		hah = fs.readFileSync(ran)
-		client.sendMessage(from, hah, audio, {mimetype: 'audio/mp4', ptt:true, quoted: mek})
-		fs.unlinkSync(ran)
-		        }) 
-		await limitAdd(sender)
-		break 
        case 'cvvfake':  
        if (!isRegistered) return reply(ind.noregis())
        if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1233,17 +1211,6 @@ case 'asupan':
        client.sendMessage(from, buf, image, {quoted:mek,caption:'WALLPAPER ANIME'}) 
        await limitAdd(sender)
        break
-                case 'bts':
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					anu = await fetchJson(`http://lolhuman.herokuapp.com/api/random/bts?apikey=5e78b9ed4b03ee8ca1c655a6`, {method: 'get'})
-					reply(ind.wait())
-					n = JSON.parse(JSON.stringify(anu));
-					nimek =  n[Math.floor(Math.random() * n.length)];
-					pok = await getBuffer(nimek)
-					client.sendMessage(from, pok, image, { quoted: mek , caption: 'BTS'})
-					await limitAdd(sender) 
-					break
        case 'huruf': 
        if (!isRegistered) return reply(ind.noregis())
        if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1357,23 +1324,6 @@ case 'asupan':
 				    client.sendMessage(from, translate, text, {quoted: mek})
 				   await limitAdd(sender)
 				   break
-				case '3dtext':
-                data = await await getBuffer(`https://arugaz.my.id/api/flamingtext/text3d?text=${body.slice(8)}`)
-                if (!isRegistered) return reply(ind.noregis())
-                if (isLimit(sender)) return reply(ind.limitend(pusname))
-                client.sendMessage(from, data, image, {quoted: mek, caption: body.slice(8)})
-                await limitAdd(sender)
-                break
-			    case 'fototiktok':
-				if (!isOwner) return reply(ind.ownerb())
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                    gatauda = body.slice(12)
-                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktokpp?user=${gatauda}` , {method: 'get'})
-			        buff = await getBuffer(anu.result)
-                    reply(buff)
-			        await limitAdd(sender)
-				break
 		    case 'darkjokes':
 				client.updatePresence(from, Presence.composing) 
 				if (!isRegistered) return reply(ind.noregis())
@@ -1417,16 +1367,6 @@ case 'asupan':
               	  client.sendMessage(from, buffer, image, {quoted: mek, caption: `${body.slice(5)}`})
 				await limitAdd(sender)
 				break
-                   case 'covidcountry':
-                   client.updatePresence(from, Presence.composing) 
-                   if (!isRegistered) return reply(ind.noregis())
-                   if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   data = await fetchJson(`https://arugaz.my.id/api/edu/corona?country=${body.slice(7)}`)
-                   if (data.result) reply(data.result)
-                   hasil = `País : ${data.result.country}\n\nAtivos : ${data.result.active}\nCasos : ${data.result.casesPerOneMillion}\nCrítico : ${data.result.critical}\nMortes : ${data.result.deathsPerOneMillion}\nRecuperados : ${data.result.recovered}\nTestes por um milhão : ${data.result.testPerOneMillion}\nCasos de hoje : ${data.result.todayCases}\nMortes de Hoje: ${data.result.todayDeath}\nTotal de Casos : ${data.result.totalCases}\nTotal de Testes : ${data.result.totalTest}`
-                   reply(hasil)
-                   await limitAdd(sender)
-                   break
                 case 'kbbi':
 		if (!isOwner) return reply(ind.ownerb())
                 if (!isRegistered) return reply(ind.noregis())
@@ -2496,10 +2436,10 @@ break
 						reply('Transmissão enviada')
 					}
 					break 
-                        case 'google':
-			if (!isRegistered) return reply(ind.noregis())
-			if (isLimit(sender)) return reply(ind.limitend(pusname))
+			case 'google':
                 const googleQuery = body.slice(8)
+			      if (!isRegistered) return reply(ind.noregis())
+			      if (isLimit(sender)) return reply(ind.limitend(pusname))
                 if(googleQuery == undefined || googleQuery == ' ') return reply(`*Resultado da pesquisa : ${googleQuery}* não encontrado`)
                 google({ 'query': googleQuery }).then(results => {
                 let vars = `_*Resultado da pesquisa : ${googleQuery}*_\n`
@@ -2509,10 +2449,10 @@ break
                     reply(vars)
                 }).catch(e => {
                     console.log(e)
-                    frhan.sendMessage(from, 'Google Error : ' + e);
+                    client.sendMessage(from, 'Google Error : ' + e);
                 })
                 await limitAdd(sender) 
-                break
+                break 
 				case 'addprem':
 				if (!isOwner) return reply(ind.ownerb())
 				expired = "30d"
