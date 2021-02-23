@@ -371,6 +371,11 @@ client.on('group-participants-update', async (anu) => {
 			const groupMembers = isGroup ? groupMetadata.participants : ''
 			const groupDesc = isGroup ? groupMetadata.desc : ''
             const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+
+//ANTI-SPAM BY ITALU
+if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
+		reply( '*❌VOCÊ FEZ SPAM❌*\n\n*AGUARDE 5 SEGUNDOS*')
+		return console.log(color('SPAM', 'red'), color(moment.tz('America/Sao_Paulo').format('HH:mm:ss'), 'yellow'), color(`${command}`),'DE:', color(pushname)) }
             
             /************** SCURITY FEATURE ************/
             const isEventon = isGroup ? event.includes(from) : false
@@ -1296,6 +1301,21 @@ case 'asupan':
 					reply(teks.trim())
 					await limitAdd(sender)
 					break 
+                  case 'ytmp3':
+                    if (!isRegistered) return reply(ind.noregis())
+                    if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply('Onde está a url?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3?url=${args[0]}&apikey=apivinz`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					yta = `╭─「 *YOUTUBE MP3 DOWNLOAD* 」\n│\n│• *Título:* ${anu.result.title}\n│• *Tamanho:* ${anu.result.size}\n│\n│ *AGUARDE UM 1 MINUTO OU TALVEZ UM │ POUCO MAIS*\n│ *CONVERTENDO MP4*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+					buff = await getBuffer(anu.result.thumbnail)
+					reply(ind.wait())
+					buffer = await getBuffer(anu.result.url_audio)
+					client.sendMessage(from, buff, image, {quoted: mek, caption: yta})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek, caption: 'Download Completo'})
+					await limitAdd(sender) 
+					break 
 				case 'ytmp4':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1303,7 +1323,7 @@ case 'asupan':
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*❏ Título* : ${anu.title}\n\n*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...*`
+					teks = `╭─「 *YOUTUBE MP4 DOWNLOAD* 」\n│\n│• ${anu.title}\n│\n│*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -1926,15 +1946,23 @@ break
 					}
 					await limitAdd(sender)
 				break
-                   case 'igstalk':
-                   if (!isRegistered) return reply(ind.noregis())
-                   if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     hmm = await fetchJson(`http://arugaz.my.id/api/media/stalkig?user=${body.slice(9)}`)
-                     buffer = await getBuffer(hmm.data.profile_picture)
-                     hasil = `Nome completo : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nbio : ${hmm.data.biography}`
+		       case 'spamcall':
+			if (!isRegistered) return reply(ind.noregis())
+			if (isLimit(sender)) return reply(ind.limitend(pusname))
+			call = `${body.slice(11)}`
+			anu = await fetchJson(`https://anker-api.herokuapp.com/spamcall?nomor=${call}`, {method: 'get'})
+			client.sendMessage(from, `${anu.result.logs}`, text, {quoted: mek})
+			await limitAdd(sender) 
+			break  
+			   case 'igstalk':
+			   if (!isRegistered) return reply(ind.noregis())
+			   if (isLimit(sender)) return reply(ind.limitend(pusname))
+                      hmm = await fetchJson(`https://anker-api.herokuapp.com/igstalk?username=${body.slice(9)}`)
+                     buffer = await getBuffer(hmm.pic)
+                     hasil = `*Usuário* : *_${hmm.username}_*\n*Seguidores* : *_${hmm.follower}_*\n*Seguindo* : *_${hmm.following}_*\n*Bio* : ${hmm.bio}\n*Postagens* : *_${hmm.post}_*`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
                     await limitAdd(sender)
-					break
+                    break
 				//group feature 
 				case 'hidetag':
                 if (!isRegistered) return reply(ind.noregis())
