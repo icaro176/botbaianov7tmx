@@ -656,6 +656,7 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
                   if (!isRegistered) return reply(ind.noregis())
 		  if (isLimit(sender)) return reply(ind.limitend(pusname)) 
                 reply(ind.wait())
+                msgFilter.addFilter(from)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
                if (anu.error) return reply(anu.error)
                  infomp3 = `*╭─「 PLAY DOWNLOAD 」*\n│\n│ *• Título* : ${anu.result.title}\n│ *• Fonte* : ${anu.result.source}\n│ *• Tamanho* : ${anu.result.size}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
@@ -679,12 +680,12 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek, caption: 'Download Completo'})
 					await limitAdd(sender) 	
 					break  
-case 'asupan':
+                                case 'asupan':
 				client.updatePresence(from, Presence.composing) 
                                 if (!isRegistered) return reply(ind.noregis())
 		                if (isLimit(sender)) return reply(ind.limitend(pusname)) 
 				reply(ind.wait())
-				 data = fs.readFileSync('./lib/asupan.js');
+				data = fs.readFileSync('./lib/asupan.js');
                  jsonData = JSON.parse(data);
                  randIndex = Math.floor(Math.random() * jsonData.length);
                  randKey = jsonData[randIndex];
@@ -697,6 +698,7 @@ case 'asupan':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				reply(ind.wait())
+                                msgFilter.addFilter(from)
 					const tex = encodeURIComponent(body.slice(8))
 					if (!tex) return client.sendMessage(from, 'INSIRA O URL ou TEXTO PARA FAZER QR', text, {quoted: mek})
 					const buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${tex}`)
@@ -707,6 +709,7 @@ case 'asupan':
 				if (!isRegistered) return reply(ind.noregis())                                
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				reply(ind.wait())
+                                msgFilter.addFilter(from)
 				teks = body.slice(7)
 					anu = await fetchJson(`http://scrap.terhambar.com/lirik?word=${teks}`, {method: 'get'})
 					reply('A Letra da musica '+teks+' é :\n\n'+anu.result.lirik)
@@ -720,6 +723,7 @@ case 'asupan':
 				case 'moddroid':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=BotWeA`)
 			hepi = data.result[0] 
 			teks = `*Nome*: ${data.result[0].title}\n*Editor*: ${hepi.publisher}\n*Mod Info:* ${hepi.mod_info}\n*Tamanho*: ${hepi.size}\n*Última Versão*: ${hepi.latest_version}\n*Gênero*: ${hepi.genre}\n*Link:* ${hepi.link}\n*Download*: ${hepi.download}`
@@ -730,6 +734,7 @@ case 'asupan':
 			case 'happymod':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=BotWeA`)
 			hupo = data.result[0] 
 			teks = `*Nome*: ${data.result[0].title}\n*Versão*: ${hupo.version}\n*Tamanho:* ${hupo.size}\n*Root*: ${hupo.root}\n*Compra*: ${hupo.price}\n*Link*: ${hupo.link}\n*Download*: ${hupo.download}`
@@ -794,7 +799,6 @@ case 'asupan':
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					glass = `${body.slice(8)}`
 					reply(ind.wait())
-					msgFilter.addFilter(from)
 					buffer = await getBuffer(`https://api.zeks.xyz/api/tlight?text=${glass}&apikey=apivinz`, {method: 'get'})
 					client.sendMessage(from, buffer, image, {caption: 'Tlight', quoted: mek})
 					await limitAdd(sender) 
@@ -804,7 +808,6 @@ case 'asupan':
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					glasq = `${body.slice(9)}`
 					reply(ind.wait())
-					msgFilter.addFilter(from)
 					buffer = await getBuffer(`https://api.zeks.xyz/api/leavest?text=${glasq}&apikey=apivinz`, {method: 'get'})
 					client.sendMessage(from, buffer, image, {caption: 'Leavest', quoted: mek})
 					await limitAdd(sender) 
@@ -823,7 +826,6 @@ case 'asupan':
 					  case 'goldbutton':
 				      if (!isRegistered) return reply(ind.noregis())
 				      if (isLimit(sender)) return reply(ind.limitend(pusname))
-				      msgFilter.addFilter(from)
 					  if (args.length < 1) return reply('Onde está o texto?')
                                           if (args.length > 10) return reply('Mínimo 10 letras')
 					 gbu = `${body.slice(12)}`
@@ -845,7 +847,6 @@ case 'asupan':
 				case 'coffe':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				msgFilter.addFilter(from)
                                tahtaq = `${body.slice(7)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
@@ -855,8 +856,7 @@ case 'asupan':
                   break
                         case 'glow':
 			if (!isRegistered) return reply(ind.noregis())
-			if (isLimit(sender)) return reply(ind.limitend(pusname))
-	             msgFilter.addFilter(from)
+			if (isLimit(sender)) return reply(ind.limitend(pushname)    
                      tahtaw = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
@@ -867,7 +867,6 @@ case 'asupan':
                 case 'love':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
-		     msgFilter.addFilter(from)
                      tahtae = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
@@ -878,7 +877,6 @@ case 'asupan':
                   	case 'instagram':
 				    if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
-				    msgFilter.addFilter(from)
 					if (args.length < 1) return reply('Onde está a url?')
 					if(!isUrl(args[0]) && !args[0].includes('instagram')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://videfikri.com/api/igvideo/?url=${args[0]}`, {method: 'get'})
@@ -923,6 +921,7 @@ case 'asupan':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
 			reply(ind.wait())
+                        msgFilter.addFilter(from)
 			style = `${body.slice(11)}`
 			anu = await fetchJson(`https://api.arugaz.my.id/api/random/text/fancytext?text=${style}`, {method: 'get'})
 			reply (anu.result)
@@ -934,6 +933,7 @@ case 'asupan':
                 	client.updatePresence(from, Presence.composing)
 					if (!isQuotedVideo) return reply('_*marque um vídeo!*_')
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.mp4')
@@ -949,6 +949,7 @@ case 'asupan':
                 case 'nangis':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/cry?apikey=BotWeA', {method: 'get'})
@@ -966,6 +967,7 @@ case 'asupan':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				if (!isNsfw) return reply(ind.nsfwoff())
+                                msgFilter.addFilter(from)
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/nsfwblowjob?apikey=BotWeA', {method: 'get'})
@@ -982,6 +984,7 @@ case 'asupan':
 					case 'cium':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 					ranp = getRandom('.gif')
 					rano = getRandom('.webp')
 					anu = await fetchJson('https://tobz-api.herokuapp.com/api/kiss?apikey=BotWeA', {method: 'get'})
@@ -1002,6 +1005,7 @@ case 'asupan':
                    if (!isRegistered) return reply(ind.noregis())
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					exec(`wget ${anu.result} -O ${cry} && ffmpeg -i ${cry} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
 						fs.unlinkSync(cry)
 						buffer = fs.readFileSync(rano)
@@ -1053,6 +1057,7 @@ case 'asupan':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Naruto`, {method: 'get'})
 					naru = JSON.parse(JSON.stringify(anu));
 					to =  naru[Math.floor(Math.random() * naru.length)];
@@ -1218,6 +1223,7 @@ case 'asupan':
                 case 'joox':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=BotWeA`, {method: 'get'})
                if (data.error) return reply(data.error)
                  infomp3 = `*╭─「 JOOX DOWNLOAD 」*\n│\n│ *• Título* : ${data.result.judul}\n│ *• Álbum* : ${data.result.album}\n│ *• Publicado* : ${data.result.dipublikasi}\n│\n│ *A MÚSICA ESTA SENDO*\n│ *ENVIADA*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
@@ -1305,6 +1311,7 @@ case 'asupan':
 					client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${body.slice(11)}`, {method: 'get'})
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					n = JSON.parse(JSON.stringify(data));
 					nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = await getBuffer(nimek)
@@ -1327,6 +1334,7 @@ case 'asupan':
                 if (isLimit(sender)) return reply(ind.limitend(pusname))
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
 					pok = await getBuffer(nimek)
@@ -1483,6 +1491,7 @@ case 'asupan':
 				case 'ytmp4':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
@@ -1986,6 +1995,7 @@ break
 				case 'sticker':
 				case 's':
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                    msgFilter.addFilter(from)
                     await limitAdd(sender)
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -2059,6 +2069,7 @@ break
 				case 'tts':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 				if (args.length < 1) return client.sendMessage(from, 'Código de idioma obrigatório!!', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto tio', text, {quoted: mek})
@@ -2082,6 +2093,7 @@ break
 				if (!isRegistered) return reply(ind.noregis())
 				if (!isQuotedSticker) return reply('Marque uma figurinha')
 					reply(ind.wait())
+                                        msgFilter.addFilter(from)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
