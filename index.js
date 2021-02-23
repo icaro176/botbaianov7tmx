@@ -378,6 +378,11 @@ client.on('group-participants-update', async (anu) => {
 			const groupMembers = isGroup ? groupMetadata.participants : ''
 			const groupDesc = isGroup ? groupMetadata.desc : ''
             const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+
+//ANTI-SPAM BY ITALU
+if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
+		reply( '*COMANDO REGISTRADO COMO SPAM!!*\n\n*AGUARDE 5 SEGUNDOS*')
+		return console.log(color('SPAM', 'red'), color(moment.tz('America/Sao_Paulo').format('HH:mm:ss'), 'yellow'), color(`${command}`),'DE:', color(pushname)) }            
             
             /************** SCURITY FEATURE ************/
             const isEventon = isGroup ? event.includes(from) : false
@@ -739,6 +744,159 @@ case 'asupan':
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
 			break
+			    case 'playstore':
+			    if (!isRegistered) return reply(ind.noregis())
+			    if (isLimit(sender)) return reply(ind.limitend(pusname))
+			    msgFilter.addFilter(from)
+                ps = `${body.slice(11)}`
+                  anu = await fetchJson(`https://api.zeks.xyz/api/sgplay?apikey=apivinz&q=${ps}`, {method: 'get'})
+                  store = '======================\n'
+                  for (let ply of anu.result){
+                  store += `• *Nome do App:* ${ply.title}\n• *ID:* ${ply.appid}\n• *Desenvolvedor:* ${ply.developer}\n• *Link do App:* ${ply.url}\n=====================\n`
+                  }
+                  reply(store.trim())
+                  break
+                case 'apkpure':
+		if (!isRegistered) return reply(ind.noregis())
+		if (isLimit(sender)) return reply(ind.limitend(pusname))
+		msgFilter.addFilter(from)
+                psh = `${body.slice(9)}`
+                  anu = await fetchJson(`https://api.zeks.xyz/api/apkpure?q=${psh}&apikey=apivinz`, {method: 'get'})
+                  pure = '======================\n'
+                  for (let plyl of anu.result){
+                  pure += `• *Nome do Apk:* ${plyl.title}\n• *Ranting:* ${plyl.rating}\n• *Link do Apk:* ${plyl.url}\n=====================\n`
+                  }
+                  reply(pure.trim())
+                  break
+                case 'searchfilm':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				msgFilter.addFilter(from)
+                pshh = `${body.slice(12)}`
+                  anu = await fetchJson(`https://api.zeks.xyz/api/film/2?q=${pshh}&apikey=apivinz`, {method: 'get'})
+                  puree = '======================\n'
+                  for (let plyll of anu.result){
+                  puree += `• *Título:* ${plyll.title}\n• *Link:* ${plyll.url}\n=====================\n`
+                  }
+                  reply(puree.trim())
+                  break
+                case 'searchpornhub':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+			   reply(ind.wait())
+			   msgFilter.addFilter(from)
+              	    if (args.length < 1) return reply('teksnya mana gan?')
+                    teks = body.slice(9)
+                    anu = await fetchJson(`https://api.arugaz.my.id/api/media/pornhub/search?query=${teks}`, {method: 'get'})
+                    teks = `===============\n`
+                    for (let bokep of anu.result) {
+                    teks += `Título: ${bokep.title}\nAutor: ${bokep.author}\nViews: *${bokep.views}*\nDuração: ${bokep.duration}\nLink: ${bokep.link}\n===============\n`
+                    }
+                    reply(teks.trim())
+			     	await limitAdd(sender) 
+			     	break  
+			    case 'tlight':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					glass = `${body.slice(8)}`
+					reply(ind.wait())
+					msgFilter.addFilter(from)
+					buffer = await getBuffer(`https://api.zeks.xyz/api/tlight?text=${glass}&apikey=apivinz`, {method: 'get'})
+					client.sendMessage(from, buffer, image, {caption: 'Tlight', quoted: mek})
+					await limitAdd(sender) 
+					break 
+				case 'leavest':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+					glasq = `${body.slice(9)}`
+					reply(ind.wait())
+					msgFilter.addFilter(from)
+					buffer = await getBuffer(`https://api.zeks.xyz/api/leavest?text=${glasq}&apikey=apivinz`, {method: 'get'})
+					client.sendMessage(from, buffer, image, {caption: 'Leavest', quoted: mek})
+					await limitAdd(sender) 
+					break 
+					  case '3d':
+				      if (!isRegistered) return reply(ind.noregis())
+				      if (isLimit(sender)) return reply(ind.limitend(pusname))
+				      msgFilter.addFilter(from)
+					  if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+					 tree = `${body.slice(4)}`
+					 buff = await getBuffer(`https://api.zeks.xyz/api/text3d?text=${tree}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, buff, image, {quoted: mek})
+					 await limitAdd(sender)
+					 break 
+					  case 'goldbutton':
+				      if (!isRegistered) return reply(ind.noregis())
+				      if (isLimit(sender)) return reply(ind.limitend(pusname))
+				      msgFilter.addFilter(from)
+					  if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+					 gbu = `${body.slice(12)}`
+					 buff = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${gbu}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, buff, image, {quoted: mek})
+					 await limitAdd(sender)
+					 break 
+					  case 'silverbutton':
+				      if (!isRegistered) return reply(ind.noregis())
+				      if (isLimit(sender)) return reply(ind.limitend(pusname))
+				      msgFilter.addFilter(from)
+					  if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+					 tsil = `${body.slice(14)}`
+					 buff = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${tsil}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, buff, image, {quoted: mek})
+					 await limitAdd(sender)
+					 break 
+				case 'coffe':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				msgFilter.addFilter(from)
+                tahtaq = `${body.slice(7)}`
+                     if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+                     buff = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup/?text=${tahtaq}`, {method: 'get'})
+                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Coffe`})
+                  await limitAdd(sender) 
+                  break  
+                case 'glow':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				msgFilter.addFilter(from)
+                tahtaw = `${body.slice(6)}`
+                     if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+                     buff = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tahtaw}`, {method: 'get'})
+                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Glow`})
+                  await limitAdd(sender) 
+                  break  
+                case 'love':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				msgFilter.addFilter(from)
+                tahtae = `${body.slice(6)}`
+                     if (args.length < 1) return reply('Onde está o texto?')
+                     if (args.length > 10) return reply('Mínimo 10 letras')
+                     buff = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${tahtae}`, {method: 'get'})
+                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Love`})
+                  await limitAdd(sender) 
+                  break  
+                  	case 'instagram':
+				    if (!isRegistered) return reply(ind.noregis())
+				    if (isLimit(sender)) return reply(ind.limitend(pusname))
+				    msgFilter.addFilter(from)
+					if (args.length < 1) return reply('Onde está a url?')
+					if(!isUrl(args[0]) && !args[0].includes('instagram')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://videfikri.com/api/igvideo/?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					ytte = `╭─「 *INSTAGRAM DOWNLOAD* 」\n│\n│• *Usuário:* ${anu.result.username}\n│• *Nome Completo:* ${anu.result.full_name}\n │• *Curtidas:* ${anu.result.like}\n │• *Comentários:* ${anu.result.comment}\n │• *Duração:* ${anu.result.duration}\n │• *Título:* ${anu.result.caption}\n│\n│ Espere um 1 minuto ou talvez um pouco mais \n│ Baixando o Vídeo\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+					buff = await getBuffer(anu.result.thumb)
+					reply(ind.wait())
+					buffer = await getBuffer(anu.result.video)
+					client.sendMessage(from, buff, image, {quoted: mek, caption: ytte})
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.result.caption}.mp4`, quoted: mek, caption: 'Download Completo'})
+					await limitAdd(sender) 
+					break 
             case 'bitly':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1039,6 +1197,16 @@ case 'asupan':
 					client.sendMessage(from, pok, image, { quoted: mek , caption: 'HEHE'})
 					await limitAdd(sender) 
 					break  
+					case 'loli':
+                                        gatauda = body.slice(6)
+                                        if (!isRegistered) return reply(ind.noregis())
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        reply(ind.wait())
+                                        msgFilter.addFilter(from)
+                                        anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomloli?apikey=BotWeA`, {method: 'get'})
+                                        buffer = await getBuffer(anu.result)
+                                        client.sendMessage(from, buffer, image, {quoted: mek})
+                                        break
 			     case 'xvideos':
                              if (!isRegistered) return reply(ind.noregis())
                              if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1329,14 +1497,30 @@ case 'asupan':
 					reply(teks.trim())
 					await limitAdd(sender)
 					break 
+		    case 'ytmp3':
+                    if (!isRegistered) return reply(ind.noregis())
+                    if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (args.length < 1) return reply('Onde está a url?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://api.zeks.xyz/api/ytmp3?url=${args[0]}&apikey=apivinz`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					yta = `╭─「 *YOUTUBE MP3 DOWNLOAD* 」\n│\n│• *Título:* ${anu.result.title}\n│• *Tamanho:* ${anu.result.size}\n│\n│ *AGUARDE UM 1 MINUTO OU TALVEZ UM │ POUCO MAIS*\n│ *CONVERTENDO MP4*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
+					buff = await getBuffer(anu.result.thumbnail)
+					reply(mess.wait)
+					buffer = await getBuffer(anu.result.url_audio)
+					client.sendMessage(from, buff, image, {quoted: mek, caption: yta})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.result.title}.mp3`, quoted: mek, caption: 'Download Completo'})
+					await limitAdd(sender) 
+					break 
 				case 'ytmp4':
                                 if (!isRegistered) return reply(ind.noregis())
                                 if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                msgFilter.addFilter(from)
 					if (args.length < 1) return reply('Onde está o url, hum?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*❏ Título* : ${anu.title}\n\n*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...*`
+					teks = `╭─「 *YOUTUBE MP4 DOWNLOAD* 」\n│\n│• ${anu.title}\n│\n│*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────*`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
@@ -1986,15 +2170,23 @@ break
 					}
 					await limitAdd(sender)
 				break
-                   case 'igstalk':
-                   if (!isRegistered) return reply(ind.noregis())
-                   if (isLimit(sender)) return reply(ind.limitend(pusname))
-                     hmm = await fetchJson(`http://arugaz.my.id/api/media/stalkig?user=${body.slice(9)}`)
-                     buffer = await getBuffer(hmm.data.profile_picture)
-                     hasil = `Nome completo : ${hmm.data.fullname}\nSeguidores : ${hmm.data.follower}\nSeguindo : ${hmm.data.following}\nbio : ${hmm.data.biography}`
+		       case 'spamcall':
+			if (!isRegistered) return reply(ind.noregis())
+			if (isLimit(sender)) return reply(ind.limitend(pusname))
+			call = `${body.slice(11)}`
+			anu = await fetchJson(`https://anker-api.herokuapp.com/spamcall?nomor=${call}`, {method: 'get'})
+			client.sendMessage(from, `${anu.result.logs}`, text, {quoted: mek})
+			await limitAdd(sender) 
+			break  
+			   case 'igstalk':
+			   if (!isRegistered) return reply(ind.noregis())
+			   if (isLimit(sender)) return reply(ind.limitend(pusname))
+                      hmm = await fetchJson(`https://anker-api.herokuapp.com/igstalk?username=${body.slice(9)}`)
+                     buffer = await getBuffer(hmm.pic)
+                     hasil = `*Usuário* : *_${hmm.username}_*\n*Seguidores* : *_${hmm.follower}_*\n*Seguindo* : *_${hmm.following}_*\n*Bio* : ${hmm.bio}\n*Postagens* : *_${hmm.post}_*`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
                     await limitAdd(sender)
-					break
+                    break
 				//group feature 
 				case 'hidetag':
                 if (!isRegistered) return reply(ind.noregis())
@@ -2183,16 +2375,45 @@ break
 					await limitAdd(sender)
 					break			
 				case 'cnaruto':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					naruto = body.slice(9)
-					if (args.length < 1) return reply('Onde está o texto?')
-					reply(ind.wait())
-					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${body.slice(9)}&apikey=${videfikri}`, {method: 'get'})
-					gools4 = await getBuffer(anu.result)
-					client.sendMessage(from, gools4, image, {quoted: mek})
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				liigw = `${body.slice(8)}`
+					liig2w = await fetchJson(`https://api.zeks.xyz/api/naruto?text=${liigw}&apikey=apivinz`)
+					buffer = await getBuffer(liig2w.result)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Naruto'})
 					await limitAdd(sender)
 					break 
+				case 'lighttext':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				liig = `${body.slice(11)}`
+					liig2 = await fetchJson(`https://api.zeks.xyz/api/lithgtext?text=${liig}&apikey=apivinz`)
+					buffer = await getBuffer(liig2.result)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'LightText'})
+					await limitAdd(sender)
+					break 
+				case 'tpantai':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				liige = `${body.slice(9)}`
+					liig2e = await fetchJson(`https://api.zeks.xyz/api/tpantai?text=${liige}&apikey=apivinz`)
+					buffer = await getBuffer(liig2e.result)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Tpantai'})
+					await limitAdd(sender)
+					break 
+				case 'flame':
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				fll = `${body.slice(7)}`
+					fllm = await fetchJson(`https://api.zeks.xyz/api/flametext?text=${fll}&apikey=apivinz`)
+					buffer = await getBuffer(fllm.result)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Flame'})
+					await limitAdd(sender)
+					break   
 				case 'simih':
 			        if (!isRegistered) return reply(ind.noregis())
 					if (!isGroup) return reply(ind.groupo())
