@@ -799,8 +799,8 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					glass = `${body.slice(8)}`
 					reply(ind.wait())
-					buffer = await getBuffer(`https://api.zeks.xyz/api/tlight?text=${glass}&apikey=apivinz`, {method: 'get'})
-					client.sendMessage(from, buffer, image, {caption: 'Tlight', quoted: mek})
+					pok = await getBuffer(`https://api.zeks.xyz/api/tlight?text=${glass}&apikey=apivinz`, {method: 'get'})
+					client.sendMessage(from, pok, image, {caption: 'Tlight', quoted: mek})
 					await limitAdd(sender) 
 					break 
 				case 'leavest':
@@ -808,8 +808,8 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					glasq = `${body.slice(9)}`
 					reply(ind.wait())
-					buffer = await getBuffer(`https://api.zeks.xyz/api/leavest?text=${glasq}&apikey=apivinz`, {method: 'get'})
-					client.sendMessage(from, buffer, image, {caption: 'Leavest', quoted: mek})
+					pok = await getBuffer(`https://api.zeks.xyz/api/leavest?text=${glasq}&apikey=apivinz`, {method: 'get'})
+					client.sendMessage(from, pok, image, {caption: 'Leavest', quoted: mek})
 					await limitAdd(sender) 
 					break
 					  case '3d':
@@ -819,8 +819,8 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					  if (args.length < 1) return reply('Onde está o texto?')
                                           if (args.length > 10) return reply('Mínimo 10 letras')
 					 tree = `${body.slice(4)}`
-					 buff = await getBuffer(`https://api.zeks.xyz/api/text3d?text=${tree}&apikey=apivinz`, {method: 'get'})
-					 client.sendMessage(from, buff, image, {quoted: mek})
+					 pok = await getBuffer(`https://api.zeks.xyz/api/text3d?text=${tree}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, pok, image, {quoted: mek})
 					 await limitAdd(sender)
 					 break  
 					  case 'goldbutton':
@@ -829,8 +829,8 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					  if (args.length < 1) return reply('Onde está o texto?')
                                           if (args.length > 10) return reply('Mínimo 10 letras')
 					 gbu = `${body.slice(12)}`
-					 buff = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${gbu}&apikey=apivinz`, {method: 'get'})
-					 client.sendMessage(from, buff, image, {quoted: mek})
+					 pok = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${gbu}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, pok, image, {quoted: mek})
 					 await limitAdd(sender)
 					 break
 					  case 'silverbutton':
@@ -840,8 +840,8 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					  if (args.length < 1) return reply('Onde está o texto?')
                                           if (args.length > 10) return reply('Mínimo 10 letras')
 					 tsil = `${body.slice(14)}`
-					 buff = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${tsil}&apikey=apivinz`, {method: 'get'})
-					 client.sendMessage(from, buff, image, {quoted: mek})
+					 pok = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${tsil}&apikey=apivinz`, {method: 'get'})
+					 client.sendMessage(from, pok, image, {quoted: mek})
 					 await limitAdd(sender)
 					 break
 				case 'coffe':
@@ -850,28 +850,28 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
                                tahtaq = `${body.slice(7)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
-                     buff = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup/?text=${tahtaq}`, {method: 'get'})
-                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Coffe`})
+                     pok = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup/?text=${tahtaq}`, {method: 'get'})
+                     client.sendMessage(from, pok, image, {quoted: mek, caption: `Coffe`})
                   await limitAdd(sender) 
                   break
                         case 'glow':
 			if (!isRegistered) return reply(ind.noregis())
-			if (isLimit(sender)) return reply(ind.limitend(pusname)    
+			if (isLimit(sender)) return reply(ind.limitend(pusname))     
                      tahtaw = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
-                     buff = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tahtaw}`, {method: 'get'})
-                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Glow`})
-                  await limitAdd(sender) 
-                  break
+                     pok = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tahtaw}`, {method: 'get'})
+                     client.sendMessage(from, pok, image, {quoted: mek, caption: `Glow`})
+                     await limitAdd(sender) 
+                     break
                 case 'love':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
                      tahtae = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
-                     buff = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${tahtae}`, {method: 'get'})
-                     client.sendMessage(from, buff, image, {quoted: mek, caption: `Love`})
+                     pok = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${tahtae}`, {method: 'get'})
+                     client.sendMessage(from, pok, image, {quoted: mek, caption: `Love`})
                     await limitAdd(sender) 
                   break  
                   	case 'instagram':
@@ -882,10 +882,10 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					anu = await fetchJson(`https://videfikri.com/api/igvideo/?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					ytte = `╭─「 *INSTAGRAM DOWNLOAD* 」\n│\n│• *Usuário:* ${anu.result.username}\n│• *Nome Completo:* ${anu.result.full_name}\n │• *Curtidas:* ${anu.result.like}\n │• *Comentários:* ${anu.result.comment}\n │• *Duração:* ${anu.result.duration}\n │• *Título:* ${anu.result.caption}\n│\n│ Espere um 1 minuto ou talvez um pouco mais \n│ Baixando o Vídeo\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
-					buff = await getBuffer(anu.result.thumb)
+					pok = await getBuffer(anu.result.thumb)
 					reply(ind.wait())
 					buffer = await getBuffer(anu.result.video)
-					client.sendMessage(from, buff, image, {quoted: mek, caption: ytte})
+					client.sendMessage(from, pok, image, {quoted: mek, caption: ytte})
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.result.caption}.mp4`, quoted: mek, caption: 'Download Completo'})
 					await limitAdd(sender) 
 					break
@@ -2317,7 +2317,7 @@ break
 					}
 					break 
 					case 'blackpink':
-                                if (!isRegistered) return reply(ind.noregis())
+                                        if (!isRegistered) return reply(ind.noregis())
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply(`「❗」Exemplo : ${prefix}blackpink ${pushname}`)
 					pink = body.slice(11)
@@ -2332,8 +2332,8 @@ break
 				reply(ind.wait())
 				liigw = `${body.slice(8)}`
 					liig2w = await fetchJson(`https://api.zeks.xyz/api/naruto?text=${liigw}&apikey=apivinz`)
-					buffer = await getBuffer(liig2w.result)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Naruto'})
+					pok = await getBuffer(liig2w.result)
+					client.sendMessage(from, pok, image, {quoted: mek, caption: 'Naruto'})
 					await limitAdd(sender)
 					break 
 				case 'lighttext':
@@ -2352,8 +2352,8 @@ break
 				reply(ind.wait())
 				liige = `${body.slice(9)}`
 					liig2e = await fetchJson(`https://api.zeks.xyz/api/tpantai?text=${liige}&apikey=apivinz`)
-					buffer = await getBuffer(liig2e.result)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Tpantai'})
+					pok = await getBuffer(liig2e.result)
+					client.sendMessage(from, pok, image, {quoted: mek, caption: 'Tpantai'})
 					await limitAdd(sender)
 					break
 				case 'flame':
@@ -2362,8 +2362,8 @@ break
 				reply(ind.wait())
 				fll = `${body.slice(7)}`
 					fllm = await fetchJson(`https://api.zeks.xyz/api/flametext?text=${fll}&apikey=apivinz`)
-					buffer = await getBuffer(fllm.result)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Flame'})
+					pok = await getBuffer(fllm.result)
+					client.sendMessage(from, pok, image, {quoted: mek, caption: 'Flame'})
 					await limitAdd(sender)
 					break
 				case 'simih':
