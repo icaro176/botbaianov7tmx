@@ -12,21 +12,17 @@
     "play": "nodemon index"
   },
   "keywords": [
-    "termux",
-    "whatsapp",
-    "bot",
-    "whatsapp",
-    "bot"
+    "k"
   ],
   "author": "affis junianto",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/icaro176/botbaianotmx.git"
+    "url": "git+https://github.com/affisjunianto/botwasapv2.git"
   },
   "bugs": {
-    "url": "https://github.com/icaro176/botbaianotmx/issues"
+    "url": "https://github.com/affisjunianto/botwasapv2/issues"
   },
-"homepage": "https://github.com/icaro176/botbaianotmx/readme",
+"homepage": "https://github.com/affisjunianto/botwasapv2/readme",
 "license": "ISC",
 "dependencies": {
     "@adiwajshing/baileys": "^3.3.0",
