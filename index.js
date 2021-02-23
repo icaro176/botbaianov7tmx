@@ -737,6 +737,19 @@ case 'asupan':
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
 			break
+			    case 'playstore':
+			    if (!isRegistered) return reply(ind.noregis())
+			    if (isLimit(sender)) return reply(ind.limitend(pusname))
+			    msgFilter.addFilter(from)
+                ps = `${body.slice(11)}`
+                  anu = await fetchJson(`https://api.zeks.xyz/api/sgplay?apikey=apivinz&q=${ps}`, {method: 'get'})
+                  store = '======================\n'
+                  for (let ply of anu.result){
+                  store += `• *Nome do App:* ${ply.title}\n• *ID:* ${ply.appid}\n• *Desenvolvedor:* ${ply.developer}\n• *Link do App:* ${ply.url}\n=====================\n`
+                  }
+                  reply(store.trim())
+                  break
+
             case 'bitly':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -2151,14 +2164,13 @@ break
 					await limitAdd(sender)
 					break			
 				case 'cnaruto':
-                                if (!isRegistered) return reply(ind.noregis())
-                                if (isLimit(sender)) return reply(ind.limitend(pusname))
-					naruto = body.slice(9)
-					if (args.length < 1) return reply('Onde está o texto?')
-					reply(ind.wait())
-					anu = await fetchJson(`https://videfikri.com/api/textmaker/narutobanner/?text=${body.slice(9)}&apikey=${videfikri}`, {method: 'get'})
-					gools4 = await getBuffer(anu.result)
-					client.sendMessage(from, gools4, image, {quoted: mek})
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+				reply(ind.wait())
+				liigw = `${body.slice(8)}`
+					liig2w = await fetchJson(`https://api.zeks.xyz/api/naruto?text=${liigw}&apikey=apivinz`)
+					buffer = await getBuffer(liig2w.result)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Naruto'})
 					await limitAdd(sender)
 					break 
 				case 'simih':
