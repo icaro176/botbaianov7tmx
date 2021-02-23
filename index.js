@@ -776,6 +776,7 @@ case 'asupan':
                 case 'searchpornhub':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
+			        if (!isNsfw) return reply(ind.nsfwoff())
 			   reply(ind.wait())
 			   msgFilter.addFilter(from)
               	    if (args.length < 1) return reply('teksnya mana gan?')
@@ -845,18 +846,18 @@ case 'asupan':
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				msgFilter.addFilter(from)
-                tahtaq = `${body.slice(7)}`
+                               tahtaq = `${body.slice(7)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
                      buff = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup/?text=${tahtaq}`, {method: 'get'})
                      client.sendMessage(from, buff, image, {quoted: mek, caption: `Coffe`})
                   await limitAdd(sender) 
                   break
-                case 'glow':
+                        case 'glow':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
-				msgFilter.addFilter(from)
-                tahtaw = `${body.slice(6)}`
+	             msgFilter.addFilter(from)
+                     tahtaw = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
                      buff = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon/?text=${tahtaw}`, {method: 'get'})
@@ -866,13 +867,13 @@ case 'asupan':
                 case 'love':
 			if (!isRegistered) return reply(ind.noregis())
 			if (isLimit(sender)) return reply(ind.limitend(pusname))
-				msgFilter.addFilter(from)
-                tahtae = `${body.slice(6)}`
+		     msgFilter.addFilter(from)
+                     tahtae = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
                      buff = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${tahtae}`, {method: 'get'})
                      client.sendMessage(from, buff, image, {quoted: mek, caption: `Love`})
-                  await limitAdd(sender) 
+                    await limitAdd(sender) 
                   break  
                   	case 'instagram':
 				    if (!isRegistered) return reply(ind.noregis())
