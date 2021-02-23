@@ -680,12 +680,12 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek, caption: 'Download Completo'})
 					await limitAdd(sender) 	
 					break  
-                                case 'asupan':
+		    case 'asupan':
 				client.updatePresence(from, Presence.composing) 
-                                if (!isRegistered) return reply(ind.noregis())
-		                if (isLimit(sender)) return reply(ind.limitend(pusname)) 
+				if (!isRegistered) return reply(ind.noregis())
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
 				reply(ind.wait())
-				data = fs.readFileSync('./lib/asupan.js');
+				 data = fs.readFileSync('./lib/asupan.js');
                  jsonData = JSON.parse(data);
                  randIndex = Math.floor(Math.random() * jsonData.length);
                  randKey = jsonData[randIndex];
@@ -856,7 +856,7 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
                   break
                         case 'glow':
 			if (!isRegistered) return reply(ind.noregis())
-			if (isLimit(sender)) return reply(ind.limitend(pushname)    
+			if (isLimit(sender)) return reply(ind.limitend(pusname)    
                      tahtaw = `${body.slice(6)}`
                      if (args.length < 1) return reply('Onde está o texto?')
                      if (args.length > 10) return reply('Mínimo 10 letras')
@@ -1496,7 +1496,7 @@ if (isCmd && msgFilter.isFiltered(from) && isRegistered) {
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `╭─「 *YOUTUBE MP4 DOWNLOAD* 」\n│\n│• ${anu.title}\n│\n│*O VÍDEO ESTÁ SENDO ENVIADO, AGUARDE...\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────*`
+					teks = `╭─「 *YOUTUBE MP4 DOWNLOAD* 」\n│\n│• ${anu.title}\n│\n│*O VÍDEO ESTÁ SENDO ENVIADO\n│ AGUARDE...*\n│ *By ©❁̸⃪͎۪۪۪〫⃕͘͡⃟💸ƚՇᮟℛ❂•᭄ꦿ⃟꧇۪⃟🔥*\n╰───────────`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
